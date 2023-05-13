@@ -8,6 +8,8 @@ using UnityEngine;
 public class StageSelectScenePresenter : MonoBehaviour
 {
     [SerializeField] InputBase _input;
+    [SerializeField] StageSelectView _stageSelectView;
+    [SerializeField] StageSelectManager _stageSelectManager;
 
     // Start is called before the first frame update
     void Start()
