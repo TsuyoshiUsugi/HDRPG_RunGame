@@ -22,6 +22,6 @@ public class ButtonInputManager : InputBase
     {
         _rightButton.onClick.AddListener(() => OnRightButtonClicked());   
         _middleButton.onClick.AddListener(() => OnMiddleButtonClicked());   
-        _leftButton.onClick.AddListener(() => OnRightButtonClicked());   
+        _leftButton.onClick.AddListener(() => OnLeftButtonClicked());   
     }    
 }

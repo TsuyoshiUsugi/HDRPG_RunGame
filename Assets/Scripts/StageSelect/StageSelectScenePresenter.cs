@@ -22,6 +22,8 @@ public class StageSelectScenePresenter : MonoBehaviour
     /// </summary>
     void RegisterEvent()
     {
-
+        _input.OnLeftButtonClicked += () => _stageSelectManager.MoveChara(true);
+        _input.OnRightButtonClicked += () => _stageSelectManager.MoveChara(false);
+        _input.OnMiddleButtonClicked += () => _stageSelectManager.DecideStage();
     }
 }
