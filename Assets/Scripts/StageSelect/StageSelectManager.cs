@@ -1,14 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UniRx;
 
 /// <summary>
 /// ステージの移動処理を行う
 /// </summary>
 public class StageSelectManager : MonoBehaviour
 {
-    int _currentStage = 0;
+    [SerializeField] StageData _currentStageData;
+    [SerializeField] IntReactiveProperty _currentStage = new IntReactiveProperty(0);
+    public IntReactiveProperty CurrentStageNum => _currentStage;
     int _stageNum = 0;
+
+    private void Awake()
+    {
+        _stageNum = _currentStageData.StageNum - 1;
+    }
 
     /// <summary>
     /// 現在選択されているステージの値を加減する
@@ -21,15 +31,15 @@ public class StageSelectManager : MonoBehaviour
         if (_dir)
         {
             //最大値なら
-            if (_currentStage == _stageNum) return;
-            _currentStage++;
+            if (_currentStage.Value == _stageNum) return;
+            _currentStage.Value++;
         }
         //減少
         else
         {
             //最小値なら
-            if (_currentStage == 0) return;
-            _currentStage--;
+            if (_currentStage.Value == 0) return;
+            _currentStage.Value--;
         }
     }
     
@@ -38,6 +48,6 @@ public class StageSelectManager : MonoBehaviour
     /// </summary>
     public void DecideStage()
     {
-
+        SceneManager.LoadScene("GameScene");
     }
 }

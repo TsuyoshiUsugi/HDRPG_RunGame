@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 /// <summary>
 /// View‚ÆModel‚ð‚Â‚È‚®ƒNƒ‰ƒX
@@ -22,8 +23,10 @@ public class StageSelectScenePresenter : MonoBehaviour
     /// </summary>
     void RegisterEvent()
     {
-        _input.OnLeftButtonClicked += () => _stageSelectManager.MoveChara(true);
-        _input.OnRightButtonClicked += () => _stageSelectManager.MoveChara(false);
+        _input.OnLeftButtonClicked += () => _stageSelectManager.MoveChara(false);
+        _input.OnRightButtonClicked += () => _stageSelectManager.MoveChara(true);
         _input.OnMiddleButtonClicked += () => _stageSelectManager.DecideStage();
+
+        _stageSelectManager.CurrentStageNum.Subscribe(num => _stageSelectView.CharaCursorImageMove(num));
     }
 }

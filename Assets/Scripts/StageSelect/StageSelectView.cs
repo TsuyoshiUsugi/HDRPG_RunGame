@@ -15,10 +15,10 @@ public class StageSelectView : MonoBehaviour
     [SerializeField] Text _currentStageText;
     [SerializeField] Canvas _canvas;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         ShowMap();
+        //マネージャーが呼び忘れた時のために0で呼ぶ
         CharaCursorImageMove(0);
     }
 
@@ -45,11 +45,8 @@ public class StageSelectView : MonoBehaviour
     /// 画面に背景と、ステージの画像を表示する
     /// </summary>
     public void ShowMap()
-    {
-       
+    {       
         _backGroundImage.sprite = _stageData.BackGroundImage;
-
-
 
         List<Vector3> stagePoints = _stageData.StagePointPos;
 
