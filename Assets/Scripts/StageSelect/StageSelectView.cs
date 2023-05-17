@@ -9,14 +9,16 @@ using UnityEngine.UI;
 public class StageSelectView : MonoBehaviour
 {
     [SerializeField] StageData _stageData;
-    [SerializeField] Image _stagePoint;
+    [SerializeField] Image _backGroundImage;
+    [SerializeField] Image _stagePointImage;
     [SerializeField] Image _charaImage;
     [SerializeField] Text _currentStageText;
+    [SerializeField] Canvas _canvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        _stagePoint.sprite = _stageData.BackGroundImage;
+        ShowMap();
     }
 
     /// <summary>
@@ -35,5 +37,32 @@ public class StageSelectView : MonoBehaviour
     public void ShowCurrentStageText(int stageNum)
     {
         _currentStageText.text = _stageData.StageInfo[stageNum];
+    }
+
+    /// <summary>
+    /// 画面に背景と、ステージの画像を表示する
+    /// </summary>
+    public void ShowMap()
+    {
+       
+        _backGroundImage.sprite = _stageData.BackGroundImage;
+
+
+
+        List<Vector3> stagePoints = _stageData.StagePointPos;
+
+        Debug.Log(stagePoints.Count);
+
+        //生成し、キャンバスの子オブジェクトにした後位置をいれる
+        foreach (var point in stagePoints)
+        {
+            var image = Instantiate(_stagePointImage);
+            image.transform.SetParent(_canvas.transform);
+
+            var rect = image.GetComponent<RectTransform>();
+            rect.localPosition = point;
+            rect.localScale = new Vector3(1, 1, 1);
+            
+        }
     }
 }

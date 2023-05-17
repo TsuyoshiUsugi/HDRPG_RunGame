@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Stage1-1
   m_EditorClassIdentifier: 
   _backGroundImage: {fileID: 0}
-  _stagePointPos: []
+  _stagePointPos:
+  - {x: -195, y: -379, z: 0}
+  - {x: 71, y: -349, z: 0}
+  - {x: 299, y: -295, z: 0}
+  - {x: 148, y: -216, z: 0}
+  - {x: -48, y: -141, z: 0}
   _stageInfo: []
