@@ -19,6 +19,7 @@ public class StageSelectView : MonoBehaviour
     void Start()
     {
         ShowMap();
+        CharaCursorImageMove(0);
     }
 
     /// <summary>
@@ -27,7 +28,8 @@ public class StageSelectView : MonoBehaviour
     /// <param name="stageNum"></param>
     public void CharaCursorImageMove(int stageNum)
     {
-        _charaImage.transform.position = _stageData.StagePointPos[stageNum];
+        _charaImage.transform.localPosition = _stageData.StagePointPos[stageNum];
+        _charaImage.transform.SetAsLastSibling();
     }
 
     /// <summary>
