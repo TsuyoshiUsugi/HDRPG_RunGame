@@ -309,6 +309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191e87699b89c3a4a82a95dbcdee882b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentStageData: {fileID: 11400000, guid: 3e6bee42787bb6c4390765e5b80a836b, type: 2}
+  _currentStage:
+    value: 0
 --- !u!4 &182626273
 Transform:
   m_ObjectHideFlags: 0
@@ -658,8 +661,7 @@ MonoBehaviour:
   _backGroundImage: {fileID: 1816687131}
   _stagePointImage: {fileID: 7274859124289410946, guid: 030529ec1c166684d8e9899b018ffd9f,
     type: 3}
-  _charaImage: {fileID: 8639838875895309803, guid: 5e15b394b74473a43a1a1384728215d4,
-    type: 3}
+  _charaImage: {fileID: 7513942783787879745}
   _currentStageText: {fileID: 6903770940721597090}
   _canvas: {fileID: 44577974}
 --- !u!4 &1541385315
@@ -1277,3 +1279,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7513942783787879742}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7513942783787879745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8639838875895309803, guid: 5e15b394b74473a43a1a1384728215d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7513942783787879742}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
