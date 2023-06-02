@@ -10,7 +10,7 @@ using UniRx;
 /// </summary>
 public class GameSceneManager : MonoBehaviour
 {
-    ReactiveProperty<GameSceneState> _gameSceneState = new ReactiveProperty<GameSceneState>();
+    [SerializeField] ReactiveProperty<GameSceneState> _gameSceneState = new ReactiveProperty<GameSceneState>();
     int _score = 0;
     int _aquireExp = 0;
 
@@ -19,7 +19,7 @@ public class GameSceneManager : MonoBehaviour
 
     private void Start()
     {
-        _gameSceneState.Value = GameSceneState.Ready;
+        _gameSceneState.Value = GameSceneState.Pose;
         _gameSceneState.Where(state => state == GameSceneState.Ready).Subscribe(_ => ReadyState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Playing).Subscribe(_ => PlayingState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Pose).Subscribe(_ => PoseState()).AddTo(this.gameObject);
@@ -75,6 +75,7 @@ public class GameSceneManager : MonoBehaviour
     void ResultState()
     {
         ReadyStateEvent?.Invoke();
+        Debug.Log("Result!");
     }
 }
 
