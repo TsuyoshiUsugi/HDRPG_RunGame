@@ -42,6 +42,7 @@ public class GameSceneManager : MonoBehaviour
     {
         SetPlayer();
         ReadyStateEvent?.Invoke();
+        Debug.Log("Ready!");
     }
 
     /// <summary>
@@ -57,7 +58,7 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     void PlayingState()
     {
-
+        Debug.Log("Playing!");
     }
 
     /// <summary>
@@ -65,7 +66,7 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     void PoseState()
     {
-        
+        Debug.Log("Pose!");
     }
 
     /// <summary>
