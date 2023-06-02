@@ -8,6 +8,7 @@ https://app.diagrams.net/#G1mCP44D6Qk2kC0FnRpNO5ne7DNCSDIgyj
 ### アセット  
 ・Dotween  
 ・Fantasy Wooden GUI  
+・UniTask
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
