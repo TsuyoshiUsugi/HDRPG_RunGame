@@ -15,11 +15,6 @@ public class Player : CharaBase
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
         if (_isPose) return;
 
         AutoForwardMove();
@@ -30,7 +25,7 @@ public class Player : CharaBase
     /// </summary>
     protected override void AutoForwardMove()
     {
-        transform.position += _moveDir * _speed;
+        transform.position += _moveDir * _speed * Time.deltaTime;
     }
 
     /// <summary>
@@ -40,8 +35,8 @@ public class Player : CharaBase
     public void LeftRightMove(bool isLeft)
     {
         if (_isPose) return;
-        if (isLeft) transform.position += Vector3.left * _speed;
-        if (!isLeft) transform.position -= Vector3.left * _speed;
+        if (isLeft) transform.position += Vector3.left * _speed * Time.deltaTime;
+        if (!isLeft) transform.position -= Vector3.left * _speed * Time.deltaTime;
     }
 
     public void Hit(int damage)

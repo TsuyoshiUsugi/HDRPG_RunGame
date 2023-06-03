@@ -59,7 +59,6 @@ public class ButtonPressDetect : MonoBehaviour, IPointerDownHandler, IPointerUpH
     public void OnPointerDown(PointerEventData eventData)
     {
         _isButtonPressed = true;
-
     }
 
     public void OnPointerUp(PointerEventData eventData)
