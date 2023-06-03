@@ -54,7 +54,7 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     void SetFrameRate()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 30;
     }
 
     /// <summary>

@@ -20,8 +20,8 @@ public class ButtonInputManager : InputBase
     // Start is called before the first frame update
     void Start()
     {
-        _rightButton.onClick.AddListener(() => OnRightButtonClicked());   
-        _middleButton.onClick.AddListener(() => OnMiddleButtonClicked());   
-        _leftButton.onClick.AddListener(() => OnLeftButtonClicked());   
+        _rightButton.onClick.AddListener(() => OnRightButtonClicked?.Invoke());   
+        _middleButton.onClick.AddListener(() => OnMiddleButtonClicked?.Invoke());   
+        _leftButton.onClick.AddListener(() => OnLeftButtonClicked?.Invoke());   
     }    
 }

@@ -27,4 +27,9 @@ public class Player : CharaBase
     {
         transform.position += _moveDir * _speed;
     }
+
+    public void Hit(int damage)
+    {
+
+    }
 }
