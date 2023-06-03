@@ -22,6 +22,12 @@ public class Enemy : CharaBase
         AutoForwardMove();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        other.TryGetComponent<Player>(out Player player);
+        if (player != null) player.Hit(_atk);
+    }
+
     protected override void AutoForwardMove()
     {
         if (_enemyMove != null) _enemyMove.EnemyMove(_speed);
