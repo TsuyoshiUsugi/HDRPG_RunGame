@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class StartUI : MonoBehaviour
 {
     [SerializeField] List<GameObject> _showUI;
     [SerializeField] float _performanceInterval = 1.0f;
+
+    public event Action OnEndShowStartUI;
 
     private void Awake()
     {
@@ -34,5 +37,7 @@ public class StartUI : MonoBehaviour
             yield return new WaitForSeconds(_performanceInterval);
             go.SetActive(false);
         }
+
+        if (OnEndShowStartUI != null) OnEndShowStartUI();
     }
 }

@@ -17,7 +17,7 @@ public class GameSceneManager : MonoBehaviour
 
     private void Start()
     {
-        _gameSceneState.Value = GameSceneState.Pose;
+        _gameSceneState.Value = GameSceneState.Ready;
         _gameSceneState.Where(state => state == GameSceneState.Ready).Subscribe(_ => ReadyState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Playing).Subscribe(_ => PlayingState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Pose).Subscribe(_ => PoseState()).AddTo(this.gameObject);

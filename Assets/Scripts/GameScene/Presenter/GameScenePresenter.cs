@@ -13,12 +13,17 @@ public class GameScenePresenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _gameSceneManager.ReadyStateEvent += () => StartCoroutine(nameof(StartUI.ShowStartUI));
+        RegisterManagerEvent();
+        RegisterViewEvent();
     }
 
-    // Update is called once per frame
-    void Update()
+    void RegisterManagerEvent()
     {
-        
+        _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
+    }
+
+    void RegisterViewEvent()
+    {
+        _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
     }
 }
