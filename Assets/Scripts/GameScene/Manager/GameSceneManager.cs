@@ -41,9 +41,20 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     void ReadyState()
     {
-        SetPlayer();
-        ReadyStateEvent?.Invoke();
         Debug.Log("Ready!");
+
+        SetPlayer();
+        SetFrameRate();
+
+        ReadyStateEvent?.Invoke();
+    }
+
+    /// <summary>
+    /// フレームレートを設定する
+    /// </summary>
+    void SetFrameRate()
+    {
+        Application.targetFrameRate = 60;
     }
 
     /// <summary>
@@ -51,8 +62,8 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     void SetPlayer()
     {
-        ControlPlayerMove(false);
         Debug.Log("Player設定");
+        ControlPlayerMove(false);
     }
 
     /// <summary>
@@ -93,8 +104,8 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     void ResultState()
     {
-        ReadyStateEvent?.Invoke();
         Debug.Log("Result!");
+        ReadyStateEvent?.Invoke();
     }
 }
 
