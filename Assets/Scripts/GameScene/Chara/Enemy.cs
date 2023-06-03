@@ -18,7 +18,8 @@ public class Enemy : CharaBase
     // Update is called once per frame
     void Update()
     {
-
+        if (_isPose) return;
+        AutoForwardMove();
     }
 
     protected override void AutoForwardMove()

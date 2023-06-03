@@ -25,7 +25,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     [Header("ê›íËíl")]
     [SerializeField] int _hp = 1;
     [SerializeField] int _atk = 1;
-    [SerializeField] protected float _speed = 0.1f;
+    [SerializeField] protected float _speed = 1f;
     [SerializeField] float _atkRate = 1;
     
     BoxCollider _range;
@@ -39,6 +39,12 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     public void Hit(int damage)
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        other.TryGetComponent<Player>(out Player player);
+        if ( player != null) player.Hit(_atk);
     }
 
     public void Pose(bool isPoseing)
