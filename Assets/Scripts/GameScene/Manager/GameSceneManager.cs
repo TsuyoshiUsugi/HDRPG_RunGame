@@ -8,6 +8,9 @@ using UniRx;
 /// </summary>
 public class GameSceneManager : MonoBehaviour
 {
+    [Header("QÆ")]
+    [SerializeField] Player _player;
+
     [SerializeField] ReactiveProperty<GameSceneState> _gameSceneState = new ReactiveProperty<GameSceneState>();
     int _score = 0;
     int _aquireExp = 0;
@@ -48,7 +51,24 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     void SetPlayer()
     {
+        ControlPlayerMove(false);
         Debug.Log("Playerİ’è");
+    }
+
+    /// <summary>
+    /// true‚ÅPlayer‚ğ“®‚©‚·
+    /// false‚ÅPlayer‚ğ’â~
+    /// </summary>
+    void ControlPlayerMove(bool enebleMove)
+    {
+        if (enebleMove)
+        {
+            _player.enabled = true;
+        }
+        else
+        {
+            _player.enabled = false;
+        }
     }
 
     /// <summary>
@@ -57,6 +77,7 @@ public class GameSceneManager : MonoBehaviour
     void PlayingState()
     {
         Debug.Log("Playing!");
+        ControlPlayerMove(true);
     }
 
     /// <summary>

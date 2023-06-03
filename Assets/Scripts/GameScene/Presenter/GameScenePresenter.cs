@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// UIとモデルの橋渡しをする
+/// UIとモデルの橋渡しをするゲームシーン用のPresenter
 /// </summary>
 public class GameScenePresenter : MonoBehaviour
 {
@@ -13,15 +11,21 @@ public class GameScenePresenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RegisterManagerEvent();
+        RegisterModelEvent();
         RegisterViewEvent();
     }
 
-    void RegisterManagerEvent()
+    /// <summary>
+    /// MVPのModel部分のイベントにViewの処理を登録する処理
+    /// </summary>
+    void RegisterModelEvent()
     {
         _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
     }
 
+    /// <summary>
+    /// MVPのView部分のイベントにModelの処理を登録する処理
+    /// </summary>
     void RegisterViewEvent()
     {
         _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
