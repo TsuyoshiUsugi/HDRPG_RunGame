@@ -20,16 +20,33 @@ public class Player : CharaBase
 
     private void FixedUpdate()
     {
-        Move();
+        if (_isPose) return;
+
+        AutoForwardMove();
     }
 
-    protected override void Move()
+    /// <summary>
+    /// 勝手に前に進む処理
+    /// </summary>
+    protected override void AutoForwardMove()
     {
         transform.position += _moveDir * _speed;
+    }
+
+    /// <summary>
+    /// Playerの入力により左右に進む処理
+    /// </summary>
+    /// <param name="isLeft">trueなら左、falseなら右</param>
+    public void LeftRightMove(bool isLeft)
+    {
+        if (_isPose) return;
+        if (isLeft) transform.position += Vector3.left * _speed;
+        if (!isLeft) transform.position -= Vector3.left * _speed;
     }
 
     public void Hit(int damage)
     {
 
     }
+
 }

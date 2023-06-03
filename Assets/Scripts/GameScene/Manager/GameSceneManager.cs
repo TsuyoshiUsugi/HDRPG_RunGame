@@ -72,14 +72,7 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     void ControlPlayerMove(bool enebleMove)
     {
-        if (enebleMove)
-        {
-            _player.enabled = true;
-        }
-        else
-        {
-            _player.enabled = false;
-        }
+        _player.Pose(enebleMove ? false : true);
     }
 
     /// <summary>

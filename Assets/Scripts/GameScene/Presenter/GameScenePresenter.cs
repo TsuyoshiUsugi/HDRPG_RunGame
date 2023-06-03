@@ -5,8 +5,13 @@ using UnityEngine;
 /// </summary>
 public class GameScenePresenter : MonoBehaviour
 {
+    [Header("ModelŽQÆ")]
     [SerializeField] GameSceneManager _gameSceneManager;
+    [SerializeField] Player _player;
+
+    [Header("ViewŽQÆ")]
     [SerializeField] StartUI _startUI;
+    [SerializeField] InputBase _InputBase;
 
     // Start is called before the first frame update
     void Start()
@@ -29,5 +34,7 @@ public class GameScenePresenter : MonoBehaviour
     void RegisterViewEvent()
     {
         _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
+        _InputBase.OnLeftButtonClicked += () => _player.LeftRightMove(true);
+        _InputBase.OnRightButtonClicked += () => _player.LeftRightMove(false);
     }
 }

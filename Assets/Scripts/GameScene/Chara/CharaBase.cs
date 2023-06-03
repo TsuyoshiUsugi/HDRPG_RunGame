@@ -6,7 +6,7 @@ using UniRx;
 /// <summary>
 /// 敵、Player、ボスのベースとなるクラス
 /// </summary>
-public class CharaBase : MonoBehaviour, IHit
+public class CharaBase : MonoBehaviour, IHit, IPosable
 {
     [Header("設定値")]
     [SerializeField] int _hp = 1;
@@ -15,14 +15,20 @@ public class CharaBase : MonoBehaviour, IHit
     [SerializeField] float _atkRate = 1;
     
     BoxCollider _range;
+    protected bool _isPose = false;
     public BoolReactiveProperty IsDeath = new BoolReactiveProperty();
 
     protected virtual void Attack() { }
 
-    protected virtual void Move() { }
+    protected virtual void AutoForwardMove() { }
 
     public void Hit(int damage)
     {
         
+    }
+
+    public void Pose(bool isPoseing)
+    {
+        _isPose = isPoseing;
     }
 }
