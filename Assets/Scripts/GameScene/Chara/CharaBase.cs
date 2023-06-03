@@ -5,6 +5,20 @@ using UniRx;
 
 /// <summary>
 /// 敵、Player、ボスのベースとなるクラス
+/// 
+/// [変数]
+/// ・HP
+/// ・ATK
+/// ・Speed
+/// ・ATKRate
+/// 
+/// [関数]
+/// ・攻撃
+/// ・移動
+/// 
+/// [interface]
+/// ・ヒット
+/// ・ポーズ
 /// </summary>
 public class CharaBase : MonoBehaviour, IHit, IPosable
 {
