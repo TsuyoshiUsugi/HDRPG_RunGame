@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMover : MonoBehaviour
+public class FrontWallMover : MonoBehaviour
 {
     GameObject _player;
     Vector3 _offset = Vector3.zero;
@@ -15,11 +15,11 @@ public class CameraMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         this.transform.position = new Vector3(
-            _player.transform.position.x + _offset.x,
-            _player.transform.position.y + _offset.y,
+            transform.position.x,
+            transform.position.y,
             _player.transform.position.z + _offset.z);
     }
 }

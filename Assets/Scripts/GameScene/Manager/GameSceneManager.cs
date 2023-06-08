@@ -11,6 +11,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 {
     [Header("ŽQÆ")]
     [SerializeField] Player _player;
+    public Player Player => _player;
+
     [SerializeField] List<IPosable> _posableObjs = new List<IPosable>();
     public List<IPosable> PosableObj { get => _posableObjs; set => _posableObjs = value; }
 
