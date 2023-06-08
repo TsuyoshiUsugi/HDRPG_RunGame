@@ -77,8 +77,6 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void ControlObjsMove(bool enebleMove)
     {
-        //_player.Pose(enebleMove ? false : true);
-
         if (_posableObjs == null || _posableObjs.Count == 0) return;
 
         _posableObjs.ForEach(obj => obj.Pose(enebleMove ? false : true));
