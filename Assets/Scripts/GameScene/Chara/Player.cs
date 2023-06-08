@@ -11,6 +11,7 @@ public class Player : CharaBase
     {
         if (_isPose) return;
 
+        _currentAtkDur -= Time.deltaTime;
         AutoForwardMove();
     }
 
@@ -52,7 +53,9 @@ public class Player : CharaBase
     public override void Attack()
     {
         if (_isPose) return;
+        if (_currentAtkDur > 0) return;
 
+        Debug.Log("Attack");
         Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.lossyScale);
 
         foreach (Collider col in enemyCol)
@@ -60,6 +63,8 @@ public class Player : CharaBase
             col.TryGetComponent<Enemy>(out Enemy enemy);
             if (enemy) enemy.Hit(_atk);
         }
+
+        _currentAtkDur = _atkRate;
     }
 
     void OnDrawGizmos()

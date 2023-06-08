@@ -31,11 +31,12 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     [SerializeField] protected int _hp = 1;
     [SerializeField] protected int _atk = 1;
     [SerializeField] protected float _speed = 1f;
-    [SerializeField] float _atkRate = 1;
+    [SerializeField] protected float _atkRate = 1;
     [SerializeField] protected float _leftLimit = -2.5f;
     [SerializeField] protected float _rightLimit = 2;
     int _flashTime = 2;
     float _flashDur = 0.1f;
+    protected float _currentAtkDur = 0;
     
     SpriteRenderer _spriteRenderer;
     protected bool _isPose = false;
