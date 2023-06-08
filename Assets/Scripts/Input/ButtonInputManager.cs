@@ -1,12 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
 
 /// <summary>
 /// Button‚É‚æ‚é“ü—Í‚ðŽó‚¯•t‚¯‚éƒNƒ‰ƒX
@@ -30,9 +26,9 @@ public class ButtonInputManager : InputBase
     // Start is called before the first frame update
     void Start()
     {
-        _rightButton.AddComponent<ButtonPressDetect>();
-        _middleButton.AddComponent<ButtonPressDetect>();
-        _leftButton.AddComponent<ButtonPressDetect>();
+        _rightButton.gameObject.AddComponent<ButtonPressDetect>();
+        _middleButton.gameObject.AddComponent<ButtonPressDetect>();
+        _leftButton.gameObject.AddComponent<ButtonPressDetect>();
 
         _leftPressDetect = _leftButton.GetComponent<ButtonPressDetect>();
         _rightPressDetect = _rightButton.GetComponent<ButtonPressDetect>();
@@ -66,4 +62,5 @@ public class ButtonPressDetect : MonoBehaviour, IPointerDownHandler, IPointerUpH
         _isButtonPressed= false;
     }
 }
+
 

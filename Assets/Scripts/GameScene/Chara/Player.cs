@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Dynamic;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Player : CharaBase
@@ -57,7 +53,9 @@ public class Player : CharaBase
     {
         if (_isPose) return;
 
-        Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.localScale / 2);
+        Debug.Log(_attackHitBox.transform.localScale / 2);
+
+        Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.localScale / 4);
 
         foreach (Collider col in enemyCol)
         {
