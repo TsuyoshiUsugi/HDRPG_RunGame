@@ -41,7 +41,7 @@ public class ButtonInputManager : InputBase
 
     private void Update()
     {
-        if (_rightPressDetect.IsButtonPressed)OnRightButtonClicked?.Invoke();
+        if (_rightPressDetect.IsButtonPressed) OnRightButtonClicked?.Invoke();
         if (_leftPressDetect.IsButtonPressed) OnLeftButtonClicked?.Invoke();
         if (_middlePressDetect.IsButtonPressed) OnMiddleButtonClicked?.Invoke();
     }

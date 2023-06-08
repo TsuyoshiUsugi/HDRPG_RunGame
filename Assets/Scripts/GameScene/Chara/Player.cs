@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Player : CharaBase
 {
+    [Header("éQè∆")]
+    [SerializeField] GameObject _attackHitBox;
     Vector3 _moveDir = Vector3.forward;
 
     // Update is called once per frame
@@ -37,17 +39,30 @@ public class Player : CharaBase
         ResetPos();
     }
 
-    public void Hit(int damage)
+    public new void Hit(int damage)
     {
         Debug.Log("Hit");
 
-        StartCoroutine(nameof(ShowHit));
+        ShowHit();
         _hp -= damage;
 
         if (_hp <= 0)
         {
             _hp = 0;
             IsDeath.Value = true;
+        }
+    }
+
+    public override void Attack()
+    {
+        if (_isPose) return;
+
+        Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.localScale / 2);
+
+        foreach (Collider col in enemyCol)
+        {
+            col.TryGetComponent<Enemy>(out Enemy enemy);
+            if (enemy) enemy.Hit(_atk);
         }
     }
 }

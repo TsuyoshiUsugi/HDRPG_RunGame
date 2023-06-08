@@ -38,5 +38,6 @@ public class GameScenePresenter : MonoBehaviour
         _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
         _InputBase.OnLeftButtonClicked += () => _player.LeftRightMove(true);
         _InputBase.OnRightButtonClicked += () => _player.LeftRightMove(false);
+        _InputBase.OnMiddleButtonClicked += () => _player.Attack();
     }
 }

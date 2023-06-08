@@ -4,6 +4,7 @@ using UnityEngine;
 using UniRx;
 using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
+using System;
 
 /// <summary>
 /// 敵、Player、ボスのベースとなるクラス
@@ -37,16 +38,15 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     float _flashDur = 0.1f;
     
     SpriteRenderer _spriteRenderer;
-    BoxCollider _range;
     protected bool _isPose = false;
     public BoolReactiveProperty IsDeath = new BoolReactiveProperty();
 
-    void Start()
+    protected void Start()
     {
         TryGetComponent<SpriteRenderer>(out _spriteRenderer);
     }
 
-    protected virtual void Attack() { }
+    public virtual void Attack() { }
 
     protected virtual void AutoForwardMove() { }
 
@@ -74,14 +74,14 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     /// <summary>
     /// 被ダメ時にオブジェクトを点滅させる
     /// </summary>
-    protected IEnumerator ShowHit()
+    protected async void ShowHit()
     {
         for (int i = 0; i < _flashTime; i++)
         {
             _spriteRenderer.enabled = false;
-            yield return new WaitForSeconds(_flashDur);
+            await UniTask.Delay(TimeSpan.FromSeconds(_flashDur));
             _spriteRenderer.enabled = true;
-            yield return new WaitForSeconds(_flashDur);
+            await UniTask.Delay(TimeSpan.FromSeconds(_flashDur));
         }
     }
 }
