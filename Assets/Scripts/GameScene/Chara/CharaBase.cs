@@ -45,4 +45,9 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     {
         _isPose = isPoseing;
     }
+
+    private void OnEnable()
+    {
+        GameSceneManager.Instance.PosableObj.Add(this);
+    }
 }

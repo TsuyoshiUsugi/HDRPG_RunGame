@@ -1,15 +1,18 @@
 using System;
 using UnityEngine;
 using UniRx;
+using System.Collections.Generic;
 
 /// <summary>
 /// ゲームシーンを管理する
 /// Ready,Playing,Pose,Resultのステートをもち、ステートに応じた処理を行う。
 /// </summary>
-public class GameSceneManager : MonoBehaviour
+public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 {
     [Header("参照")]
     [SerializeField] Player _player;
+    [SerializeField] List<IPosable> _posableObjs = new List<IPosable>();
+    public List<IPosable> PosableObj { get => _posableObjs; set => _posableObjs = value; }
 
     [SerializeField] ReactiveProperty<GameSceneState> _gameSceneState = new ReactiveProperty<GameSceneState>();
     int _score = 0;
@@ -65,16 +68,20 @@ public class GameSceneManager : MonoBehaviour
     void SetPlayer()
     {
         Debug.Log("Player設定");
-        ControlPlayerMove(false);
+        ControlObjsMove(false);
     }
 
     /// <summary>
-    /// trueでPlayerを動かす
-    /// falseでPlayerを停止
+    /// trueでオブジェクトを動かす
+    /// falseでオブジェクトを停止
     /// </summary>
-    void ControlPlayerMove(bool enebleMove)
+    void ControlObjsMove(bool enebleMove)
     {
-        _player.Pose(enebleMove ? false : true);
+        //_player.Pose(enebleMove ? false : true);
+
+        if (_posableObjs == null || _posableObjs.Count == 0) return;
+
+        _posableObjs.ForEach(obj => obj.Pose(enebleMove ? false : true));
     }
 
     /// <summary>
@@ -83,7 +90,7 @@ public class GameSceneManager : MonoBehaviour
     void PlayingState()
     {
         Debug.Log("Playing!");
-        ControlPlayerMove(true);
+        ControlObjsMove(true);
     }
 
     /// <summary>
@@ -100,7 +107,7 @@ public class GameSceneManager : MonoBehaviour
     void ResultState()
     {
         Debug.Log("Result!");
-        ControlPlayerMove(false);
+        ControlObjsMove(false);
         ResultStateEvent?.Invoke();
     }
 }

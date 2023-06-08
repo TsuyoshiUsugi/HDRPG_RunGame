@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// ゲームシーンのモブエネミーのスクリプト
+/// ついているIEnemyMoveコンポーネントを取得し、それに合わせた動きをする
 /// </summary>
 public class Enemy : CharaBase
 {
