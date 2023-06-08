@@ -23,6 +23,9 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
     private void Start()
     {
+        _score = 0;
+        _aquireExp = 0;
+
         _gameSceneState.Value = GameSceneState.Ready;
         _gameSceneState.Where(state => state == GameSceneState.Ready).Subscribe(_ => ReadyState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Playing).Subscribe(_ => PlayingState()).AddTo(this.gameObject);
@@ -60,6 +63,24 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     void SetFrameRate()
     {
         Application.targetFrameRate = 30;
+    }
+
+    /// <summary>
+    /// スコアを追加する
+    /// </summary>
+    /// <param name="score"></param>
+    public void AddScore(int score)
+    {
+        _score += score;
+    }
+
+    /// <summary>
+    /// 経験値を追加する
+    /// </summary>
+    /// <param name="exp"></param>
+    public void AddExp(int exp)
+    {
+        _aquireExp += exp;
     }
 
     /// <summary>
