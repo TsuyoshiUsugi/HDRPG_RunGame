@@ -53,14 +53,18 @@ public class Player : CharaBase
     {
         if (_isPose) return;
 
-        Debug.Log(_attackHitBox.transform.localScale / 2);
-
-        Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.localScale / 4);
+        Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.lossyScale);
 
         foreach (Collider col in enemyCol)
         {
             col.TryGetComponent<Enemy>(out Enemy enemy);
             if (enemy) enemy.Hit(_atk);
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(_attackHitBox.transform.position, _attackHitBox.transform.lossyScale);
     }
 }
