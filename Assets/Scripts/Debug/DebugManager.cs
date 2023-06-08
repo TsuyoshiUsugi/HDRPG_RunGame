@@ -9,7 +9,12 @@ using UnityEngine.UI;
 public class DebugManager : MonoBehaviour
 {
     [SerializeField] Text _fpsViewer; 
+    [SerializeField] Text _timerViewer;
 
+    //タイマー
+    float _timer = 0;
+
+    //FPS表示関係
     int _frameCount;
     float _prevTime;
     float _fps;
@@ -21,6 +26,12 @@ public class DebugManager : MonoBehaviour
     }
 
     void Update()
+    {
+        DebugFrame();
+        DebugTime();
+    }
+
+    private void DebugFrame()
     {
         _frameCount++;
         float time = Time.realtimeSinceStartup - _prevTime;
@@ -35,4 +46,10 @@ public class DebugManager : MonoBehaviour
         }
     }
 
+    private void DebugTime()
+    {
+        _timer += Time.deltaTime;
+
+        _timerViewer.text = $"Time: {_timer}";
+    }
 }
