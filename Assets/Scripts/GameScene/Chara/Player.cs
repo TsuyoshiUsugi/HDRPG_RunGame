@@ -40,6 +40,8 @@ public class Player : CharaBase
     public void Hit(int damage)
     {
         Debug.Log("Hit");
+
+        StartCoroutine(nameof(ShowHit));
         _hp -= damage;
 
         if (_hp <= 0)

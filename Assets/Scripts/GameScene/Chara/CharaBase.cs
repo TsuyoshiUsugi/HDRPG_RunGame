@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 
 /// <summary>
 /// 敵、Player、ボスのベースとなるクラス
@@ -31,10 +33,18 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     [SerializeField] float _atkRate = 1;
     [SerializeField] protected float _leftLimit = -2.5f;
     [SerializeField] protected float _rightLimit = 2;
+    int _flashTime = 2;
+    float _flashDur = 0.1f;
     
+    SpriteRenderer _spriteRenderer;
     BoxCollider _range;
     protected bool _isPose = false;
     public BoolReactiveProperty IsDeath = new BoolReactiveProperty();
+
+    void Start()
+    {
+        TryGetComponent<SpriteRenderer>(out _spriteRenderer);
+    }
 
     protected virtual void Attack() { }
 
@@ -59,5 +69,19 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     private void OnEnable()
     {
         GameSceneManager.Instance.PosableObj.Add(this);
+    }
+
+    /// <summary>
+    /// 被ダメ時にオブジェクトを点滅させる
+    /// </summary>
+    protected IEnumerator ShowHit()
+    {
+        for (int i = 0; i < _flashTime; i++)
+        {
+            _spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(_flashDur);
+            _spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(_flashDur);
+        }
     }
 }
