@@ -42,6 +42,7 @@ public class Player : CharaBase
     public void Hit(int damage)
     {
         Debug.Log("Hit");
+        _hp -= damage;
     }
 
 }

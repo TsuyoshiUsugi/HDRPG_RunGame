@@ -23,7 +23,7 @@ using UniRx;
 public class CharaBase : MonoBehaviour, IHit, IPosable
 {
     [Header("ê›íËíl")]
-    [SerializeField] int _hp = 1;
+    [SerializeField] protected int _hp = 1;
     [SerializeField] protected int _atk = 1;
     [SerializeField] protected float _speed = 1f;
     [SerializeField] float _atkRate = 1;
