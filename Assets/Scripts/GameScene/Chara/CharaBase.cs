@@ -15,6 +15,8 @@ using UniRx;
 /// [関数]
 /// ・攻撃
 /// ・移動
+/// ・Hit
+/// ・位置修正
 /// 
 /// [interface]
 /// ・ヒット
@@ -27,6 +29,8 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     [SerializeField] protected int _atk = 1;
     [SerializeField] protected float _speed = 1f;
     [SerializeField] float _atkRate = 1;
+    [SerializeField] protected float _leftLimit = -2.5f;
+    [SerializeField] protected float _rightLimit = 2;
     
     BoxCollider _range;
     protected bool _isPose = false;
@@ -36,14 +40,20 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
 
     protected virtual void AutoForwardMove() { }
 
-    public void Hit(int damage)
-    {
-        
-    }
+    public void Hit(int damage) { }
 
     public void Pose(bool isPoseing)
     {
         _isPose = isPoseing;
+    }
+
+    /// <summary>
+    /// 設定されている領域外にでないようにする
+    /// </summary>
+    protected void ResetPos()
+    {
+        if (transform.position.x > _rightLimit) transform.position = new Vector3(_rightLimit, transform.position.y, transform.position.z);
+        if (transform.position.x < _leftLimit) transform.position = new Vector3(_leftLimit, transform.position.y, transform.position.z);
     }
 
     private void OnEnable()

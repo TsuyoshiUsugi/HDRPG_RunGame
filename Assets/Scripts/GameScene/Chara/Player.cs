@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -32,6 +33,8 @@ public class Player : CharaBase
         if (_isPose) return;
         if (isLeft) transform.position += Vector3.left * _speed * Time.deltaTime;
         if (!isLeft) transform.position -= Vector3.left * _speed * Time.deltaTime;
+
+        ResetPos();
     }
 
     public void Hit(int damage)
