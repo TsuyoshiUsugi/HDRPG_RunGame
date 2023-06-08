@@ -70,6 +70,8 @@ crashlytics-build.properties
 # 追加で無視するもの
 /[Aa]ssets/PolygonNature
 /[Aa]ssets/PolygonNature.meta
+/[Aa]ssets/Customizable Skybox
+/[Aa]ssets/Customizable Skybox.meta
 
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
