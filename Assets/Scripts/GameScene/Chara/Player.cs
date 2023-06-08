@@ -43,6 +43,11 @@ public class Player : CharaBase
     {
         Debug.Log("Hit");
         _hp -= damage;
-    }
 
+        if (_hp <= 0)
+        {
+            _hp = 0;
+            IsDeath.Value = true;
+        }
+    }
 }

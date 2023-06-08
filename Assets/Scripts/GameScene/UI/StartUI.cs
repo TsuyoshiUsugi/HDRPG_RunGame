@@ -8,15 +8,20 @@ using UnityEngine;
 /// </summary>
 public class StartUI : MonoBehaviour
 {
-    [SerializeField] List<GameObject> _showUI;
+    [SerializeField] List<GameObject> _showUIs;
     [SerializeField] float _performanceInterval = 1.0f;
 
     public event Action OnEndShowStartUI;
 
     private void Awake()
     {
-        if (_showUI.Count == 0 || _showUI == null) return;
-        _showUI.ForEach(obj => obj.SetActive(false));
+        if (_showUIs.Count == 0 || _showUIs == null)
+        {
+            StartCoroutine(nameof(ShowStartUI));
+            return;
+        }
+        
+        _showUIs.ForEach(obj => obj.SetActive(false));
 
         StartCoroutine(nameof(ShowStartUI));
     }
@@ -27,9 +32,9 @@ public class StartUI : MonoBehaviour
     /// <returns></returns>
     public IEnumerator ShowStartUI()
     {
-        if (_showUI.Count == 0 || _showUI == null) yield break;
+        if (_showUIs.Count == 0 || _showUIs == null) yield break;
         
-        foreach (GameObject go in _showUI)
+        foreach (GameObject go in _showUIs)
         {
             if (go == null) yield break;
 

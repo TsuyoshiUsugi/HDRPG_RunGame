@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "f2773f585e762480c835ac718b82b87cb111e500"
     },
+    "com.qesulive.samplepackage": {
+      "version": "https://github.com/TsuyoshiUsugi/MyLib.git?path=/TsuyoshiLibray/Packages/TsuyoshiLibrary/",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c23d0793c82f7b498e999d572c3df728359e41a6"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.10",
       "depth": 1,

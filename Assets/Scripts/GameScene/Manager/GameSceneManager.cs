@@ -25,6 +25,8 @@ public class GameSceneManager : MonoBehaviour
         _gameSceneState.Where(state => state == GameSceneState.Playing).Subscribe(_ => PlayingState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Pose).Subscribe(_ => PoseState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Result).Subscribe(_ => ResultState()).AddTo(this.gameObject);
+
+        _player.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result);
     }
 
     /// <summary>
@@ -98,7 +100,8 @@ public class GameSceneManager : MonoBehaviour
     void ResultState()
     {
         Debug.Log("Result!");
-        ReadyStateEvent?.Invoke();
+        ControlPlayerMove(false);
+        ResultStateEvent?.Invoke();
     }
 }
 
