@@ -53,6 +53,10 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
 
     public void Hit(int damage) { }
 
+    /// <summary>
+    /// ポーズ処理
+    /// </summary>
+    /// <param name="isPoseing"></param>
     public void Pose(bool isPoseing)
     {
         _isPose = isPoseing;
@@ -67,6 +71,9 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
         if (transform.position.x < _leftLimit) transform.position = new Vector3(_leftLimit, transform.position.y, transform.position.z);
     }
 
+    /// <summary>
+    /// うごけるオブジェクトはscene開始時にゲームマネージャーに追加
+    /// </summary>
     private void OnEnable()
     {
         GameSceneManager.Instance.PosableObj.Add(this);

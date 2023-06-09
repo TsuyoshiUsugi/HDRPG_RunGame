@@ -9,10 +9,10 @@ using UnityEngine;
 /// </summary>
 public class Enemy : CharaBase
 {
+    [Header("ê›íËíl")]
     [SerializeField] int _score = 1;
     [SerializeField] int _exp = 1;
 
-    readonly Vector3 _grave = new Vector3(1000, 1000, 1000);
     IEnemyMove _enemyMove;
 
     // Start is called before the first frame update
