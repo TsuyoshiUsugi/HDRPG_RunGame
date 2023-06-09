@@ -5,6 +5,7 @@ public class Player : CharaBase
     [Header("QÆ")]
     [SerializeField] GameObject _attackHitBox;
     Vector3 _moveDir = Vector3.forward;
+    float _moveLimit = 10;
 
     // Update is called once per frame
     void Update()
@@ -21,6 +22,11 @@ public class Player : CharaBase
     protected override void AutoForwardMove()
     {
         transform.position += _moveDir * _speed * Time.deltaTime;
+
+        if (transform.position.z > _moveLimit)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, _moveLimit);
+        }
     }
 
     /// <summary>
@@ -67,6 +73,9 @@ public class Player : CharaBase
         _currentAtkDur = _atkRate;
     }
 
+    /// <summary>
+    /// UŒ‚‰Â”\”ÍˆÍ‚Ì‰Â‹‰»
+    /// </summary>
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
