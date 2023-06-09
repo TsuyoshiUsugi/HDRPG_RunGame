@@ -12,7 +12,7 @@ public class BossManager : Enemy
     private new void Start()
     {
         base.Start();
-        TryGetComponent<IEnemyAttack>(out _enemyAttack);
+        TryGetComponent(out _enemyAttack);
     }
 
     private new void Update()

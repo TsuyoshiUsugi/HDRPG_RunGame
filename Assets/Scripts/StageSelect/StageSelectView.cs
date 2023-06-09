@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class StageSelectView : MonoBehaviour
 {
-    [SerializeField] StageData _stageData;
+    [SerializeField] WorldData _stageData;
     [SerializeField] Image _backGroundImage;
     [SerializeField] Image _stagePointImage;
     [SerializeField] Image _charaImage;

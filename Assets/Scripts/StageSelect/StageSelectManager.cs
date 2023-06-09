@@ -10,14 +10,14 @@ using UniRx;
 /// </summary>
 public class StageSelectManager : MonoBehaviour
 {
-    [SerializeField] StageData _currentStageData;
+    [SerializeField] WorldData _currentWorldData;
     [SerializeField] IntReactiveProperty _currentStage = new IntReactiveProperty(0);
     public IntReactiveProperty CurrentStageNum => _currentStage;
     int _stageNum = 0;
 
     private void Awake()
     {
-        _stageNum = _currentStageData.StageNum - 1;
+        _stageNum = _currentWorldData.StageNum - 1;
     }
 
     /// <summary>

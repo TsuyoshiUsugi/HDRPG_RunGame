@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/CreateStageData")]
-public class StageData : ScriptableObject
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/CreateWorldData")]
+public class WorldData : ScriptableObject
 {
-    /// <summary> ステージ背景画像 </summary>
+    /// <summary> ワールド背景画像 </summary>
     [SerializeField] Sprite _backGroundImage;
     public Sprite BackGroundImage => _backGroundImage;
 
-    /// <summary> ステージUIの生成位置 </summary>
+    /// <summary> ワールドのステージUIの生成位置 </summary>
     [SerializeField] List<Vector3> _stagePointPos;
     public List<Vector3> StagePointPos => _stagePointPos;
     
