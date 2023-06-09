@@ -13,6 +13,10 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     [SerializeField] Player _player;
     public Player Player => _player;
 
+    [Header("設定値")]
+    [SerializeField] float _leftSide = 0; 
+    [SerializeField] float _rightSide = 0; 
+
     [SerializeField] List<IPosable> _posableObjs = new List<IPosable>();
     public List<IPosable> PosableObj { get => _posableObjs; set => _posableObjs = value; }
 
@@ -35,6 +39,15 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         _gameSceneState.Where(state => state == GameSceneState.Result).Subscribe(_ => ResultState()).AddTo(this.gameObject);
 
         _player.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result);
+    }
+
+    /// <summary>
+    /// フィールドの左右の端の情報を返す
+    /// </summary>
+    /// <returns></returns>
+    public (float leftSide, float rightSide) GetFieldInfo()
+    {
+        return (_leftSide, _rightSide);
     }
 
     /// <summary>
