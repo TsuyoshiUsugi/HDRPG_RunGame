@@ -22,9 +22,22 @@ public class Boss1_1Move : MonoBehaviour, IEnemyMove
     float _rightSide = 0;
     Vector3 _horizontalVector; 
     Vector3 _verticalVector;
+    BoxCollider _boxCollider;
+    Vector3 _originColSize = Vector3.zero;
+    float _extendColZ = 5;
 
     private void Start()
     {
+        Initialize();
+    }
+
+    /// <summary>
+    /// ïœêîÇÃèâä˙âªèàóù
+    /// </summary>
+    private void Initialize()
+    {
+        _boxCollider = GetComponent<BoxCollider>();
+        _originColSize = _boxCollider.size;
         _originPos = transform.position.y;
         _currentState = BossState.Float;
         _horizontalVector = new Vector3(_speed, 0, 0);
@@ -74,6 +87,7 @@ public class Boss1_1Move : MonoBehaviour, IEnemyMove
         {
             _currentTime += Time.deltaTime;
             transform.position -= _verticalVector * Time.deltaTime;
+            _boxCollider.size = new Vector3(_boxCollider.size.x, _boxCollider.size.y, _extendColZ);
 
             if (transform.position.y <= _ground) transform.position =
                     new Vector3(transform.position.x, _ground, transform.position.z);
@@ -87,6 +101,7 @@ public class Boss1_1Move : MonoBehaviour, IEnemyMove
                 transform.position = new Vector3(transform.position.x, _originPos, transform.position.z);
                 _currentTime = 0;
                 _currentState = BossState.Float;
+                _boxCollider.size = _originColSize;
             }
         }
     }

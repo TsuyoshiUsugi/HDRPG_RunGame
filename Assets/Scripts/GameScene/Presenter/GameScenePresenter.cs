@@ -28,7 +28,7 @@ public class GameScenePresenter : MonoBehaviour
     void RegisterModelEvent()
     {
         _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
-        _gameSceneManager.ResultStateEvent += () => _failedUI.ShowFailedUI();
+        _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
     }
 
     /// <summary>

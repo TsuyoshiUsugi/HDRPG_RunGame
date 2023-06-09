@@ -28,7 +28,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     int _aquireExp = 0;
 
     public event Action ReadyStateEvent;
-    public event Action ResultStateEvent;
+    public event Action FailedResultEvent;
+    public event Action ClearResultEvent;
 
     private void Start()
     {
@@ -58,6 +59,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         _gameSceneState.Where(state => state == GameSceneState.Result).Subscribe(_ => ResultState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Boss).Subscribe(_ => BossState()).AddTo(this.gameObject);
 
+        _boss.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result);
         _player.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result);
         Observable.EveryUpdate().Select(_ => _player.transform.position.z)
             .Where(z => z >= _goal)
@@ -165,9 +167,15 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void ResultState()
     {
-        Debug.Log("Result!");
         ControlObjsMove(false);
-        ResultStateEvent?.Invoke();
+        if (_boss.IsDeath.Value)
+        {
+            ClearResultEvent?.Invoke();
+        }
+        else
+        {
+            FailedResultEvent?.Invoke();
+        }
     }
 
     /// <summary>

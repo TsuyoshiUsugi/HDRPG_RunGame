@@ -51,7 +51,11 @@ public class Enemy : CharaBase
 
         ShowHit();
         _hp -= damage;
+        Death();
+    }
 
+    protected virtual void Death()
+    {
         if (_hp <= 0)
         {
             _hp = 0;

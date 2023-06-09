@@ -7,5 +7,8 @@ using UnityEngine;
 /// </summary>
 public class BossManager : Enemy
 {
-
+    protected override void Death()
+    {
+        base.Death();
+    }
 }
