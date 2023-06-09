@@ -8,7 +8,7 @@ using Cysharp.Threading.Tasks;
 /// ¶‰E‚ÉˆÚ“®‚µ‚Äˆê’èŠÔŒã,’n–Ê‚É—‰º
 /// ‚±‚ê‚ğŒJ‚è•Ô‚·
 /// </summary>
-public class Boss1_1Move : MonoBehaviour, IEnemyMove
+public class BossMove1_1 : MonoBehaviour, IEnemyMove
 {
     [Header("İ’è’l")]
     [SerializeField] float _speed = 1;
