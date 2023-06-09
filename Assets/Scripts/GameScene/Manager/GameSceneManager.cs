@@ -170,6 +170,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         ControlObjsMove(false);
         if (_boss.IsDeath.Value)
         {
+            Debug.Log("Clear");
             ClearResultEvent?.Invoke();
         }
         else

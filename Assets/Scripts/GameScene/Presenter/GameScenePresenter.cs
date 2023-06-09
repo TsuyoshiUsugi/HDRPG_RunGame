@@ -14,6 +14,7 @@ public class GameScenePresenter : MonoBehaviour
     [SerializeField] StartUI _startUI;
     [SerializeField] InputBase _InputBase;
     [SerializeField] FailedUI _failedUI;
+    [SerializeField] ClearUI _clearUI;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class GameScenePresenter : MonoBehaviour
     {
         _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
+        _gameSceneManager.ClearResultEvent += () => _clearUI.ShowClearUI();
     }
 
     /// <summary>
