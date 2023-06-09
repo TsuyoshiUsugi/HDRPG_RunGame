@@ -5,7 +5,7 @@ public class Player : CharaBase
     [Header("éQè∆")]
     [SerializeField] GameObject _attackHitBox;
     Vector3 _moveDir = Vector3.forward;
-    float _moveLimit = 10;
+    [SerializeField] float _moveLimit = 10;
 
     // Update is called once per frame
     void Update()

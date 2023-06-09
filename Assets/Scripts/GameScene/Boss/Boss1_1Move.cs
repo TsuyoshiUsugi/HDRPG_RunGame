@@ -9,21 +9,45 @@ using UnityEngine;
 /// </summary>
 public class Boss1_1Move : MonoBehaviour, IEnemyMove
 {
-    [SerializeField] Vector3 _speed = new Vector3(1, 0, 0);
+    [Header("ê›íËíl")]
+    [SerializeField] float _speed = 1;
+    [SerializeField] BossState _currentState = BossState.Float;
+    [SerializeField] float _ground = 0;
     float _leftSide = 0;
     float _rightSide = 0;
+    Vector3 _horizontalVector; 
+    Vector3 _verticalVector; 
 
     private void Start()
     {
+        _currentState = BossState.Float;
+        _horizontalVector = new Vector3(_speed, 0, 0);
+        _verticalVector = new Vector3(0, _speed, 0);
         _leftSide = GameSceneManager.Instance.GetFieldInfo().leftSide;
         _rightSide = GameSceneManager.Instance.GetFieldInfo().rightSide;
     }
 
     public void EnemyMove(float speed)
     {
-        transform.position += _speed * Time.deltaTime;
+        if (_currentState == BossState.Float)
+        {
+            transform.position += _horizontalVector * Time.deltaTime;
 
-        if (transform.position.x <= _leftSide) _speed = -_speed;
-        if (transform.position.x >= _rightSide) _speed = -_speed;
+            if (transform.position.x <= _leftSide) _horizontalVector = -_horizontalVector;
+            if (transform.position.x >= _rightSide) _horizontalVector = -_horizontalVector;
+        }
+        else if (_currentState == BossState.Rest)
+        {
+            transform.position -= _verticalVector * Time.deltaTime;
+
+            if (transform.position.y <= _ground) transform.position = 
+                    new Vector3(transform.position.x, _ground, transform.position.z);
+        }
+    }
+
+    enum BossState
+    {
+        Float,
+        Rest,
     }
 }
