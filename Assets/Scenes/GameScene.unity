@@ -3989,7 +3989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1584792825}
   - component: {fileID: 1584792824}
-  - component: {fileID: 1584792823}
+  - component: {fileID: 1584792826}
   - component: {fileID: 1584792822}
   - component: {fileID: 1584792821}
   m_Layer: 0
@@ -4012,8 +4012,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _currentState: 0
+  _currentState: 1
   _ground: 0.5
+  _switchStateTime: 5
 --- !u!65 &1584792822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4027,26 +4028,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1584792823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584792820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1080a160a281fd54a8a333d58ac6d5ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 1
-  _atk: 1
-  _speed: 1
-  _atkRate: 1
-  IsDeath:
-    value: 0
-  _score: 1
-  _exp: 1
 --- !u!212 &1584792824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4115,6 +4096,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1584792826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584792820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc92659fd878694b8b1ac7f6b277008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 1
+  _atk: 1
+  _speed: 1
+  _atkRate: 1
+  IsDeath:
+    value: 0
+  _score: 1
+  _exp: 1
 --- !u!1 &1593092173
 GameObject:
   m_ObjectHideFlags: 0
