@@ -14,8 +14,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     public Player Player => _player;
 
     [Header("ê›íËíl")]
-    [SerializeField] float _leftSide = 0; 
-    [SerializeField] float _rightSide = 0; 
+    [SerializeField] float _leftSide = -2.5f; 
+    [SerializeField] float _rightSide = 2; 
 
     [SerializeField] List<IPosable> _posableObjs = new List<IPosable>();
     public List<IPosable> PosableObj { get => _posableObjs; set => _posableObjs = value; }

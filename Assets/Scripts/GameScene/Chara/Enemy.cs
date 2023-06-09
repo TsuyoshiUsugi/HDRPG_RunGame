@@ -27,6 +27,7 @@ public class Enemy : CharaBase
     {
         if (_isPose) return;
         AutoForwardMove();
+        ResetPos();
     }
 
     private void OnTriggerEnter(Collider other)
