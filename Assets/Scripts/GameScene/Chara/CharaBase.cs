@@ -86,6 +86,8 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     /// </summary>
     protected async void ShowHit()
     {
+        if (_spriteRenderer == null) return;
+
         for (int i = 0; i < _flashTime; i++)
         {
             _spriteRenderer.enabled = false;
