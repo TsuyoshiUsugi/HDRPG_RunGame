@@ -5,7 +5,12 @@ public class Player : CharaBase
     [Header("éQè∆")]
     [SerializeField] GameObject _attackHitBox;
     Vector3 _moveDir = Vector3.forward;
-    [SerializeField] float _moveLimit = 10;
+    float _moveLimit = 10;
+
+    private void Start()
+    {
+        _moveLimit = GameSceneManager.Instance.Goal;
+    }
 
     // Update is called once per frame
     void Update()

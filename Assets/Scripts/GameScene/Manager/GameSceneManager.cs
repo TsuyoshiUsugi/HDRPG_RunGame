@@ -12,10 +12,13 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     [Header("参照")]
     [SerializeField] Player _player;
     public Player Player => _player;
+    [SerializeField] BossManager _boss;
 
     [Header("設定値")]
     [SerializeField] float _leftSide = -2.5f; 
-    [SerializeField] float _rightSide = 2; 
+    [SerializeField] float _rightSide = 2;
+    [SerializeField] float _goal = 0;
+    public float Goal => _goal;
 
     [SerializeField] List<IPosable> _posableObjs = new List<IPosable>();
     public List<IPosable> PosableObj { get => _posableObjs; set => _posableObjs = value; }
@@ -29,16 +32,37 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
     private void Start()
     {
+        SubscribeMethod();
+        Initialize();
+    }
+
+    /// <summary>
+    /// 変数の初期化処理
+    /// </summary>
+    void Initialize()
+    {
         _score = 0;
         _aquireExp = 0;
-
         _gameSceneState.Value = GameSceneState.Ready;
+    }
+
+    /// <summary>
+    /// ステートに合わせた関数を登録
+    /// _playerの監視処理
+    /// </summary>
+    private void SubscribeMethod()
+    {
         _gameSceneState.Where(state => state == GameSceneState.Ready).Subscribe(_ => ReadyState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Playing).Subscribe(_ => PlayingState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Pose).Subscribe(_ => PoseState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Result).Subscribe(_ => ResultState()).AddTo(this.gameObject);
+        _gameSceneState.Where(state => state == GameSceneState.Boss).Subscribe(_ => BossState()).AddTo(this.gameObject);
 
         _player.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result);
+        Observable.EveryUpdate().Select(_ => _player.transform.position.z)
+            .Where(z => z >= _goal)
+            .Subscribe(_ => _gameSceneState.Value = GameSceneState.Boss)
+            .AddTo(this.gameObject);
     }
 
     /// <summary>
@@ -68,6 +92,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
         SetPlayer();
         SetFrameRate();
+        _boss.enabled = false;
 
         ReadyStateEvent?.Invoke();
     }
@@ -144,6 +169,14 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         ControlObjsMove(false);
         ResultStateEvent?.Invoke();
     }
+
+    /// <summary>
+    /// Bossが現れた時の処理
+    /// </summary>
+    void BossState()
+    {
+        _boss.enabled = true;
+    }
 }
 
 public enum GameSceneState
@@ -151,5 +184,6 @@ public enum GameSceneState
     Ready,
     Playing,
     Pose,
+    Boss,
     Result,
 }
