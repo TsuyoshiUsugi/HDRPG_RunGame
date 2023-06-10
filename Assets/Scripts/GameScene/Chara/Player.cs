@@ -80,6 +80,7 @@ public class Player : CharaBase
         _currentAtkDur = _atkRate;
     }
 
+#if UNITY_EDITOR
     /// <summary>
     /// UŒ‚‰Â”\”ÍˆÍ‚Ì‰Â‹‰»
     /// </summary>
@@ -88,4 +89,5 @@ public class Player : CharaBase
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(_attackHitBox.transform.position, _attackHitBox.transform.lossyScale);
     }
+#endif
 }

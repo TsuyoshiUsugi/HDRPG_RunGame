@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// 1-1で出現するボスの動きのスクリプト
