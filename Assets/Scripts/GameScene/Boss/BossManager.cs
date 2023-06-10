@@ -17,6 +17,7 @@ public class BossManager : Enemy
 
     private new void Update()
     {
+        
         base.Update();
 
         Attack();
@@ -24,7 +25,7 @@ public class BossManager : Enemy
 
     public override void Attack()
     {
-        if (GameSceneManager.Instance.Player.IsDeath.Value) return;
+        
         if (_enemyAttack != null) _enemyAttack.EnemyAttack();
     }
 

@@ -173,6 +173,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         if (_boss.IsDeath.Value)
         {
             ClearResultEvent?.Invoke(_score, _aquireExp);
+            SaveData();
         }
         else
         {
@@ -228,6 +229,15 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
             return;
         }
         _boss.enabled = true;
+    }
+
+    /// <summary>
+    /// データのセーブ処理の呼び出し
+    /// </summary>
+    void CallSaveData()
+    {
+        if (WorldDataLoader.Instance == null) return;
+        WorldDataLoader.Instance.UpdataStageData(_score);
     }
 }
 

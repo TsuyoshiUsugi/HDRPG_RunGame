@@ -10,6 +10,9 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
     [Header("参照")]
     [SerializeField] WorldData _currentWorldData;
 
+    int _currentStageNum = 0;
+    public int CurrentStageNum { get => _currentStageNum; set { _currentStageNum = value;} }
+
     Sprite _backGroundImaga;
     public Sprite BackGroundImage => _backGroundImaga;
 
@@ -39,6 +42,24 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
             _loadedWorldDatas.Add(new LoadedWorldData(name, isClear, score, loadSceneName, showUIPos));
         }
     }
+
+    /// <summary>
+    /// ステージデータを更新する
+    /// </summary>
+    /// <param name="score"></param>
+    public void UpdataStageData(int score)
+    {
+        var name = _currentWorldData.StageDatas[_currentStageNum].StageName;
+        var isClear = 1;
+        var loadSceneName = _currentWorldData.StageDatas[_currentStageNum].LoadSceneName;
+        var showUIPos = _currentWorldData.StageDatas[_currentStageNum].ShowUIPoint;
+
+        //保存
+        PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].IsClearKey, isClear);
+        PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].ScoreKey, score);
+
+        _loadedWorldDatas[_currentStageNum] = new LoadedWorldData(name, isClear, score, loadSceneName, showUIPos);
+    }
 }
 
 /// <summary>
@@ -66,5 +87,6 @@ public struct LoadedWorldData
         LoadSceneName = loadSceneName;
         ShowUIPos = showUIPos;
     }
+
 }
 
