@@ -15,5 +15,5 @@ MonoBehaviour:
   _stageName: "\u4E18\u306E\u9802"
   _scoreKey: score15
   _isClearKey: clear15
-  _loadSceneName: GameScene15
+  _loadSceneName: GameScene1-5
   _showUIPoint: {x: -57, y: 194, z: 0}
