@@ -23,11 +23,12 @@ public class StageSelectScenePresenter : MonoBehaviour
     /// </summary>
     void RegisterEvent()
     {
-        _input.OnLeftButtonClicked += () => _stageSelectManager.MoveChara(false);
-        _input.OnRightButtonClicked += () => _stageSelectManager.MoveChara(true);
+        _input.OnLeftButtonClicked += () => _stageSelectManager.MoveCursor(false);
+        _input.OnRightButtonClicked += () => _stageSelectManager.MoveCursor(true);
         _input.OnMiddleButtonClicked += () => _stageSelectManager.OnDecideButtonCliccked();
 
         _stageSelectManager.CurrentStageNum.Subscribe(num => _stageSelectView.CharaCursorImageMove(num));
-        _stageSelectManager.ShowConfirmEvent += () => _stageSelectView.ShowConfirmBoard(true);
+        _stageSelectManager.ShowConfirmEvent += show => _stageSelectView.ShowConfirmBoard(show);
+        _stageSelectManager.CurrentChoice.Subscribe(yes => _stageSelectView.MoveConfirmBoardCursor(yes));
     }
 }

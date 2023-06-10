@@ -16,6 +16,10 @@ public class StageSelectView : MonoBehaviour
     [SerializeField] Text _currentStageText;
     [SerializeField] Canvas _canvas;
     [SerializeField] GameObject _confirmBoard;
+    [SerializeField] Image _confirmBoardCursor;
+    Vector3 _yesCursorPos = new Vector3(138, -127.851f, 0);
+    Vector3 _noCursorPos = new Vector3(-122, -127.851f, 0);
+
     string _stageText = "ステージ：";
 
     private void Awake()
@@ -84,5 +88,21 @@ public class StageSelectView : MonoBehaviour
     public void ShowConfirmBoard(bool show)
     {
         _confirmBoard.SetActive(show);
+    }
+
+    /// <summary>
+    /// 引数に合わせて確認画面のカーソルを動かす
+    /// </summary>
+    /// <param name="yes"></param>
+    public void MoveConfirmBoardCursor(bool yes)
+    {
+        if (yes)
+        {
+            _confirmBoardCursor.rectTransform.localPosition = _yesCursorPos;
+        }
+        else
+        {
+            _confirmBoardCursor.rectTransform.localPosition = _noCursorPos;
+        }
     }
 }

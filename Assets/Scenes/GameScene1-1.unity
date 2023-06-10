@@ -2786,21 +2786,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonInputManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8882587830691405870, guid: b126563555237664689f5ae090572782,
-        type: 3}
-      propertyPath: _leftButton
-      value: 
-      objectReference: {fileID: 692173049}
-    - target: {fileID: 8882587830691405870, guid: b126563555237664689f5ae090572782,
-        type: 3}
-      propertyPath: _rightButton
-      value: 
-      objectReference: {fileID: 692173047}
-    - target: {fileID: 8882587830691405870, guid: b126563555237664689f5ae090572782,
-        type: 3}
-      propertyPath: _middleButton
-      value: 
-      objectReference: {fileID: 692173048}
     - target: {fileID: 8882587830691405871, guid: b126563555237664689f5ae090572782,
         type: 3}
       propertyPath: m_RootOrder
@@ -3054,11 +3039,11 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 851652086}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1029914116 stripped
+--- !u!114 &1029914116
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8882587830691405870, guid: b126563555237664689f5ae090572782,
-    type: 3}
-  m_PrefabInstance: {fileID: 851652086}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029914115}
   m_Enabled: 1
@@ -3066,6 +3051,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aafe254a58aa8641af1a468b0d711d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rightButton: {fileID: 692173047}
+  _middleButton: {fileID: 692173048}
+  _leftButton: {fileID: 692173049}
 --- !u!1001 &1065005601
 PrefabInstance:
   m_ObjectHideFlags: 0

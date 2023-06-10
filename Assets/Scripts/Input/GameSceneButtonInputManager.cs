@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// Button‚É‚æ‚é“ü—Í‚ðŽó‚¯•t‚¯‚éƒNƒ‰ƒX
 /// </summary>
-public class ButtonInputManager : InputBase
+public class GameSceneButtonInputManager : InputBase
 {
     [SerializeField] Button _rightButton;
     [SerializeField] Button _middleButton;

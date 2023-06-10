@@ -10,14 +10,18 @@ using UniRx;
 /// </summary>
 public class StageSelectManager : MonoBehaviour
 {
+    [Header("参照")]
     [SerializeField] WorldData _currentWorldData;
-    [SerializeField] IntReactiveProperty _currentStage = new IntReactiveProperty(0);
+
+    IntReactiveProperty _currentStage = new IntReactiveProperty(0);
     public IntReactiveProperty CurrentStageNum => _currentStage;
+    BoolReactiveProperty _currentChoice = new BoolReactiveProperty(false);
+    public BoolReactiveProperty CurrentChoice => _currentChoice;
 
     int _stageNum = 0;
     bool _isShowConfirmBoard = false;
 
-    public event Action ShowConfirmEvent;
+    public event Action<bool> ShowConfirmEvent;
 
     private void Awake()
     {
@@ -25,26 +29,42 @@ public class StageSelectManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 現在選択されているステージの値を加減する
+    /// 現在選択しているものを表示する
     /// trueで増加、falseで減少
     /// </summary>
-    /// <param name="_dir"></param>
-    public void MoveChara(bool _dir) 
+    /// <param name="right"></param>
+    public void MoveCursor(bool right) 
     {
-        //増加
-        if (_dir)
+        if (_isShowConfirmBoard)
         {
-            //最大値なら
-            if (_currentStage.Value == _stageNum) return;
-            _currentStage.Value++;
+            if (right)
+            {
+                _currentChoice.Value = true;
+            }
+            else
+            {
+
+                _currentChoice.Value = false;
+            }
         }
-        //減少
         else
         {
-            //最小値なら
-            if (_currentStage.Value == 0) return;
-            _currentStage.Value--;
+            //増加
+            if (right)
+            {
+                //最大値なら
+                if (_currentStage.Value == _stageNum) return;
+                _currentStage.Value++;
+            }
+            //減少
+            else
+            {
+                //最小値なら
+                if (_currentStage.Value == 0) return;
+                _currentStage.Value--;
+            }
         }
+
     }
     
     /// <summary>
@@ -63,12 +83,19 @@ public class StageSelectManager : MonoBehaviour
         if (!_isShowConfirmBoard)
         {
             _isShowConfirmBoard = true;
-            ShowConfirmEvent?.Invoke();
+            ShowConfirmEvent?.Invoke(true);
         }
-        
-        if (_isShowConfirmBoard)
+        else
         {
-            DecideStage();
+            if (!_currentChoice.Value)
+            {
+                ShowConfirmEvent?.Invoke(false);
+                _isShowConfirmBoard = false;
+            }
+            else
+            {
+                DecideStage();
+            }
         }
     }
 }
