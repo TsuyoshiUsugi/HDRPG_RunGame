@@ -13,7 +13,11 @@ public class StageSelectManager : MonoBehaviour
     [SerializeField] WorldData _currentWorldData;
     [SerializeField] IntReactiveProperty _currentStage = new IntReactiveProperty(0);
     public IntReactiveProperty CurrentStageNum => _currentStage;
+
     int _stageNum = 0;
+    bool _isShowConfirmBoard = false;
+
+    public event Action ShowConfirmEvent;
 
     private void Awake()
     {
@@ -46,8 +50,25 @@ public class StageSelectManager : MonoBehaviour
     /// <summary>
     /// 現在選択されているステージのsceneをロードする
     /// </summary>
-    public void DecideStage()
+    void DecideStage()
     {
         SceneManager.LoadScene(_currentWorldData.StageDatas[_stageNum].LoadSceneName);
+    }
+
+    /// <summary>
+    /// 決定ボタンが押された時の処理
+    /// </summary>
+    public void OnDecideButtonCliccked()
+    {
+        if (!_isShowConfirmBoard)
+        {
+            _isShowConfirmBoard = true;
+            ShowConfirmEvent?.Invoke();
+        }
+        
+        if (_isShowConfirmBoard)
+        {
+            DecideStage();
+        }
     }
 }

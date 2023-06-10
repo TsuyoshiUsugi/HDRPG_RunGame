@@ -983,6 +983,7 @@ MonoBehaviour:
   _charaImage: {fileID: 7513942783787879745}
   _currentStageText: {fileID: 6903770940721597090}
   _canvas: {fileID: 44577974}
+  _confirmBoard: {fileID: 1064473831}
 --- !u!4 &1541385315
 Transform:
   m_ObjectHideFlags: 0

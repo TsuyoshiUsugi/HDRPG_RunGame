@@ -8,17 +8,21 @@ using UnityEngine.UI;
 /// </summary>
 public class StageSelectView : MonoBehaviour
 {
+    [Header("参照")]
     [SerializeField] WorldData _WorldData;
     [SerializeField] Image _backGroundImage;
     [SerializeField] Image _stagePointImage;
     [SerializeField] Image _charaImage;
     [SerializeField] Text _currentStageText;
     [SerializeField] Canvas _canvas;
+    [SerializeField] GameObject _confirmBoard;
     string _stageText = "ステージ：";
 
     private void Awake()
     {
+        
         ShowMap();
+        ShowConfirmBoard(false);
         //マネージャーが呼び忘れた時のために0で呼ぶ
         CharaCursorImageMove(0);
         ShowCurrentStageText(0);
@@ -71,5 +75,14 @@ public class StageSelectView : MonoBehaviour
             rect.localScale = new Vector3(1, 1, 1);
             
         }
+    }
+
+    /// <summary>
+    /// 確認画面を表示する
+    /// </summary>
+    /// <param name="show"></param>
+    public void ShowConfirmBoard(bool show)
+    {
+        _confirmBoard.SetActive(show);
     }
 }
