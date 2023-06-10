@@ -30,7 +30,7 @@ public class GameScenePresenter : MonoBehaviour
     {
         _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
-        _gameSceneManager.ClearResultEvent += () => _clearUI.ShowClearUI();
+        _gameSceneManager.ClearResultEvent += (score, exp) => _clearUI.ShowClearUI(score, exp);
     }
 
     /// <summary>

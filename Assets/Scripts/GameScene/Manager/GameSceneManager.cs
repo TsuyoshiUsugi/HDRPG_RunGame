@@ -29,7 +29,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
     public event Action ReadyStateEvent;
     public event Action FailedResultEvent;
-    public event Action ClearResultEvent;
+    public event Action<int, int> ClearResultEvent;
 
     private void Start()
     {
@@ -171,7 +171,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         if (_boss.IsDeath.Value)
         {
             Debug.Log("Clear");
-            ClearResultEvent?.Invoke();
+            ClearResultEvent?.Invoke(_score, _aquireExp);
         }
         else
         {

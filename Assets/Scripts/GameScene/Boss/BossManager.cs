@@ -30,5 +30,6 @@ public class BossManager : Enemy
     protected override void Death()
     {
         base.Death();
+        _enemyAttack = null;
     }
 }

@@ -59,11 +59,11 @@ public class Enemy : CharaBase
         if (_hp <= 0)
         {
             _hp = 0;
-            IsDeath.Value = true;
             GameSceneManager.Instance.AddScore(_score);
             GameSceneManager.Instance.AddExp(_exp);
-
+            IsDeath.Value = true;
             this.enabled = false;
+            
         }
     }
 }
