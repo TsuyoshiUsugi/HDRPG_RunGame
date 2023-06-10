@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class StageSelectView : MonoBehaviour
 {
     [Header("参照")]
-    [SerializeField] WorldData _WorldData;
     [SerializeField] Image _backGroundImage;
     [SerializeField] Image _stagePointImage;
     [SerializeField] Image _charaImage;
@@ -22,7 +21,7 @@ public class StageSelectView : MonoBehaviour
 
     string _stageText = "ステージ：";
 
-    private void Awake()
+    private void Start()
     {
         
         ShowMap();
@@ -38,7 +37,7 @@ public class StageSelectView : MonoBehaviour
     /// <param name="stageNum"></param>
     public void CharaCursorImageMove(int stageNum)
     {
-        _charaImage.transform.localPosition = _WorldData.StageDatas[stageNum].ShowUIPoint;
+        _charaImage.transform.localPosition = WorldDataLoader.Instance.LoadedWorldDatas[stageNum].ShowUIPos;
         _charaImage.transform.SetAsLastSibling();
         ShowCurrentStageText(stageNum);
     }
@@ -49,7 +48,7 @@ public class StageSelectView : MonoBehaviour
     /// <param name="stageNum"></param>
     void ShowCurrentStageText(int stageNum)
     {
-        _currentStageText.text = $"{_stageText}{_WorldData.StageDatas[stageNum].StageName}";
+        _currentStageText.text = $"{_stageText}{WorldDataLoader.Instance.LoadedWorldDatas[stageNum].StageName}";
     }
 
     /// <summary>
@@ -57,13 +56,13 @@ public class StageSelectView : MonoBehaviour
     /// </summary>
     public void ShowMap()
     {       
-        _backGroundImage.sprite = _WorldData.BackGroundImage;
+        _backGroundImage.sprite = WorldDataLoader.Instance.BackGroundImage;
 
         List<Vector3> stagePoints = new List<Vector3>();
 
-        foreach (var stageData in _WorldData.StageDatas)
+        foreach (var stageData in WorldDataLoader.Instance.LoadedWorldDatas)
         {
-            stagePoints.Add(stageData.ShowUIPoint);
+            stagePoints.Add(stageData.ShowUIPos);
         }
 
         Debug.Log(stagePoints.Count);

@@ -8,22 +8,19 @@ using UniRx;
 /// </summary>
 public class StageSelectManager : MonoBehaviour
 {
-    [Header("ŽQÆ")]
-    [SerializeField] WorldData _currentWorldData;
-
-    IntReactiveProperty _currentStage = new IntReactiveProperty(0);
+    [SerializeField] IntReactiveProperty _currentStage = new IntReactiveProperty(0);
     public IntReactiveProperty CurrentStageNum => _currentStage;
     BoolReactiveProperty _currentChoice = new BoolReactiveProperty(false);
     public BoolReactiveProperty CurrentChoice => _currentChoice;
 
-    int _stageNum = 0;
+    [SerializeField] int _stageNum = 0;
     bool _isShowConfirmBoard = false;
 
     public event Action<bool> ShowConfirmEvent;
 
     private void Awake()
     {
-        _stageNum = _currentWorldData.StageNum - 1;
+        _stageNum = WorldDataLoader.Instance.LoadedWorldDatas.Count - 1;
     }
 
     /// <summary>
@@ -70,7 +67,7 @@ public class StageSelectManager : MonoBehaviour
     /// </summary>
     void DecideStage()
     {
-        SceneManager.LoadScene(_currentWorldData.StageDatas[_stageNum].LoadSceneName);
+        SceneManager.LoadScene(WorldDataLoader.Instance.LoadedWorldDatas[_currentStage.Value].LoadSceneName);
     }
 
     /// <summary>
