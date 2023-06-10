@@ -23,6 +23,7 @@ public class Enemy : CharaBase
     protected void Update()
     {
         if (_isPose) return;
+        if (GameSceneManager.Instance.Player.IsDeath.Value) return;
         AutoForwardMove();
         ResetPos();
     }

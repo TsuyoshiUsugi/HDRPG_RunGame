@@ -3741,8 +3741,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 60cb3a6ae0bd9b94a9915bb1e57a1dde, type: 3}
-    m_FontSize: 120
+    m_Font: {fileID: 12800000, guid: 4a1faaf3ae83c43459ddc09bce65e8d9, type: 3}
+    m_FontSize: 58
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -3753,7 +3753,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5931\u6557"
+  m_Text: "\u6B7B\u3093\u3067\u3057\u307E\u3063\u305F\u2026"
 --- !u!222 &1315091559
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4187,6 +4187,8 @@ MonoBehaviour:
   _goal: 37.5
   _gameSceneState:
     value: 0
+  _nextLoadScene:
+    value: 1
 --- !u!4 &1557787169
 Transform:
   m_ObjectHideFlags: 0

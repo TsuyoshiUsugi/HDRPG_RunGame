@@ -222,6 +222,11 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void BossState()
     {
+        if (_player.IsDeath.Value)
+        {
+            _gameSceneState.Value = GameSceneState.Result;
+            return;
+        }
         _boss.enabled = true;
     }
 }
