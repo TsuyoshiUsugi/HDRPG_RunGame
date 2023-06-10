@@ -28,7 +28,7 @@ public class StageSelectScenePresenter : MonoBehaviour
         _input.OnMiddleButtonClicked += () => _stageSelectManager.OnDecideButtonCliccked();
 
         _stageSelectManager.CurrentStageNum.Subscribe(num => _stageSelectView.CharaCursorImageMove(num));
-        _stageSelectManager.ShowConfirmEvent += show => _stageSelectView.ShowConfirmBoard(show);
+        _stageSelectManager.ShowConfirmEvent += (show, stageNum) => _stageSelectView.ShowConfirmBoard(show, stageNum);
         _stageSelectManager.CurrentChoice.Subscribe(yes => _stageSelectView.MoveConfirmBoardCursor(yes));
     }
 }

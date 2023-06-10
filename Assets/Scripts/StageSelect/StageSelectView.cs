@@ -16,6 +16,9 @@ public class StageSelectView : MonoBehaviour
     [SerializeField] Canvas _canvas;
     [SerializeField] GameObject _confirmBoard;
     [SerializeField] Image _confirmBoardCursor;
+    [SerializeField] Text _isClearText;
+    [SerializeField] Text _ScoreText;
+
     Vector3 _yesCursorPos = new Vector3(368, -437.09f, 0);
     Vector3 _noCursorPos = new Vector3(-394, -437.09f, 0);
 
@@ -25,7 +28,7 @@ public class StageSelectView : MonoBehaviour
     {
         
         ShowMap();
-        ShowConfirmBoard(false);
+        ShowConfirmBoard(false, 0);
         //マネージャーが呼び忘れた時のために0で呼ぶ
         CharaCursorImageMove(0);
         ShowCurrentStageText(0);
@@ -81,12 +84,25 @@ public class StageSelectView : MonoBehaviour
     }
 
     /// <summary>
-    /// 確認画面を表示する
+    /// 確認画面を表示し、情報を表示する
     /// </summary>
     /// <param name="show"></param>
-    public void ShowConfirmBoard(bool show)
+    public void ShowConfirmBoard(bool show, int stageNum)
     {
         _confirmBoard.SetActive(show);
+        
+        if (WorldDataLoader.Instance.LoadedWorldDatas[stageNum].IsClear == 0)
+        {
+            _isClearText.text = $"未クリア";
+        }
+        else
+        {
+            _isClearText.text = $"クリア済み";
+        }
+
+        _ScoreText.text = $"ハイスコア：{WorldDataLoader.Instance.LoadedWorldDatas[stageNum].HighScore}";
+
+
     }
 
     /// <summary>

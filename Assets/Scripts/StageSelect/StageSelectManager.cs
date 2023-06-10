@@ -16,7 +16,7 @@ public class StageSelectManager : MonoBehaviour
     [SerializeField] int _stageNum = 0;
     bool _isShowConfirmBoard = false;
 
-    public event Action<bool> ShowConfirmEvent;
+    public event Action<bool, int> ShowConfirmEvent;
 
     private void Awake()
     {
@@ -78,13 +78,13 @@ public class StageSelectManager : MonoBehaviour
         if (!_isShowConfirmBoard)
         {
             _isShowConfirmBoard = true;
-            ShowConfirmEvent?.Invoke(true);
+            ShowConfirmEvent?.Invoke(true, _currentStage.Value);
         }
         else
         {
             if (!_currentChoice.Value)
             {
-                ShowConfirmEvent?.Invoke(false);
+                ShowConfirmEvent?.Invoke(false, _currentStage.Value);
                 _isShowConfirmBoard = false;
             }
             else
