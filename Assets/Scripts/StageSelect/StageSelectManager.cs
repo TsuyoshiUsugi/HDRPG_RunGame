@@ -48,6 +48,6 @@ public class StageSelectManager : MonoBehaviour
     /// </summary>
     public void DecideStage()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(_currentWorldData.StageDatas[_stageNum].LoadSceneName);
     }
 }

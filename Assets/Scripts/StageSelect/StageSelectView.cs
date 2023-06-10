@@ -14,12 +14,14 @@ public class StageSelectView : MonoBehaviour
     [SerializeField] Image _charaImage;
     [SerializeField] Text _currentStageText;
     [SerializeField] Canvas _canvas;
+    string _stageText = "ステージ：";
 
     private void Awake()
     {
         ShowMap();
         //マネージャーが呼び忘れた時のために0で呼ぶ
         CharaCursorImageMove(0);
+        ShowCurrentStageText(0);
     }
 
     /// <summary>
@@ -30,15 +32,16 @@ public class StageSelectView : MonoBehaviour
     {
         _charaImage.transform.localPosition = _WorldData.StageDatas[stageNum].ShowUIPoint;
         _charaImage.transform.SetAsLastSibling();
+        ShowCurrentStageText(stageNum);
     }
 
     /// <summary>
     /// 現在選択している場所をテキストに表示する
     /// </summary>
     /// <param name="stageNum"></param>
-    public void ShowCurrentStageText(int stageNum)
+    void ShowCurrentStageText(int stageNum)
     {
-        _currentStageText.text = _WorldData.StageDatas[stageNum].StageName;
+        _currentStageText.text = $"{_stageText}{_WorldData.StageDatas[stageNum].StageName}";
     }
 
     /// <summary>
