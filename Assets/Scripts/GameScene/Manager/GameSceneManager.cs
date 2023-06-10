@@ -173,7 +173,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         if (_boss.IsDeath.Value)
         {
             ClearResultEvent?.Invoke(_score, _aquireExp);
-            SaveData();
+            CallSaveData();
         }
         else
         {
