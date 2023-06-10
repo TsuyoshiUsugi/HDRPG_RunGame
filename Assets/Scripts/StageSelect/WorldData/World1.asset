@@ -15,3 +15,7 @@ MonoBehaviour:
   _backGroundImage: {fileID: 21300000, guid: 52933429292d25547a6b5cd191263510, type: 3}
   _stageDatas:
   - {fileID: 11400000, guid: b1f820dc9f9f2e04b9235abafd74e85c, type: 2}
+  - {fileID: 11400000, guid: 471bcc034d101d64aa429b5b83311be5, type: 2}
+  - {fileID: 11400000, guid: ab033e2b07995ad42b799bd1a9a9d954, type: 2}
+  - {fileID: 11400000, guid: 11300fa464d356f4da540c359f65757f, type: 2}
+  - {fileID: 11400000, guid: e0fc0e4e46710ce4fa14a672b1a6773f, type: 2}

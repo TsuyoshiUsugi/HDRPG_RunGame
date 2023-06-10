@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e043a00d2ec2c4149ad30eb3abf78df4, type: 3}
-  m_Name: Stage1-1
+  m_Name: Stage1-2
   m_EditorClassIdentifier: 
-  _stageName: "\u68EE\u306E\u5165\u53E3"
-  _scoreKey: score11
-  _isClearKey: clear11
-  _loadSceneName: GameScene1-1
-  _showUIPoint: {x: -6, y: -429, z: 0}
+  _stageName: "\u68EE\u306E\u4E2D\u9593\u5730\u70B9"
+  _scoreKey: score12
+  _isClearKey: clear12
+  _loadSceneName: GameScene1-2
+  _showUIPoint: {x: -110, y: -277, z: 0}

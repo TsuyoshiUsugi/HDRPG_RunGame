@@ -10,6 +10,7 @@ public class SelectSceneButtonInput : InputBase
     [SerializeField] Button _rightButton;
     [SerializeField] Button _middleButton;
     [SerializeField] Button _leftButton;
+
     public override event Action OnRightButtonClicked;
     public override event Action OnMiddleButtonClicked;
     public override event Action OnLeftButtonClicked;
