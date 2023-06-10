@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UniRx;
 using System.Collections.Generic;
 
@@ -20,12 +21,16 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     [SerializeField] float _goal = 0;
     public float Goal => _goal;
 
+    [Header("Debug")]
     [SerializeField] List<IPosable> _posableObjs = new List<IPosable>();
     public List<IPosable> PosableObj { get => _posableObjs; set => _posableObjs = value; }
-
     [SerializeField] ReactiveProperty<GameSceneState> _gameSceneState = new ReactiveProperty<GameSceneState>();
+    [SerializeField] ReactiveProperty<NextLoadScene> _nextLoadScene = new ReactiveProperty<NextLoadScene>(NextLoadScene.SelectStageScene);
+
+    public ReactiveProperty<NextLoadScene> CurrentNextLoadScene => _nextLoadScene;
     int _score = 0;
     int _aquireExp = 0;
+    string _stageSelectScene = "StageSelect";
 
     public event Action ReadyStateEvent;
     public event Action FailedResultEvent;
@@ -147,7 +152,6 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void PlayingState()
     {
-        Debug.Log("Playing!");
         ControlObjsMove(true);
     }
 
@@ -156,7 +160,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void PoseState()
     {
-        Debug.Log("Pose!");
+        ControlObjsMove(false);
     }
 
     /// <summary>
@@ -165,15 +169,52 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     void ResultState()
     {
         ControlObjsMove(false);
+
         if (_boss.IsDeath.Value)
         {
-            Debug.Log("Clear");
             ClearResultEvent?.Invoke(_score, _aquireExp);
         }
         else
         {
             FailedResultEvent?.Invoke();
         }
+    }
+
+    /// <summary>
+    /// 次のsceneをロードする
+    /// </summary>
+    public void LoadNextScene()
+    {
+        if (_gameSceneState.Value != GameSceneState.Result) return;
+        
+        if (_nextLoadScene.Value == NextLoadScene.SelectStageScene)
+        {
+            SceneManager.LoadScene(_stageSelectScene);
+        }
+        else if (_nextLoadScene.Value == NextLoadScene.CurrentScene)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    /// <summary>
+    /// リザルトシーンの時Cursorを動かす
+    /// </summary>
+    /// <param name="right"></param>
+    public void MoveCursor(bool right)
+    {
+        if (_gameSceneState.Value != GameSceneState.Result) return;
+        if (right) _nextLoadScene.Value = NextLoadScene.SelectStageScene;
+        if (!right) _nextLoadScene.Value = NextLoadScene.CurrentScene;
+    }
+
+    /// <summary>
+    /// プレイヤーが次にロードすべきscene
+    /// </summary>
+    public enum NextLoadScene
+    {
+        CurrentScene,
+        SelectStageScene,
     }
 
     /// <summary>

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UniRx;
+using System;
 
 /// <summary>
 /// UIとモデルの橋渡しをするゲームシーン用のPresenter
@@ -31,6 +32,19 @@ public class GameScenePresenter : MonoBehaviour
         _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
         _gameSceneManager.ClearResultEvent += (score, exp) => _clearUI.ShowClearUI(score, exp);
+        _gameSceneManager.CurrentNextLoadScene.Subscribe(nextScene =>
+        {
+            if (nextScene == GameSceneManager.NextLoadScene.SelectStageScene)
+            {
+                _failedUI.MoveCursor(true);
+                _clearUI.MoveCursor(true);
+            }
+            if (nextScene == GameSceneManager.NextLoadScene.CurrentScene)
+            {
+                _failedUI.MoveCursor(false);
+                _clearUI.MoveCursor(true);
+            }
+        });
     }
 
     /// <summary>
@@ -41,6 +55,26 @@ public class GameScenePresenter : MonoBehaviour
         _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
         _InputBase.OnLeftButtonClicked += () => _player.LeftRightMove(true);
         _InputBase.OnRightButtonClicked += () => _player.LeftRightMove(false);
-        _InputBase.OnMiddleButtonClicked += () => _player.Attack();
+
+        _InputBase.OnLeftButtonClicked += () => _gameSceneManager.MoveCursor(false);
+        _InputBase.OnRightButtonClicked += () => _gameSceneManager.MoveCursor(true);
+
+        IDisposable disposable = null;
+
+        _InputBase.OnMiddleButtonClicked += () =>
+        {
+            if (disposable == null)
+            {
+                disposable = Observable.Timer(TimeSpan.FromSeconds(_gameSceneManager.Player.AtkRate))
+                    .Subscribe(_ =>
+                    {
+                        disposable.Dispose();
+                        disposable = null;
+                    });
+
+                _player.Attack();
+                _gameSceneManager.LoadNextScene();
+            }
+        };
     }
 }

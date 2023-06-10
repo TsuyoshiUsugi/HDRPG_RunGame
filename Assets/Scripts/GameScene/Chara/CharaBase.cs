@@ -92,6 +92,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
         {
             _spriteRenderer.enabled = false;
             await UniTask.Delay(TimeSpan.FromSeconds(_flashDur));
+            if (_spriteRenderer == null) return;
             _spriteRenderer.enabled = true;
             await UniTask.Delay(TimeSpan.FromSeconds(_flashDur));
         }

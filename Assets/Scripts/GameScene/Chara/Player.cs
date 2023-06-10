@@ -4,6 +4,8 @@ public class Player : CharaBase
 {
     [Header("ŽQÆ")]
     [SerializeField] GameObject _attackHitBox;
+
+    public float AtkRate => _atkRate;
     Vector3 _moveDir = Vector3.forward;
     float _moveLimit = 10;
 
@@ -64,7 +66,7 @@ public class Player : CharaBase
     public override void Attack()
     {
         if (_isPose) return;
-        if (_currentAtkDur > 0) return;
+        //if (_currentAtkDur > 0) return;
 
         Debug.Log("Attack");
         Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.lossyScale);
