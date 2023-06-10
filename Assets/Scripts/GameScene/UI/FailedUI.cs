@@ -11,8 +11,8 @@ public class FailedUI : MonoBehaviour
 {
     [SerializeField] List<GameObject> _showUIs;
     [SerializeField] Image _cursor;
-    Vector2 _cursorRightPos = new Vector3();
-    Vector2 _cursorLeftPos = new Vector3();
+    Vector3 _cursorRightPos = new Vector3(144, -33, 0);
+    Vector3 _cursorLeftPos = new Vector3(-140.7f, -33, 0);
 
     // Start is called before the first frame update
     void Start()

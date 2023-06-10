@@ -11,8 +11,8 @@ public class ClearUI : MonoBehaviour
     [SerializeField] Text _expText;
     [SerializeField] Image _cursor;
 
-    Vector2 _cursorRightPos = new Vector3();
-    Vector2 _cursorLeftPos = new Vector3();
+    Vector3 _cursorRightPos = new Vector3(144, -226.5f, 0);
+    Vector3 _cursorLeftPos = new Vector3(-149.1f, -226.5f, 0);
 
     // Start is called before the first frame update
     void Start()
