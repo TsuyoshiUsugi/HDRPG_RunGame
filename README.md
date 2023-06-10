@@ -14,6 +14,7 @@ https://app.diagrams.net/?libs=general;uml#G14A-vQKgytsCeHkgOPZGffD1XF1XxOG1C
 ・POLYGON Nature - Low Poly 3D Art by Synty  
 ・ProPixelizer  
 ・Customizable skybox  
+・Pixel Skies DEMO Background pack  
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
