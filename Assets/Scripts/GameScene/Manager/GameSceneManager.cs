@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UniRx;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// ゲームシーンを管理する
@@ -31,6 +32,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     int _score = 0;
     int _aquireExp = 0;
     string _stageSelectScene = "StageSelect";
+    bool _inputAcceptance = false;
+    float _inputAcceptanceDelayMiliSec = 1000;
 
     public event Action ReadyStateEvent;
     public event Action FailedResultEvent;
@@ -165,6 +168,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
     /// <summary>
     /// リザルトの処理を行う
+    /// この時、一瞬で次のシーンに行くのを防ぐため、
+    /// イベントが終ったことと一定時間が経過したことを確認して入力受付のbool変数をtrueにする
     /// </summary>
     void ResultState()
     {
@@ -174,10 +179,26 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         {
             ClearResultEvent?.Invoke(_score, _aquireExp);
             CallSaveData();
+            WaitClearResultEvent().Forget();
         }
         else
         {
             FailedResultEvent?.Invoke();
+            WaitFailedResultEvent().Forget();
+        }
+
+        async UniTask WaitClearResultEvent()
+        {
+            await UniTask.WaitUntil(() => ClearResultEvent != null);
+            await UniTask.Delay(TimeSpan.FromMilliseconds(_inputAcceptanceDelayMiliSec));
+            _inputAcceptance = true;
+        }
+
+        async UniTask WaitFailedResultEvent()
+        {
+            await UniTask.WaitUntil(() => FailedResultEvent != null);
+            await UniTask.Delay(TimeSpan.FromMilliseconds(_inputAcceptanceDelayMiliSec));
+            _inputAcceptance = true;
         }
     }
 
@@ -187,6 +208,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     public void LoadNextScene()
     {
         if (_gameSceneState.Value != GameSceneState.Result) return;
+        if (!_inputAcceptance) return;
         
         if (_nextLoadScene.Value == NextLoadScene.SelectStageScene)
         {
