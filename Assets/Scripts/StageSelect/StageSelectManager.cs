@@ -67,6 +67,7 @@ public class StageSelectManager : MonoBehaviour
     /// </summary>
     void DecideStage()
     {
+        WorldDataLoader.Instance.CurrentStageNum = _currentStage.Value;
         SceneManager.LoadScene(WorldDataLoader.Instance.LoadedWorldDatas[_currentStage.Value].LoadSceneName);
     }
 
