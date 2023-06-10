@@ -17,7 +17,7 @@ public class StageSelectView : MonoBehaviour
     [SerializeField] Canvas _canvas;
     [SerializeField] GameObject _confirmBoard;
     [SerializeField] Image _confirmBoardCursor;
-    Vector3 _yesCursorPos = new Vector3(138, -437.09f, 0);
+    Vector3 _yesCursorPos = new Vector3(368, -437.09f, 0);
     Vector3 _noCursorPos = new Vector3(-394, -437.09f, 0);
 
     string _stageText = "ステージ：";
