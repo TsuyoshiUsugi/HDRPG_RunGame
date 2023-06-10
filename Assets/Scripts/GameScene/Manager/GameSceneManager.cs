@@ -90,8 +90,6 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void ReadyState()
     {
-        Debug.Log("Ready!");
-
         SetPlayer();
         SetFrameRate();
         _boss.enabled = false;
@@ -130,7 +128,6 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void SetPlayer()
     {
-        Debug.Log("Playerê›íË");
         ControlObjsMove(false);
     }
 
