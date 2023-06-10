@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ワールドのデータ
+/// ステージのデータとワールド背景の画像をもつ
+/// </summary>
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/CreateWorldData")]
 public class WorldData : ScriptableObject
 {
@@ -8,14 +12,10 @@ public class WorldData : ScriptableObject
     [SerializeField] Sprite _backGroundImage;
     public Sprite BackGroundImage => _backGroundImage;
 
-    /// <summary> ワールドのステージUIの生成位置 </summary>
-    [SerializeField] List<Vector3> _stagePointPos;
-    public List<Vector3> StagePointPos => _stagePointPos;
-    
-    /// <summary> ステージのテキスト情報 </summary>
-    [SerializeField] List<string> _stageInfo;
-    public List<string> StageInfo => _stageInfo;
+    /// <summary> ステージデータのリスト </summary>
+    [SerializeField] List<StageData> _stageDatas;
+    public List<StageData> StageDatas => _stageDatas;
 
     /// <summary> ステージ数 </summary>
-    public int StageNum => _stagePointPos.Count;
+    public int StageNum => _stageDatas.Count;
 }

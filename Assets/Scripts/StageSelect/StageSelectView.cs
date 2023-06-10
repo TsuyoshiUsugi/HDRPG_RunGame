@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class StageSelectView : MonoBehaviour
 {
-    [SerializeField] WorldData _stageData;
+    [SerializeField] WorldData _WorldData;
     [SerializeField] Image _backGroundImage;
     [SerializeField] Image _stagePointImage;
     [SerializeField] Image _charaImage;
@@ -28,7 +28,7 @@ public class StageSelectView : MonoBehaviour
     /// <param name="stageNum"></param>
     public void CharaCursorImageMove(int stageNum)
     {
-        _charaImage.transform.localPosition = _stageData.StagePointPos[stageNum];
+        _charaImage.transform.localPosition = _WorldData.StageDatas[stageNum].ShowUIPoint;
         _charaImage.transform.SetAsLastSibling();
     }
 
@@ -38,7 +38,7 @@ public class StageSelectView : MonoBehaviour
     /// <param name="stageNum"></param>
     public void ShowCurrentStageText(int stageNum)
     {
-        _currentStageText.text = _stageData.StageInfo[stageNum];
+        _currentStageText.text = _WorldData.StageDatas[stageNum].StageName;
     }
 
     /// <summary>
@@ -46,9 +46,14 @@ public class StageSelectView : MonoBehaviour
     /// </summary>
     public void ShowMap()
     {       
-        _backGroundImage.sprite = _stageData.BackGroundImage;
+        _backGroundImage.sprite = _WorldData.BackGroundImage;
 
-        List<Vector3> stagePoints = _stageData.StagePointPos;
+        List<Vector3> stagePoints = new List<Vector3>();
+
+        foreach (var stageData in _WorldData.StageDatas)
+        {
+            stagePoints.Add(stageData.ShowUIPoint);
+        }
 
         Debug.Log(stagePoints.Count);
 
