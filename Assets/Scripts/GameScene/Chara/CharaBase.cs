@@ -1,5 +1,6 @@
 using UnityEngine;
 using UniRx;
+using UniRx.Triggers;
 using Cysharp.Threading.Tasks;
 using System;
 
@@ -29,31 +30,34 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     [SerializeField] protected int _atk = 1;
     [SerializeField] protected float _speed = 1f;
     [SerializeField] protected float _atkRate = 1;
-    protected BoolReactiveProperty _isDeath = new BoolReactiveProperty(false);
 
-
-    protected float _leftLimit = -2.5f;
-    protected float _rightLimit = 2;
-    protected float _currentAtkDur = 0;
     int _flashTime = 2;
     float _flashDur = 0.1f;
-    
+    Animator _animator;
     SpriteRenderer _spriteRenderer;
-    protected bool _isPose = false;
+    protected float _leftLimit = -2.5f;
+    protected float _rightLimit = 2;
+    protected float _restCooldownTime = 0;
+    
+    protected BoolReactiveProperty _isDeath = new BoolReactiveProperty(false);
+    protected BoolReactiveProperty _isPose = new BoolReactiveProperty(false);
 
+    public float AtkRate => _atkRate;
     public IntReactiveProperty Hp => _hp;
     public BoolReactiveProperty IsDeath => _isDeath;
 
-    protected void Start()
+    void Awake()
     {
-        TryGetComponent<SpriteRenderer>(out _spriteRenderer);
+        TryGetComponent(out _animator);
+        TryGetComponent(out _spriteRenderer);
         _leftLimit = GameSceneManager.Instance.GetFieldInfo().leftSide;
         _rightLimit = GameSceneManager.Instance.GetFieldInfo().rightSide;
+        this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => AutoForwardMove());
     }
 
     public virtual void Attack() { }
 
-    protected virtual void AutoForwardMove() { }
+    protected virtual void AutoForwardMove() {}
 
     public void Hit(int damage) { }
 
@@ -63,7 +67,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     /// <param name="isPoseing"></param>
     public void Pose(bool isPoseing)
     {
-        _isPose = isPoseing;
+        _isPose.Value = isPoseing;
     }
 
     /// <summary>

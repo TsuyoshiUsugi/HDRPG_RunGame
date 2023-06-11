@@ -13,15 +13,13 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
     [SerializeField] float _ground = 0;
     [SerializeField] float _switchStateTime = 10;
 
+    float _currentStateTime = 0;
     float _originPos = 0;
-    [SerializeField] float _currentTime = 0;
     float _leftSide = 0;
     float _rightSide = 0;
-    Vector3 _horizontalVector; 
-    Vector3 _verticalVector;
-    BoxCollider _boxCollider;
+    BoxCollider _HitCollider;
     Vector3 _originColSize = Vector3.zero;
-    float _extendColZ = 5;
+    float _restStateColSizeZ = 5;
 
     private void Start()
     {
@@ -33,12 +31,10 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
     /// </summary>
     private void Initialize()
     {
-        _boxCollider = GetComponent<BoxCollider>();
-        _originColSize = _boxCollider.size;
+        _HitCollider = GetComponent<BoxCollider>();
+        _originColSize = _HitCollider.size;
         _originPos = transform.position.y;
         _currentState = BossState.Float;
-        _horizontalVector = new Vector3(_speed, 0, 0);
-        _verticalVector = new Vector3(0, _speed, 0);
         _leftSide = GameSceneManager.Instance.GetFieldInfo().leftSide;
         _rightSide = GameSceneManager.Instance.GetFieldInfo().rightSide;
     }
@@ -56,20 +52,24 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
         }
     }
 
+    /// <summary>
+    /// ïÇÇ¢ÇƒÇ¢ÇÈÇ∆Ç´ÇÃìÆÇ´ÇÃä÷êî
+    /// ç∂âEÇ…à⁄ìÆ
+    /// </summary>
     private void FloatState()
     {
-        if (_currentTime <= _switchStateTime)
+        if (_currentStateTime <= _switchStateTime)
         {
-            _currentTime += Time.deltaTime;
+            _currentStateTime += Time.deltaTime;
 
-            transform.position += _horizontalVector * Time.deltaTime;
+            transform.position += Vector3.right * _speed * Time.deltaTime;
 
-            if (transform.position.x <= _leftSide) _horizontalVector = -_horizontalVector;
-            if (transform.position.x >= _rightSide) _horizontalVector = -_horizontalVector;
+            if (transform.position.x <= _leftSide) _speed = -_speed;
+            if (transform.position.x >= _rightSide) _speed = -_speed;
         }
         else
         {
-            _currentTime = 0;
+            _currentStateTime = 0;
             _currentState = BossState.Rest;
         }
     }
@@ -80,25 +80,25 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
     private void RestState()
     {
 
-        if (_currentTime <= _switchStateTime)
+        if (_currentStateTime <= _switchStateTime)
         {
-            _currentTime += Time.deltaTime;
-            transform.position -= _verticalVector * Time.deltaTime;
-            _boxCollider.size = new Vector3(_boxCollider.size.x, _boxCollider.size.y, _extendColZ);
+            _currentStateTime += Time.deltaTime;
+            transform.position -= Vector3.down * _speed * Time.deltaTime;
+            _HitCollider.size = new Vector3(_HitCollider.size.x, _HitCollider.size.y, _restStateColSizeZ);
 
             if (transform.position.y <= _ground) transform.position =
                     new Vector3(transform.position.x, _ground, transform.position.z);
         }
         else
         {
-            transform.position += _verticalVector * Time.deltaTime;
+            transform.position += Vector3.down * _speed * Time.deltaTime;
 
             if (transform.position.y >= _originPos)
             {
                 transform.position = new Vector3(transform.position.x, _originPos, transform.position.z);
-                _currentTime = 0;
+                _currentStateTime = 0;
                 _currentState = BossState.Float;
-                _boxCollider.size = _originColSize;
+                _HitCollider.size = _originColSize;
             }
         }
     }

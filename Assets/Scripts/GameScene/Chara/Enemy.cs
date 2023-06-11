@@ -1,4 +1,6 @@
 using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
 
 /// <summary>
 /// ゲームシーンのモブエネミーのスクリプト
@@ -11,21 +13,14 @@ public class Enemy : CharaBase
     [SerializeField] int _exp = 1;
 
     IEnemyMove _enemyMove;
+    IEnemyAttack _enemyAttack;
 
     // Start is called before the first frame update
-    protected new void Start()
+    protected void Start()
     {
-        base.Start();
-        TryGetComponent<IEnemyMove>(out _enemyMove);
-    }
-
-    // Update is called once per frame
-    protected void Update()
-    {
-        if (_isPose) return;
-        if (GameSceneManager.Instance.Player.IsDeath.Value) return;
-        AutoForwardMove();
-        ResetPos();
+        TryGetComponent(out _enemyMove);
+        TryGetComponent(out _enemyAttack);
+        this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => Attack());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,7 +33,14 @@ public class Enemy : CharaBase
 
     protected override void AutoForwardMove()
     {
+        if (GameSceneManager.Instance.Player.IsDeath.Value) return;
         if (_enemyMove != null) _enemyMove.EnemyMove(_speed);
+        ResetPos();
+    }
+
+    public override void Attack()
+    {
+        if (_enemyAttack != null) _enemyAttack.EnemyAttack();
     }
 
     public new void Hit(int damage)
@@ -60,8 +62,8 @@ public class Enemy : CharaBase
             GameSceneManager.Instance.AddScore(_score);
             GameSceneManager.Instance.AddExp(_exp);
             _isDeath.Value = true;
+            _enemyAttack = null;
             this.enabled = false;
-            
         }
     }
 }

@@ -6,22 +6,20 @@ public class Player : CharaBase
     [Header("éQè∆")]
     [SerializeField] GameObject _attackHitBox;
 
-    public float AtkRate => _atkRate;
+    float _goalPosZ = 10;
     Vector3 _moveDir = Vector3.forward;
-    float _moveLimit = 10;
+    
 
     private void Start()
     {
-        _moveLimit = GameSceneManager.Instance.Goal;
+        _goalPosZ = GameSceneManager.Instance.Goal;
+        TryGetComponent(out _animator);
+        _isPose.Subscribe(_ => CountCooldownTime());
     }
 
-    // Update is called once per frame
-    void Update()
+    void CountCooldownTime()
     {
-        if (_isPose) return;
-
-        _currentAtkDur -= Time.deltaTime;
-        AutoForwardMove();
+        _restCooldownTime -= Time.deltaTime;
     }
 
     /// <summary>
@@ -31,10 +29,11 @@ public class Player : CharaBase
     {
         transform.position += _moveDir * _speed * Time.deltaTime;
 
-        if (transform.position.z > _moveLimit)
+        if (transform.position.z > _goalPosZ)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, _moveLimit);
+            transform.position = new Vector3(transform.position.x, transform.position.y, _goalPosZ);
         }
+       
     }
 
     /// <summary>
@@ -43,7 +42,7 @@ public class Player : CharaBase
     /// <param name="isLeft">trueÇ»ÇÁç∂ÅAfalseÇ»ÇÁâE</param>
     public void LeftRightMove(bool isLeft)
     {
-        if (_isPose) return;
+        if (_isPose.Value) return;
         if (isLeft) transform.position += Vector3.left * _speed * Time.deltaTime;
         if (!isLeft) transform.position -= Vector3.left * _speed * Time.deltaTime;
 
@@ -52,7 +51,7 @@ public class Player : CharaBase
 
     public new void Hit(int damage)
     {
-        Debug.Log("Hit");
+        if (GameSceneManager.Instance.IsClear) return; 
 
         ShowHit();
         _hp.Value -= damage;
@@ -66,8 +65,7 @@ public class Player : CharaBase
 
     public override void Attack()
     {
-        if (_isPose) return;
-        //if (_currentAtkDur > 0) return;
+        if (_isPose.Value) return;
 
         Debug.Log("Attack");
         Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.lossyScale);
@@ -78,7 +76,7 @@ public class Player : CharaBase
             if (enemy) enemy.Hit(_atk);
         }
 
-        _currentAtkDur = _atkRate;
+        _restCooldownTime = _atkRate;
     }
 
 #if UNITY_EDITOR

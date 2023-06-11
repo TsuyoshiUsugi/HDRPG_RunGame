@@ -31,6 +31,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     public ReactiveProperty<NextLoadScene> CurrentNextLoadScene => _nextLoadScene;
     int _score = 0;
     int _aquireExp = 0;
+    bool _isClear = false;
+    public bool IsClear => _isClear;
     string _stageSelectScene = "StageSelect";
     bool _inputAcceptance = false;
     float _inputAcceptanceDelayMiliSec = 1000;
@@ -177,6 +179,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
         if (_boss.IsDeath.Value)
         {
+            _isClear = true;
             ClearResultEvent?.Invoke(_score, _aquireExp);
             CallSaveData();
             WaitClearResultEvent().Forget();

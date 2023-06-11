@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
 
 /// <summary>
 /// ˆê’èŽžŠÔ‚²‚Æ‚É‰Š‚ðƒvƒŒƒCƒ„[‚ÉŒü‚©‚Á‚Ä”­ŽË‚·‚é
@@ -8,16 +8,17 @@ using UnityEngine;
 public class BossAttack1 : MonoBehaviour, IEnemyAttack
 {
     [SerializeField] GameObject _flame;
-    [SerializeField] float _dur = 3;
-    [SerializeField] float _currentTime = 0;
+    [SerializeField] float _attackRate = 3;
+    [SerializeField] float _restCooldownTime = 0;
 
     public void EnemyAttack()
     {
-        _currentTime += Time.deltaTime;
-        if (_currentTime >= _dur)
+        _restCooldownTime += Time.deltaTime;
+
+        if (_restCooldownTime >= _attackRate)
         {
             Instantiate(_flame, transform.position, transform.rotation);
-            _currentTime = 0;
+            _restCooldownTime = 0;
         }
 
     }
