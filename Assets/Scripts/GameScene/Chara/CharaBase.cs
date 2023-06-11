@@ -25,19 +25,24 @@ using System;
 public class CharaBase : MonoBehaviour, IHit, IPosable
 {
     [Header("Ý’è’l")]
-    [SerializeField] protected int _hp = 1;
+    [SerializeField] protected IntReactiveProperty _hp = new IntReactiveProperty(1);
     [SerializeField] protected int _atk = 1;
     [SerializeField] protected float _speed = 1f;
     [SerializeField] protected float _atkRate = 1;
+    protected BoolReactiveProperty _isDeath = new BoolReactiveProperty(false);
+
+
     protected float _leftLimit = -2.5f;
     protected float _rightLimit = 2;
+    protected float _currentAtkDur = 0;
     int _flashTime = 2;
     float _flashDur = 0.1f;
-    protected float _currentAtkDur = 0;
     
     SpriteRenderer _spriteRenderer;
     protected bool _isPose = false;
-    public BoolReactiveProperty IsDeath = new BoolReactiveProperty();
+
+    public IntReactiveProperty Hp => _hp;
+    public BoolReactiveProperty IsDeath => _isDeath;
 
     protected void Start()
     {

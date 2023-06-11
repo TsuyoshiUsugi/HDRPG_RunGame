@@ -1,3 +1,4 @@
+using UniRx;
 using UnityEngine;
 
 public class Player : CharaBase
@@ -54,12 +55,12 @@ public class Player : CharaBase
         Debug.Log("Hit");
 
         ShowHit();
-        _hp -= damage;
+        _hp.Value -= damage;
 
-        if (_hp <= 0)
+        if (_hp.Value <= 0)
         {
-            _hp = 0;
-            IsDeath.Value = true;
+            _hp.Value = 0;
+            _isDeath.Value = true;
         }
     }
 

@@ -30,7 +30,7 @@ public class Enemy : CharaBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_hp <= 0) return;
+        if (_hp.Value <= 0) return;
 
         other.TryGetComponent<Player>(out Player player);
         if (player != null) player.Hit(_atk);
@@ -43,23 +43,23 @@ public class Enemy : CharaBase
 
     public new void Hit(int damage)
     {
-        if (_hp <= 0) return;
+        if (_hp.Value <= 0) return;
 
         Debug.Log("Hit");
 
         ShowHit();
-        _hp -= damage;
+        _hp.Value -= damage;
         Death();
     }
 
     protected virtual void Death()
     {
-        if (_hp <= 0)
+        if (_hp.Value <= 0)
         {
-            _hp = 0;
+            _hp.Value = 0;
             GameSceneManager.Instance.AddScore(_score);
             GameSceneManager.Instance.AddExp(_exp);
-            IsDeath.Value = true;
+            _isDeath.Value = true;
             this.enabled = false;
             
         }
