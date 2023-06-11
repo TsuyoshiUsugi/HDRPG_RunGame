@@ -56,7 +56,12 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
 
         //保存
         PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].IsClearKey, 1);
+        if (_loadedWorldDatas[_currentStageNum].HighScore < score)
         PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].ScoreKey, score);
+
+        Debug.Log($"クリア： { PlayerPrefs.GetInt(_currentWorldData.StageDatas[_currentStageNum].IsClearKey)}");
+        Debug.Log($"ハイスコア： { PlayerPrefs.GetInt(_currentWorldData.StageDatas[_currentStageNum].ScoreKey)}");
+        Debug.Log($"ロードされているデータのハイスコア {_loadedWorldDatas[_currentStageNum].HighScore}");
     }
 }
 
