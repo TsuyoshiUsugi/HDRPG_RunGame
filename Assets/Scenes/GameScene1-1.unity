@@ -7804,7 +7804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp:
-    value: 1
+    value: 3
   _atk: 1
   _speed: 2
   _atkRate: 1

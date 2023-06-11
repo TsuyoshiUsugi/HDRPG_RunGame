@@ -52,16 +52,19 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
     {
         if (_loadedWorldDatas.Count == 0) return;
 
-        _loadedWorldDatas[_currentStageNum].UpdateData(score);
+        //データの入れ替え
+        var name = _currentWorldData.StageDatas[_currentStageNum].StageName;
+        var isClear = 1;
+        var highScore = score > _loadedWorldDatas[_currentStageNum].HighScore ? score : _loadedWorldDatas[_currentStageNum].HighScore;
+        var loadSceneName = _currentWorldData.StageDatas[_currentStageNum].LoadSceneName;
+        var showUIPos = _currentWorldData.StageDatas[_currentStageNum].ShowUIPoint;
+
+        _loadedWorldDatas[_currentStageNum] = new LoadedWorldData(name, isClear, highScore, loadSceneName, showUIPos);
 
         //保存
         PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].IsClearKey, 1);
         if (_loadedWorldDatas[_currentStageNum].HighScore < score)
         PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].ScoreKey, score);
-
-        Debug.Log($"クリア： { PlayerPrefs.GetInt(_currentWorldData.StageDatas[_currentStageNum].IsClearKey)}");
-        Debug.Log($"ハイスコア： { PlayerPrefs.GetInt(_currentWorldData.StageDatas[_currentStageNum].ScoreKey)}");
-        Debug.Log($"ロードされているデータのハイスコア {_loadedWorldDatas[_currentStageNum].HighScore}");
     }
 }
 
@@ -89,12 +92,6 @@ public struct LoadedWorldData
         HighScore = highScore;
         LoadSceneName = loadSceneName;
         ShowUIPos = showUIPos;
-    }
-
-    public void UpdateData(int score)
-    {
-        IsClear = 1;
-        if (HighScore < score) HighScore = score;
     }
 }
 
