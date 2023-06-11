@@ -18,7 +18,7 @@ public class StageSelectManager : MonoBehaviour
 
     public event Action<bool, int> ShowConfirmEvent;
 
-    private void Awake()
+    private void Start()
     {
         _stageNum = WorldDataLoader.Instance.LoadedWorldDatas.Count - 1;
     }
