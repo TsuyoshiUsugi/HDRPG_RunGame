@@ -68,6 +68,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     public void Pose(bool isPoseing)
     {
         _isPose.Value = isPoseing;
+        if (_animator) _animator.enabled = !isPoseing;
     }
 
     /// <summary>

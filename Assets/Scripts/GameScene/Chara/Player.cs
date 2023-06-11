@@ -13,13 +13,6 @@ public class Player : CharaBase
     private void Start()
     {
         _goalPosZ = GameSceneManager.Instance.Goal;
-        TryGetComponent(out _animator);
-        _isPose.Subscribe(_ => CountCooldownTime());
-    }
-
-    void CountCooldownTime()
-    {
-        _restCooldownTime -= Time.deltaTime;
     }
 
     /// <summary>
@@ -33,7 +26,6 @@ public class Player : CharaBase
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, _goalPosZ);
         }
-       
     }
 
     /// <summary>
@@ -60,6 +52,7 @@ public class Player : CharaBase
         {
             _hp.Value = 0;
             _isDeath.Value = true;
+            
         }
     }
 
@@ -72,11 +65,9 @@ public class Player : CharaBase
 
         foreach (Collider col in enemyCol)
         {
-            col.TryGetComponent<Enemy>(out Enemy enemy);
+            col.TryGetComponent(out Enemy enemy);
             if (enemy) enemy.Hit(_atk);
         }
-
-        _restCooldownTime = _atkRate;
     }
 
 #if UNITY_EDITOR
