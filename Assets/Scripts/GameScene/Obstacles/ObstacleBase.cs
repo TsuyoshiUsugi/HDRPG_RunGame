@@ -18,7 +18,7 @@ public class ObstacleBase : MonoBehaviour, IHit
 
     protected void OnTriggerEnter(Collider other)
     {
-        other.TryGetComponent<Player>(out Player player);
+        other.TryGetComponent(out Player player);
         player.Hit(_atk);
     }
 }

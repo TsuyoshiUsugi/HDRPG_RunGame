@@ -64,6 +64,7 @@ public class Enemy : CharaBase
             _isDeath.Value = true;
             _enemyAttack = null;
             this.enabled = false;
+            _spriteRenderer.enabled = false;
         }
     }
 }

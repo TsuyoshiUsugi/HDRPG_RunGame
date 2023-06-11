@@ -12,12 +12,12 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
     [SerializeField] BossState _currentState = BossState.Float;
     [SerializeField] float _ground = 0;
     [SerializeField] float _switchStateTime = 10;
+    [SerializeField] float _restStateColSizeZ = 3.46f;
 
     float _currentStateTime = 0;
     float _originPos = 0;
     float _leftSide = 0;
     float _rightSide = 0;
-    float _restStateColSizeZ = 5;
     Vector3 _originColSize = Vector3.zero;
     BoxCollider _hitCollider;
 
