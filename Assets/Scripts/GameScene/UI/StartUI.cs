@@ -2,19 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
-/// ステージ開始時の「よーい、スタート！」の処理を行うスクリプト
+/// ステージ開始時のUI処理を行うスクリプト
 /// </summary>
 public class StartUI : MonoBehaviour
 {
     [SerializeField] List<GameObject> _showUIs;
     [SerializeField] float _performanceInterval = 1.0f;
+    [SerializeField] Text _stageName;
 
     public event Action OnEndShowStartUI;
 
     private void Awake()
     {
+        if (WorldDataLoader.Instance.LoadedWorldDatas.Count != 0)
+        {
+            _stageName.text =
+                $"ステージ：{WorldDataLoader.Instance.LoadedWorldDatas[WorldDataLoader.Instance.CurrentStageNum].StageName}";
+        }
+
         if (_showUIs.Count == 0 || _showUIs == null)
         {
             StartCoroutine(nameof(ShowStartUI));

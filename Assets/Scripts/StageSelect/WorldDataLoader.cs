@@ -23,6 +23,9 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
     protected override void Awake()
     {
         base.Awake();
+
+        if (_currentWorldData == null) return;
+
         LoadWorldData();
     }
 
