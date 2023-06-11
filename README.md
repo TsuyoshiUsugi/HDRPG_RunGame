@@ -15,6 +15,7 @@ https://app.diagrams.net/?libs=general;uml#G14A-vQKgytsCeHkgOPZGffD1XF1XxOG1C
 ・ProPixelizer  
 ・Customizable skybox  
 ・Pixel Skies DEMO Background pack  
+・Pixel Art Platformer - Village Props  
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
