@@ -44,7 +44,7 @@ public class GameScenePresenter : MonoBehaviour
             if (nextScene == GameSceneManager.NextLoadScene.CurrentScene)
             {
                 _failedUI.MoveCursor(false);
-                _clearUI.MoveCursor(true);
+                _clearUI.MoveCursor(false);
             }
         });
     }

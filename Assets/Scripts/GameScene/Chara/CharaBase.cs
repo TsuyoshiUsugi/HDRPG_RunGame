@@ -39,7 +39,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     protected float _rightLimit = 2;
     protected float _restCooldownTime = 0;
     
-    protected BoolReactiveProperty _isDeath = new BoolReactiveProperty(false);
+    [SerializeField] protected BoolReactiveProperty _isDeath = new BoolReactiveProperty(false);
     protected BoolReactiveProperty _isPose = new BoolReactiveProperty(false);
 
     public float AtkRate => _atkRate;
