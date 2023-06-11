@@ -67,4 +67,14 @@ public class Enemy : CharaBase
             _spriteRenderer.enabled = false;
         }
     }
+
+    private void OnBecameVisible()
+    {
+        this.enabled = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        this.enabled = false;
+    }
 }
