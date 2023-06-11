@@ -17,9 +17,9 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
     float _originPos = 0;
     float _leftSide = 0;
     float _rightSide = 0;
-    BoxCollider _HitCollider;
-    Vector3 _originColSize = Vector3.zero;
     float _restStateColSizeZ = 5;
+    Vector3 _originColSize = Vector3.zero;
+    BoxCollider _hitCollider;
 
     private void Start()
     {
@@ -31,8 +31,8 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
     /// </summary>
     private void Initialize()
     {
-        _HitCollider = GetComponent<BoxCollider>();
-        _originColSize = _HitCollider.size;
+        _hitCollider = GetComponent<BoxCollider>();
+        _originColSize = _hitCollider.size;
         _originPos = transform.position.y;
         _currentState = BossState.Float;
         _leftSide = GameSceneManager.Instance.GetFieldInfo().leftSide;
@@ -84,7 +84,7 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
         {
             _currentStateTime += Time.deltaTime;
             transform.position -= Vector3.down * _speed * Time.deltaTime;
-            _HitCollider.size = new Vector3(_HitCollider.size.x, _HitCollider.size.y, _restStateColSizeZ);
+            _hitCollider.size = new Vector3(_hitCollider.size.x, _hitCollider.size.y, _restStateColSizeZ);
 
             if (transform.position.y <= _ground) transform.position =
                     new Vector3(transform.position.x, _ground, transform.position.z);
@@ -98,7 +98,7 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
                 transform.position = new Vector3(transform.position.x, _originPos, transform.position.z);
                 _currentStateTime = 0;
                 _currentState = BossState.Float;
-                _HitCollider.size = _originColSize;
+                _hitCollider.size = _originColSize;
             }
         }
     }

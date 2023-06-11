@@ -33,8 +33,8 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
 
     int _flashTime = 2;
     float _flashDur = 0.1f;
-    Animator _animator;
     SpriteRenderer _spriteRenderer;
+    protected Animator _animator;
     protected float _leftLimit = -2.5f;
     protected float _rightLimit = 2;
     protected float _restCooldownTime = 0;

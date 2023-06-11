@@ -9,14 +9,12 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
 {
     [Header("ŽQÆ")]
     [SerializeField] WorldData _currentWorldData;
-
-    int _currentStageNum = 0;
-    public int CurrentStageNum { get => _currentStageNum; set { _currentStageNum = value;} }
-
     Sprite _backGroundImaga;
-    public Sprite BackGroundImage => _backGroundImaga;
-
+    int _currentStageNum = 0;
     List<LoadedWorldData> _loadedWorldDatas = new List<LoadedWorldData>();
+
+    public int CurrentStageNum { get => _currentStageNum; set { _currentStageNum = value;} }
+    public Sprite BackGroundImage => _backGroundImaga;
     public List<LoadedWorldData> LoadedWorldDatas => _loadedWorldDatas;
 
     // Start is called before the first frame update
@@ -53,16 +51,12 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
     public void UpdataStageData(int score)
     {
         if (_loadedWorldDatas.Count == 0) return;
-        var name = _currentWorldData.StageDatas[_currentStageNum].StageName;
-        var isClear = 1;
-        var loadSceneName = _currentWorldData.StageDatas[_currentStageNum].LoadSceneName;
-        var showUIPos = _currentWorldData.StageDatas[_currentStageNum].ShowUIPoint;
+
+        _loadedWorldDatas[_currentStageNum].UpdateData(score);
 
         //•Û‘¶
-        PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].IsClearKey, isClear);
+        PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].IsClearKey, 1);
         PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].ScoreKey, score);
-
-        _loadedWorldDatas[_currentStageNum] = new LoadedWorldData(name, isClear, score, loadSceneName, showUIPos);
     }
 }
 
@@ -77,11 +71,11 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
 /// </summary>
 public struct LoadedWorldData
 {
-    public readonly string StageName;
-    public readonly int IsClear;
-    public readonly int HighScore;
-    public readonly string LoadSceneName;
-    public readonly Vector3 ShowUIPos;
+    public string StageName;
+    public int IsClear;
+    public int HighScore;
+    public string LoadSceneName;
+    public Vector3 ShowUIPos;
 
     public LoadedWorldData(string stageName, int isClear, int highScore, string loadSceneName, Vector3 showUIPos)
     {
@@ -92,5 +86,10 @@ public struct LoadedWorldData
         ShowUIPos = showUIPos;
     }
 
+    public void UpdateData(int score)
+    {
+        IsClear = 1;
+        if (HighScore < score) HighScore = score;
+    }
 }
 
