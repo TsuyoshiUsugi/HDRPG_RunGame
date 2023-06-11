@@ -17,7 +17,8 @@ https://app.diagrams.net/?libs=general;uml#G14A-vQKgytsCeHkgOPZGffD1XF1XxOG1C
 ・Pixel Skies DEMO Background pack  
 ・Pixel Art Platformer - Village Props  
 ・http://www.ob2.aitai.ne.jp/~owl/material/dot.html  
-・https://booth.pm/ja/items/1268365
+・https://booth.pm/ja/items/1268365  
+・https://www.s-e-project.com/mark/flame-pixelart/  
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
