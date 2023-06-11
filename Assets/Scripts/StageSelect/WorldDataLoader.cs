@@ -49,6 +49,7 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
     /// <param name="score"></param>
     public void UpdataStageData(int score)
     {
+        if (WorldDataLoader.Instance == null) return;
         var name = _currentWorldData.StageDatas[_currentStageNum].StageName;
         var isClear = 1;
         var loadSceneName = _currentWorldData.StageDatas[_currentStageNum].LoadSceneName;
