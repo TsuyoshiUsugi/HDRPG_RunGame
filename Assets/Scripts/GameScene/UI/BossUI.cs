@@ -12,7 +12,7 @@ public class BossUI : MonoBehaviour
     [SerializeField] GameObject _bossUI;
     [SerializeField] Text _bossName;
     [SerializeField] Text _calmBeforeTheStorm;
-    [SerializeField] float _tweenDur = 1;
+    [SerializeField] float _tweenDur = 0.5f;
     [SerializeField] float _betweenTweenDur = 4;
 
     // Start is called before the first frame update
