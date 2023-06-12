@@ -23,7 +23,6 @@ public class Enemy : CharaBase
         TryGetComponent(out _enemyAttack);
         TryGetComponent(out _healthUI);
 
-        Debug.Log(this.gameObject.name);
         if (_healthUI) _hp.Subscribe(hp => _healthUI.ShowHp(hp)).AddTo(this);
         this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => Attack()).AddTo(this);
     }
@@ -45,7 +44,7 @@ public class Enemy : CharaBase
 
     public override void Attack()
     {
-        if (_enemyAttack != null) _enemyAttack.EnemyAttack();
+        _enemyAttack?.EnemyAttack();
     }
 
     public new async void Hit(int damage)
@@ -72,4 +71,5 @@ public class Enemy : CharaBase
             this.gameObject.SetActive(false);
         }
     }
+
 }

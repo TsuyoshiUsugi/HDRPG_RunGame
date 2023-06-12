@@ -20,6 +20,5 @@ public class BossAttack1 : MonoBehaviour, IEnemyAttack
             Instantiate(_flame, transform.position, transform.rotation);
             _restCooldownTime = 0;
         }
-
     }
 }

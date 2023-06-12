@@ -103,7 +103,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     {
         SetPlayer();
         SetFrameRate();
-        _boss.enabled = false;
+        _boss.gameObject.SetActive(false);
 
         ReadyStateEvent?.Invoke();
     }
@@ -254,7 +254,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
             _gameSceneState.Value = GameSceneState.Result;
             return;
         }
-        _boss.enabled = true;
+        _boss.gameObject.SetActive(true);
     }
 
     /// <summary>
