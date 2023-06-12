@@ -29,6 +29,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     int _score = 0;
     int _aquireExp = 0;
     bool _isClear = false;
+    float _beforeBossStateStartPos = 20;
     string _stageSelectScene = "StageSelect";
     bool _inputAcceptance = false;
     float _inputAcceptanceDelayMiliSec = 1000;
@@ -78,7 +79,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         _player.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result).AddTo(this);
 
         Observable.EveryUpdate().Select(_ => _player.transform.position.z)
-            .Where(z => z >= _goal)
+            .Where(z => z >= _goal - _beforeBossStateStartPos)
             .Take(1)
             .Subscribe(_ => _gameSceneState.Value = GameSceneState.BeforeBoss)
             .AddTo(_player.gameObject);

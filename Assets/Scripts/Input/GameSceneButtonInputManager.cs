@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using UnityEngine.EventSystems;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// Button‚É‚æ‚é“ü—Í‚ðŽó‚¯•t‚¯‚éƒNƒ‰ƒX
@@ -33,13 +34,21 @@ public class GameSceneButtonInputManager : InputBase
         _leftPressDetect = _leftButton.GetComponent<ButtonPressDetect>();
         _rightPressDetect = _rightButton.GetComponent<ButtonPressDetect>();
         _middlePressDetect = _middleButton.GetComponent<ButtonPressDetect>();
-    }
 
-    private void Update()
-    {
-        if (_rightPressDetect.IsButtonPressed) OnRightButtonClicked?.Invoke();
-        if (_leftPressDetect.IsButtonPressed) OnLeftButtonClicked?.Invoke();
-        if (_middlePressDetect.IsButtonPressed) OnMiddleButtonClicked?.Invoke();
+        Observable.EveryUpdate().Select(_ => _rightPressDetect.IsButtonPressed)
+            .Where(press => press == true)
+            .Subscribe(_ => OnRightButtonClicked?.Invoke())
+            .AddTo(this);
+        
+        Observable.EveryUpdate().Select(_ => _leftPressDetect.IsButtonPressed)
+            .Where(press => press == true)
+            .Subscribe(_ => OnLeftButtonClicked?.Invoke())
+            .AddTo(this);
+        
+        Observable.EveryUpdate().Select(_ => _middlePressDetect.IsButtonPressed)
+            .Where(press => press == true)
+            .Subscribe(_ => OnMiddleButtonClicked?.Invoke())
+            .AddTo(this);
     }
 }
 
