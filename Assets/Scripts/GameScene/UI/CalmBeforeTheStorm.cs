@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 /// <summary>
 /// ボス戦直前のスクリプト
 /// </summary>
 public class CalmBeforeTheStorm : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Text _calmBeforeTheStorm;
+    [SerializeField] float _tweenDur = 1;
+    [SerializeField] float _betweenTweenDur = 1;
+
+    private void Start()
     {
-        
+        _calmBeforeTheStorm.color = new Color(1, 1, 1, 0);
+        _calmBeforeTheStorm.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowText()
     {
-        
+        Debug.Log("SHow");
+        _calmBeforeTheStorm.DOFade(1, _tweenDur)
+            .SetDelay(_betweenTweenDur)
+            .OnComplete(() => _calmBeforeTheStorm.DOFade(0, _tweenDur));
     }
 }

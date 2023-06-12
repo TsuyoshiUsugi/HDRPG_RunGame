@@ -28,6 +28,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     int _score = 0;
     int _aquireExp = 0;
     bool _isClear = false;
+    float _beforeBossEventPos = 5;
     string _stageSelectScene = "StageSelect";
     bool _inputAcceptance = false;
     float _inputAcceptanceDelayMiliSec = 1000;
@@ -41,7 +42,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
     public event Action ReadyStateEvent;
     public event Action FailedResultEvent;
-    public event Action BossEvent;
+    public event Action BeforeBossEvent;
     public event Action<int, int> ClearResultEvent;
 
     private void Start()
@@ -78,7 +79,12 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         Observable.EveryUpdate().Select(_ => _player.transform.position.z)
             .Where(z => z >= _goal && !_isClear)
             .Subscribe(_ => _gameSceneState.Value = GameSceneState.Boss)
-            .AddTo(this.gameObject);
+            .AddTo(_player.gameObject);
+
+        Observable.EveryUpdate().Select(_ => _player.transform.position.z)
+            .Where(z => z >= _goal - _beforeBossEventPos)
+            .Subscribe(_ => BeforeBossEvent?.Invoke())
+            .AddTo(_player.gameObject);
     }
 
     /// <summary>
@@ -257,8 +263,6 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
             _gameSceneState.Value = GameSceneState.Result;
             return;
         }
-
-        BossEvent?.Invoke();
         _boss.gameObject.SetActive(true);
     }
 

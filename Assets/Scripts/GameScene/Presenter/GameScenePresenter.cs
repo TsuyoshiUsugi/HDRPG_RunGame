@@ -33,7 +33,7 @@ public class GameScenePresenter : MonoBehaviour
     {
         _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
-        _gameSceneManager.BossEvent += () => _bossUI.ShowBossUI();
+        _gameSceneManager.BeforeBossEvent += () => _bossUI.ShowBossUI();
         _gameSceneManager.ClearResultEvent += (score, exp) => _clearUI.ShowClearUI(score, exp);
         _gameSceneManager.Player.Hp.Subscribe(currentHp => _playerHealthUI.ShowHp(currentHp)).AddTo(this);
         _gameSceneManager.CurrentNextLoadScene.Subscribe(nextScene =>
