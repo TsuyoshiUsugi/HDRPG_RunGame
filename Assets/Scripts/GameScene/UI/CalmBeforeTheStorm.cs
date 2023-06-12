@@ -11,7 +11,7 @@ public class CalmBeforeTheStorm : MonoBehaviour
 {
     [SerializeField] Text _calmBeforeTheStorm;
     [SerializeField] float _tweenDur = 1;
-    [SerializeField] float _betweenTweenDur = 1;
+    [SerializeField] float _betweenTweenDur = 3;
 
     private void Start()
     {
@@ -21,9 +21,6 @@ public class CalmBeforeTheStorm : MonoBehaviour
 
     public void ShowText()
     {
-        Debug.Log("SHow");
-        _calmBeforeTheStorm.DOFade(1, _tweenDur)
-            .SetDelay(_betweenTweenDur)
-            .OnComplete(() => _calmBeforeTheStorm.DOFade(0, _tweenDur));
+
     }
 }

@@ -13,7 +13,7 @@ public class BossUI : MonoBehaviour
     [SerializeField] Text _bossName;
     [SerializeField] Text _calmBeforeTheStorm;
     [SerializeField] float _tweenDur = 1;
-    [SerializeField] float _betweenTweenDur = 1;
+    [SerializeField] float _betweenTweenDur = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -36,11 +36,13 @@ public class BossUI : MonoBehaviour
 
     public void ShowBossUI()
     {
-        var sequence = DOTween.Sequence();
-
-        sequence.Append(_calmBeforeTheStorm.DOFade(1, _tweenDur).OnComplete(() => _calmBeforeTheStorm.DOFade(0, _tweenDur)));
-
-        sequence.OnComplete(() => _bossUI.SetActive(true));
+        _calmBeforeTheStorm.DOFade(1, _tweenDur)
+            .SetDelay(_betweenTweenDur)
+            .OnComplete(() =>
+            {
+                _calmBeforeTheStorm.DOFade(0, _tweenDur)
+                .OnComplete(() => _bossUI.SetActive(true));
+            });
             
     }
 }

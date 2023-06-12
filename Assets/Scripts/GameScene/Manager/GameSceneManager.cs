@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UniRx;
+using UniRx.Triggers;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
@@ -28,7 +29,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     int _score = 0;
     int _aquireExp = 0;
     bool _isClear = false;
-    float _beforeBossEventPos = 5;
+    float _beforeBossEventPos = 10;
     string _stageSelectScene = "StageSelect";
     bool _inputAcceptance = false;
     float _inputAcceptanceDelayMiliSec = 1000;
@@ -72,6 +73,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         _gameSceneState.Where(state => state == GameSceneState.Pose).Subscribe(_ => PoseState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Result).Subscribe(_ => ResultState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Boss).Subscribe(_ => BossState()).AddTo(this.gameObject);
+        _gameSceneState.Where(stete => stete == GameSceneState.BeforeBoss).Subscribe(_ => BeforeBoss()).AddTo(this.gameObject);
 
         _boss.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result).AddTo(this);
         _player.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result).AddTo(this);
@@ -83,7 +85,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
         Observable.EveryUpdate().Select(_ => _player.transform.position.z)
             .Where(z => z >= _goal - _beforeBossEventPos)
-            .Subscribe(_ => BeforeBossEvent?.Invoke())
+            .Take(1)
+            .Subscribe(_ => _gameSceneState.Value = GameSceneState.BeforeBoss)
             .AddTo(_player.gameObject);
     }
 
@@ -253,6 +256,11 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         SelectStageScene,
     }
 
+    void BeforeBoss()
+    {
+
+    }
+
     /// <summary>
     /// BossÇ™åªÇÍÇΩéûÇÃèàóù
     /// </summary>
@@ -281,6 +289,7 @@ public enum GameSceneState
     Ready,
     Playing,
     Pose,
+    BeforeBoss,
     Boss,
     Result,
 }
