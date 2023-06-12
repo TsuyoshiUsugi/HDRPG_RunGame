@@ -19,6 +19,7 @@ https://app.diagrams.net/?libs=general;uml#G14A-vQKgytsCeHkgOPZGffD1XF1XxOG1C
 ・http://www.ob2.aitai.ne.jp/~owl/material/dot.html  
 ・https://booth.pm/ja/items/1268365  
 ・https://www.s-e-project.com/mark/flame-pixelart/  
+・https://nanamiyuki.com/archives/6872  
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
