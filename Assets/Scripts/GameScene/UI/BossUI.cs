@@ -5,17 +5,17 @@ using UnityEngine;
 /// <summary>
 /// Boss‚ÌHPUI‚Ì•\Ž¦‚ð‚·‚éƒNƒ‰ƒX
 /// </summary>
-public class BossHPUI : MonoBehaviour
+public class BossUI : MonoBehaviour
 {
+    [SerializeField] GameObject _bossUI;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _bossUI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowBossUI()
     {
-        
+        _bossUI.SetActive(true);
     }
 }
