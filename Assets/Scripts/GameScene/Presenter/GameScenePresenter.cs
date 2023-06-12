@@ -57,9 +57,10 @@ public class GameScenePresenter : MonoBehaviour
     void RegisterViewEvent()
     {
         _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
+        _bossUI.OnEndBeforeBossEvent += () => _gameSceneManager.SwitchState(GameSceneState.Boss);
+
         _InputBase.OnLeftButtonClicked += () => _player.LeftRightMove(true);
         _InputBase.OnRightButtonClicked += () => _player.LeftRightMove(false);
-
         _InputBase.OnLeftButtonClicked += () => _gameSceneManager.MoveCursor(false);
         _InputBase.OnRightButtonClicked += () => _gameSceneManager.MoveCursor(true);
 

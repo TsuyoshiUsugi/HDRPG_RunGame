@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 /// <summary>
 /// Bossí‚ÌUI‚Ì•\Ž¦‚ð‚·‚éƒNƒ‰ƒX
@@ -14,6 +15,8 @@ public class BossUI : MonoBehaviour
     [SerializeField] Text _calmBeforeTheStorm;
     [SerializeField] float _tweenDur = 0.5f;
     [SerializeField] float _betweenTweenDur = 5;
+
+    public event Action OnEndBeforeBossEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -36,13 +39,14 @@ public class BossUI : MonoBehaviour
 
     public void ShowBossUI()
     {
-        _calmBeforeTheStorm.DOFade(1, _tweenDur)
-            .SetDelay(_betweenTweenDur)
+        var sequence = DOTween.Sequence();
+
+        sequence.Append(_calmBeforeTheStorm.DOFade(1, _tweenDur))
+            .Append(_calmBeforeTheStorm.DOFade(0, _tweenDur).SetDelay(2f))
             .OnComplete(() =>
             {
-                _calmBeforeTheStorm.DOFade(0, _tweenDur)
-                .OnComplete(() => _bossUI.SetActive(true));
+                _bossUI.SetActive(true);
+                OnEndBeforeBossEvent?.Invoke();
             });
-            
     }
 }
