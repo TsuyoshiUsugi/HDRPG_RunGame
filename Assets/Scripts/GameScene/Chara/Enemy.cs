@@ -9,12 +9,15 @@ using UniRx.Triggers;
 public class Enemy : CharaBase
 {
     [Header("Ý’è’l")]
+    [SerializeField] string _name = "";
     [SerializeField] int _score = 1;
     [SerializeField] int _exp = 1;
     [SerializeField] EnemyHPUI _healthUI;
 
     IEnemyMove _enemyMove;
     IEnemyAttack _enemyAttack;
+
+    public string Name => _name;
 
     // Start is called before the first frame update
     protected void Start()

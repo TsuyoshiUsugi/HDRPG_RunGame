@@ -10499,7 +10499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b631bd8d58506b449bfc9b6050d2c8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossUI: {fileID: 0}
+  _bossUI: {fileID: 135627095}
 --- !u!1001 &1252690753
 PrefabInstance:
   m_ObjectHideFlags: 0

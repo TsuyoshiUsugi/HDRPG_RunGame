@@ -13,29 +13,31 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 {
     [Header("ŽQÆ")]
     [SerializeField] Player _player;
-    public Player Player => _player;
     [SerializeField] Enemy _boss;
 
     [Header("Ý’è’l")]
     [SerializeField] float _leftSide = -2.5f; 
     [SerializeField] float _rightSide = 2;
     [SerializeField] float _goal = 0;
-    public float Goal => _goal;
 
     [Header("Debug")]
     [SerializeField] List<IPosable> _posableObjs = new List<IPosable>();
-    public List<IPosable> PosableObj { get => _posableObjs; set => _posableObjs = value; }
     [SerializeField] ReactiveProperty<GameSceneState> _gameSceneState = new ReactiveProperty<GameSceneState>();
     [SerializeField] ReactiveProperty<NextLoadScene> _nextLoadScene = new ReactiveProperty<NextLoadScene>(NextLoadScene.SelectStageScene);
 
-    public ReactiveProperty<NextLoadScene> CurrentNextLoadScene => _nextLoadScene;
     int _score = 0;
     int _aquireExp = 0;
     bool _isClear = false;
-    public bool IsClear => _isClear;
     string _stageSelectScene = "StageSelect";
     bool _inputAcceptance = false;
     float _inputAcceptanceDelayMiliSec = 1000;
+
+    public float Goal => _goal;
+    public bool IsClear => _isClear;
+    public Player Player => _player;
+    public string BossName => _boss.Name;
+    public ReactiveProperty<NextLoadScene> CurrentNextLoadScene => _nextLoadScene;
+    public List<IPosable> PosableObj { get => _posableObjs; set => _posableObjs = value; }
 
     public event Action ReadyStateEvent;
     public event Action FailedResultEvent;
