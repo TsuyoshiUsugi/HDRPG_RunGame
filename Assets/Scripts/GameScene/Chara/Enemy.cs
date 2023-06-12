@@ -1,6 +1,7 @@
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// ゲームシーンのモブエネミーのスクリプト

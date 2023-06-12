@@ -101,14 +101,15 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     protected async UniTask ShowHit()
     {
         if (_spriteRenderer == null) return;
+        var token = this.GetCancellationTokenOnDestroy();
 
         for (int i = 0; i < _flashTime; i++)
         {
             _spriteRenderer.enabled = false;
-            await UniTask.Delay(TimeSpan.FromSeconds(_flashDur));
+            await UniTask.Delay(TimeSpan.FromSeconds(_flashDur), cancellationToken: token);
             if (_spriteRenderer == null) return;
             _spriteRenderer.enabled = true;
-            await UniTask.Delay(TimeSpan.FromSeconds(_flashDur));
+            await UniTask.Delay(TimeSpan.FromSeconds(_flashDur), cancellationToken: token);
         }
     }
 }
