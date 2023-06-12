@@ -3,12 +3,8 @@ using UnityEngine;
 
 public class Player : CharaBase
 {
-    [Header("éQè∆")]
-    [SerializeField] GameObject _attackHitBox;
-
     float _goalPosZ = 10;
-    Vector3 _moveDir = Vector3.forward;
-    
+    Vector3 _moveDir = Vector3.forward;   
 
     private void Start()
     {
@@ -63,25 +59,14 @@ public class Player : CharaBase
     public override void Attack()
     {
         if (_isPose.Value) return;
+        if (_hitBox == null) return;
 
         Debug.Log("Attack");
-        Collider[] enemyCol = Physics.OverlapBox(_attackHitBox.transform.position, _attackHitBox.transform.lossyScale);
 
-        foreach (Collider col in enemyCol)
+        foreach (var col in _hitBox.HitObjs)
         {
             col.TryGetComponent(out Enemy enemy);
             if (enemy) enemy.Hit(_atk);
         }
     }
-
-#if UNITY_EDITOR
-    /// <summary>
-    /// çUåÇâ¬î\îÕàÕÇÃâ¬éãâª
-    /// </summary>
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(_attackHitBox.transform.position, _attackHitBox.transform.lossyScale);
-    }
-#endif
 }

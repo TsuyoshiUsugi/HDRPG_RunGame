@@ -3,6 +3,7 @@ using UniRx;
 using UniRx.Triggers;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// 敵、Player、ボスのベースとなるクラス
@@ -30,15 +31,18 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     [SerializeField] protected int _atk = 1;
     [SerializeField] protected float _speed = 1f;
     [SerializeField] protected float _atkRate = 1;
+    [SerializeField] GameObject _attackHitBox;
+
 
     int _flashTime = 2;
     float _flashDur = 0.1f;
-    [SerializeField] protected bool _isHit = false;
+    protected bool _isHit = false;
     protected SpriteRenderer _spriteRenderer;
     protected Animator _animator;
     protected float _leftLimit = -2.5f;
     protected float _rightLimit = 2;
     protected float _restCooldownTime = 0;
+    protected HitBox _hitBox;
     
     [SerializeField] protected BoolReactiveProperty _isDeath = new BoolReactiveProperty(false);
     protected BoolReactiveProperty _isPose = new BoolReactiveProperty(false);
@@ -51,6 +55,8 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     {
         TryGetComponent(out _animator);
         TryGetComponent(out _spriteRenderer);
+        if (_attackHitBox) _attackHitBox.TryGetComponent(out _hitBox);
+
         _leftLimit = GameSceneManager.Instance.GetFieldInfo().leftSide;
         _rightLimit = GameSceneManager.Instance.GetFieldInfo().rightSide;
         this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => AutoForwardMove());
