@@ -6180,7 +6180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &647349558
@@ -10614,6 +10614,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bossUI: {fileID: 135627095}
   _bossName: {fileID: 135627097}
+  _calmBeforeTheStorm: {fileID: 647349559}
+  _tweenDur: 1
+  _betweenTweenDur: 4
 --- !u!1001 &1252690753
 PrefabInstance:
   m_ObjectHideFlags: 0
