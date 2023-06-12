@@ -16,7 +16,7 @@ public class GameScenePresenter : MonoBehaviour
     [SerializeField] InputBase _InputBase;
     [SerializeField] FailedUI _failedUI;
     [SerializeField] ClearUI _clearUI;
-    [SerializeField] PlayerHealthUI _playerHealthUI;
+    [SerializeField] HealthUI _playerHealthUI;
 
     // Start is called before the first frame update
     void Start()
