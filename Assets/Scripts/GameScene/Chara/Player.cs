@@ -61,8 +61,6 @@ public class Player : CharaBase
         if (_isPose.Value) return;
         if (_hitBox == null) return;
 
-        Debug.Log("Attack");
-
         foreach (var col in _hitBox.HitObjs)
         {
             if (col == null) continue;

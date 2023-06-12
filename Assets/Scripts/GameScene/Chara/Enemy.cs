@@ -54,8 +54,6 @@ public class Enemy : CharaBase
     {
         if (_hp.Value <= 0) return;
 
-        Debug.Log("Hit");
-
         _hp.Value -= damage;
         await ShowHit();
         Death();
