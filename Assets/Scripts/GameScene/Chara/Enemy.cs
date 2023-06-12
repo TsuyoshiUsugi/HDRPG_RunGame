@@ -43,14 +43,14 @@ public class Enemy : CharaBase
         if (_enemyAttack != null) _enemyAttack.EnemyAttack();
     }
 
-    public new void Hit(int damage)
+    public new async void Hit(int damage)
     {
         if (_hp.Value <= 0) return;
 
         Debug.Log("Hit");
 
-        ShowHit();
         _hp.Value -= damage;
+        await ShowHit();
         Death();
     }
 
@@ -64,7 +64,7 @@ public class Enemy : CharaBase
             _isDeath.Value = true;
             _enemyAttack = null;
             this.enabled = false;
-            _spriteRenderer.enabled = false;
+            this.gameObject.SetActive(false);
         }
     }
 }

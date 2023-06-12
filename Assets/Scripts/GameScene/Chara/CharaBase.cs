@@ -33,6 +33,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
 
     int _flashTime = 2;
     float _flashDur = 0.1f;
+    [SerializeField] protected bool _isHit = false;
     protected SpriteRenderer _spriteRenderer;
     protected Animator _animator;
     protected float _leftLimit = -2.5f;
@@ -91,7 +92,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     /// <summary>
     /// 被ダメ時にオブジェクトを点滅させる
     /// </summary>
-    protected async void ShowHit()
+    protected async UniTask ShowHit()
     {
         if (_spriteRenderer == null) return;
 

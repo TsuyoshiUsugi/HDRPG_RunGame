@@ -41,19 +41,23 @@ public class Player : CharaBase
         ResetPos();
     }
 
-    public new void Hit(int damage)
+    public new async void Hit(int damage)
     {
-        if (GameSceneManager.Instance.IsClear) return; 
+        if (GameSceneManager.Instance.IsClear) return;
+        if (_isHit) return;
 
-        ShowHit();
         _hp.Value -= damage;
 
         if (_hp.Value <= 0)
         {
             _hp.Value = 0;
             _isDeath.Value = true;
-            
         }
+
+        _isHit = true;
+        await ShowHit();
+        _isHit = false;
+
     }
 
     public override void Attack()
