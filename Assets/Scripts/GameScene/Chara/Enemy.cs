@@ -14,7 +14,7 @@ public class Enemy : CharaBase
 
     IEnemyMove _enemyMove;
     IEnemyAttack _enemyAttack;
-    HealthUI _healthUI;
+    EnemyHPUI _healthUI;
 
     // Start is called before the first frame update
     protected void Start()
