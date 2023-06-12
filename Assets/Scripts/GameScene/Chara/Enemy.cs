@@ -11,10 +11,10 @@ public class Enemy : CharaBase
     [Header("Ý’è’l")]
     [SerializeField] int _score = 1;
     [SerializeField] int _exp = 1;
+    [SerializeField] EnemyHPUI _healthUI;
 
     IEnemyMove _enemyMove;
     IEnemyAttack _enemyAttack;
-    EnemyHPUI _healthUI;
 
     // Start is called before the first frame update
     protected void Start()
@@ -23,6 +23,7 @@ public class Enemy : CharaBase
         TryGetComponent(out _enemyAttack);
         TryGetComponent(out _healthUI);
 
+        Debug.Log(this.gameObject.name);
         if (_healthUI) _hp.Subscribe(hp => _healthUI.ShowHp(hp)).AddTo(this);
         this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => Attack()).AddTo(this);
     }

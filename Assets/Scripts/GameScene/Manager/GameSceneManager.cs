@@ -14,7 +14,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     [Header("QÆ")]
     [SerializeField] Player _player;
     public Player Player => _player;
-    [SerializeField] BossManager _boss;
+    [SerializeField] Enemy _boss;
 
     [Header("İ’è’l")]
     [SerializeField] float _leftSide = -2.5f; 
