@@ -59,7 +59,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
 
         _leftLimit = GameSceneManager.Instance.GetFieldInfo().leftSide;
         _rightLimit = GameSceneManager.Instance.GetFieldInfo().rightSide;
-        this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => AutoForwardMove());
+        this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => AutoForwardMove()).AddTo(this);
     }
 
     public virtual void Attack() { }

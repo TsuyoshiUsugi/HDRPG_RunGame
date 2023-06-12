@@ -69,8 +69,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         _gameSceneState.Where(state => state == GameSceneState.Result).Subscribe(_ => ResultState()).AddTo(this.gameObject);
         _gameSceneState.Where(state => state == GameSceneState.Boss).Subscribe(_ => BossState()).AddTo(this.gameObject);
 
-        _boss.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result);
-        _player.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result);
+        _boss.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result).AddTo(this);
+        _player.IsDeath.Where(x => x == true).Subscribe(_ => _gameSceneState.Value = GameSceneState.Result).AddTo(this);
 
         Observable.EveryUpdate().Select(_ => _player.transform.position.z)
             .Where(z => z >= _goal && !_isClear)

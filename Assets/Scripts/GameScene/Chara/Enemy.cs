@@ -14,13 +14,17 @@ public class Enemy : CharaBase
 
     IEnemyMove _enemyMove;
     IEnemyAttack _enemyAttack;
+    HealthUI _healthUI;
 
     // Start is called before the first frame update
     protected void Start()
     {
         TryGetComponent(out _enemyMove);
         TryGetComponent(out _enemyAttack);
-        this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => Attack());
+        TryGetComponent(out _healthUI);
+
+        if (_healthUI) _hp.Subscribe(hp => _healthUI.ShowHp(hp)).AddTo(this);
+        this.UpdateAsObservable().Where(_ => _isPose.Value == false).Subscribe(_ => Attack()).AddTo(this);
     }
 
     private void OnTriggerEnter(Collider other)

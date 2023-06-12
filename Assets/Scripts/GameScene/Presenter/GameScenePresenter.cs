@@ -33,7 +33,7 @@ public class GameScenePresenter : MonoBehaviour
         _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
         _gameSceneManager.ClearResultEvent += (score, exp) => _clearUI.ShowClearUI(score, exp);
-        _gameSceneManager.Player.Hp.Subscribe(currentHp => _playerHealthUI.ShowHp(currentHp));
+        _gameSceneManager.Player.Hp.Subscribe(currentHp => _playerHealthUI.ShowHp(currentHp)).AddTo(this);
         _gameSceneManager.CurrentNextLoadScene.Subscribe(nextScene =>
         {
             if (nextScene == GameSceneManager.NextLoadScene.SelectStageScene)
@@ -46,7 +46,7 @@ public class GameScenePresenter : MonoBehaviour
                 _failedUI.MoveCursor(false);
                 _clearUI.MoveCursor(false);
             }
-        });
+        }).AddTo(this);
     }
 
     /// <summary>
@@ -72,7 +72,7 @@ public class GameScenePresenter : MonoBehaviour
                     {
                         disposable.Dispose();
                         disposable = null;
-                    });
+                    }).AddTo(this);
 
                 _player.Attack();
                 _gameSceneManager.LoadNextScene();
