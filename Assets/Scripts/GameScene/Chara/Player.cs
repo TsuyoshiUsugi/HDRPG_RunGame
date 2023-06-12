@@ -65,6 +65,7 @@ public class Player : CharaBase
 
         foreach (var col in _hitBox.HitObjs)
         {
+            if (col == null) continue;
             col.TryGetComponent(out Enemy enemy);
             if (enemy) enemy.Hit(_atk);
         }

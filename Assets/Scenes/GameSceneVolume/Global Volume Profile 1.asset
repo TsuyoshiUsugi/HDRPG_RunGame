@@ -96,7 +96,7 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 15
+    m_Value: 10
   gaussianEnd:
     m_OverrideState: 1
     m_Value: 20
@@ -139,16 +139,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0.073833466, b: 1, a: 1}
+    m_Value: {r: 0.2971698, g: 0.34953758, b: 1, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.538
+    m_Value: 0.605
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.57
+    m_Value: 1
   rounded:
     m_OverrideState: 1
     m_Value: 1
