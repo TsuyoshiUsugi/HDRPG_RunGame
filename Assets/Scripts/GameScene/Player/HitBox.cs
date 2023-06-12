@@ -24,11 +24,13 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<Enemy>() == null) return;
         _hitObjs.Add(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.GetComponent<Enemy>() == null) return;
         _hitObjs.Remove(other.gameObject);
     }
 }

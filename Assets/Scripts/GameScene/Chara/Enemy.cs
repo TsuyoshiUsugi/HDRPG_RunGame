@@ -14,6 +14,7 @@ public class Enemy : CharaBase
     [SerializeField] int _exp = 1;
     [SerializeField] EnemyHPUI _healthUI;
 
+    Player _player = default;
     IEnemyMove _enemyMove;
     IEnemyAttack _enemyAttack;
 
@@ -33,9 +34,8 @@ public class Enemy : CharaBase
     private void OnTriggerEnter(Collider other)
     {
         if (_hp.Value <= 0) return;
-
-        other.TryGetComponent<Player>(out Player player);
-        if (player != null) player.Hit(_atk);
+        other.TryGetComponent(out _player);
+        if (_player != null) _player.Hit(_atk);
     }
 
     protected override void AutoForwardMove()
