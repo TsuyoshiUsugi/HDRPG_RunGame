@@ -27,6 +27,7 @@ https://app.diagrams.net/?libs=general;uml#G14A-vQKgytsCeHkgOPZGffD1XF1XxOG1C
 ・https://maou.audio/se_battle12/  
 ・https://otologic.jp/free/se/game-rpg01.html  
 ・https://pipoya.net/sozai/assets/effects/effect-battle-basic-set/  
+・https://maou.audio/game_medley02/  
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
