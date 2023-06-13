@@ -11239,7 +11239,8 @@ MonoBehaviour:
   _rightButton: {fileID: 692173047}
   _middleButton: {fileID: 692173048}
   _leftButton: {fileID: 692173049}
-  _optionBUtton: {fileID: 1473524200}
+  _optionButton: {fileID: 1473524200}
+  _isPosing: 0
 --- !u!1001 &1033686161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12128,14 +12129,14 @@ MonoBehaviour:
   _gameSceneManager: {fileID: 1557787168}
   _player: {fileID: 1786604877}
   _startUI: {fileID: 1241358395}
-  _InputBase: {fileID: 1029914116}
+  _Input: {fileID: 1029914116}
   _failedUI: {fileID: 1241358397}
   _clearUI: {fileID: 1241358398}
   _playerHealthUI: {fileID: 1241358399}
   _bossUI: {fileID: 1241358400}
   _attackRateUI: {fileID: 1241358401}
   _playerEffect: {fileID: 2008952363}
-  _optionUI: {fileID: 0}
+  _optionUI: {fileID: 1980328955}
 --- !u!1 &1315091556
 GameObject:
   m_ObjectHideFlags: 0
@@ -17687,6 +17688,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a59484ffb997ca4e8c49590b45d64e5, type: 3}
+--- !u!114 &1980328955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2022871281967878281, guid: 28a5300144c49204db13c666659337a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 123205092}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4fda1236877f4da46fdd3422c59d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1981540421
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,6 +17,11 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
     [SerializeField] AudioMixer _mixer;
     string _bgmName = "BGM";
     string _seName = "SE";
+    static float _bgmVol = 0;
+    static float _seVol = 0;
+
+    public static float BGMVol => _bgmVol;
+    public static float SEVol => _seVol;
 
     // Start is called before the first frame update
     void Start()
@@ -78,11 +83,13 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
     public void SetBGM(float vol)
     {
         _mixer.SetFloat(_bgmName, vol);
+        _bgmVol = vol;
     }
 
     public void SetSE(float vol)
     {
         _mixer.SetFloat(_seName, vol);
+        _seVol = vol;
     }
 }
 

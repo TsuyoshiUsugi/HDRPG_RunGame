@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// スタートボタンのスクリプト
+/// タイトルマネージャのスクリプト
 /// </summary>
-public class StartButton : MonoBehaviour
+public class TitleManager : MonoBehaviour
 {
     [SerializeField] Button _startButton;
+    [SerializeField] Button _optionButton;
+    [SerializeField] OptionUI _optionUI;
     [SerializeField] string _nextScene;
     string _selectSe = "Select";
 
@@ -21,6 +23,15 @@ public class StartButton : MonoBehaviour
             SceneLoadManager.Instance.LoadScene(_nextScene);
             AudioManager.Instance.PlaySE(_selectSe);
         });
+
+        _optionButton.onClick.AddListener(() =>
+        {
+            _optionUI.ShowOptionBoard();
+            AudioManager.Instance.PlaySE(_selectSe);
+        });
+        _optionUI.OnBgmSliderValueChanged += num => AudioManager.Instance.SetBGM(num);
+        _optionUI.OnSESliderValueChanged += num => AudioManager.Instance.SetSE(num);
+
         await SceneLoadManager.Instance.OnStartScene();
     }
 }

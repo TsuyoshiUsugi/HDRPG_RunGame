@@ -18,6 +18,9 @@ public class OptionUI : MonoBehaviour
     void Start()
     {
         _optionBoard.SetActive(false);
+        _bgmVolslider.value = AudioManager.BGMVol;
+        _seVolslider.value = AudioManager.SEVol;
+
         _bgmVolslider.onValueChanged.AddListener(num => OnBgmSliderValueChanged(num));
         _seVolslider.onValueChanged.AddListener(num => OnSESliderValueChanged(num));
     }
