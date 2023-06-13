@@ -223,11 +223,11 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         
         if (_nextLoadScene.Value == NextLoadScene.SelectStageScene)
         {
-            SceneManager.LoadScene(_stageSelectScene);
+            SceneLoadManager.Instance.LoadScene(_stageSelectScene);
         }
         else if (_nextLoadScene.Value == NextLoadScene.CurrentScene)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneLoadManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
