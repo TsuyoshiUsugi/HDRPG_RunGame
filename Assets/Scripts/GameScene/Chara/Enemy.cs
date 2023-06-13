@@ -18,6 +18,8 @@ public class Enemy : CharaBase
     Player _player = default;
     IEnemyMove _enemyMove;
     IEnemyAttack _enemyAttack;
+    string _attackSeName = "Attack";
+    string _hitSeName = "Hit";
 
     public string Name => _name;
 
@@ -56,6 +58,8 @@ public class Enemy : CharaBase
         if (_hp.Value <= 0) return;
 
         _hp.Value -= damage;
+        PlaySE(_hitSeName);
+
         await ShowHit();
         Death();
     }
