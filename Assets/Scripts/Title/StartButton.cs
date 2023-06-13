@@ -12,8 +12,9 @@ public class StartButton : MonoBehaviour
     [SerializeField] Button _startButton;
     [SerializeField] string _nextScene;
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
-        _startButton.onClick.AddListener(() => SceneManager.LoadScene(_nextScene));
+        _startButton.onClick.AddListener(() => SceneLoadManager.Instance.LoadScene(_nextScene));
+        await SceneLoadManager.Instance.OnStartScene();
     }
 }

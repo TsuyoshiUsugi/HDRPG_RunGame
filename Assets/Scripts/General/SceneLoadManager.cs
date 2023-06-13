@@ -20,12 +20,12 @@ public class SceneLoadManager : SingletonMonobehavior<SceneLoadManager>
     public void LoadScene(string sceneName)
     {
         if (!_fadeImage) SceneManager.LoadScene(sceneName);
-        _fadeImage.DOFade(1, _fadeDuration).OnComplete(() => SceneManager.LoadScene(sceneName));
+        _fadeImage.DOFade(1, _fadeDuration).OnComplete(() => SceneManager.LoadScene(sceneName)).SetLink(_fadeImage.gameObject);
     }
 
     public async UniTask OnStartScene()
     {
         if (!_fadeImage) return;
-        await _fadeImage.DOFade(0, _fadeDuration);
+        await _fadeImage.DOFade(0, _fadeDuration).SetLink(_fadeImage.gameObject);
     }
 }
