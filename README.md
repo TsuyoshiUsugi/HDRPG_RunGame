@@ -24,6 +24,7 @@ https://app.diagrams.net/?libs=general;uml#G14A-vQKgytsCeHkgOPZGffD1XF1XxOG1C
 ・https://maou.audio/bgm_fantasy01/  
 ・https://maou.audio/bgm_fantasy05/  
 ・https://maou.audio/se_battle18/  
+・https://maou.audio/se_battle12/  
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
