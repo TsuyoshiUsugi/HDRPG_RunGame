@@ -108,6 +108,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
             if (_gameSceneState.Value == GameSceneState.Ready) return;
             if (_gameSceneState.Value == GameSceneState.Result) return;
             if (_gameSceneState.Value == GameSceneState.BeforeBoss) return;
+            if (_gameSceneState.Value == GameSceneState.Boss) return;
 
             //すでにポーズ中なら以前のステートに戻す
             if (_gameSceneState.Value == GameSceneState.Pose)
