@@ -12,12 +12,12 @@ public class GameSceneButtonInputManager : InputBase
     [SerializeField] Button _rightButton;
     [SerializeField] Button _middleButton;
     [SerializeField] Button _leftButton;
+    [SerializeField] Button _optionBUtton;
     ButtonPressDetect _rightPressDetect;
     ButtonPressDetect _middlePressDetect;
     ButtonPressDetect _leftPressDetect;
 
-    bool _isAnyButtonDown = false;
-    public bool IsAnyButtonDown { get => _isAnyButtonDown; set => _isAnyButtonDown = value; }
+    bool _isOptionButtonDown = false;
 
     public override event Action OnRightButtonClicked;
     public override event Action OnMiddleButtonClicked;
@@ -35,18 +35,24 @@ public class GameSceneButtonInputManager : InputBase
         _rightPressDetect = _rightButton.GetComponent<ButtonPressDetect>();
         _middlePressDetect = _middleButton.GetComponent<ButtonPressDetect>();
 
+        _optionBUtton.onClick.AddListener(() =>
+        {
+            OnOptionButtonClicked?.Invoke();
+            _isOptionButtonDown = !_isOptionButtonDown;
+        });
+
         Observable.EveryUpdate().Select(_ => _rightPressDetect.IsButtonPressed)
-            .Where(press => press == true)
+            .Where(press => press == true && !_isOptionButtonDown)
             .Subscribe(_ => OnRightButtonClicked?.Invoke())
             .AddTo(this);
         
         Observable.EveryUpdate().Select(_ => _leftPressDetect.IsButtonPressed)
-            .Where(press => press == true)
+            .Where(press => press == true && !_isOptionButtonDown)
             .Subscribe(_ => OnLeftButtonClicked?.Invoke())
             .AddTo(this);
         
         Observable.EveryUpdate().Select(_ => _middlePressDetect.IsButtonPressed)
-            .Where(press => press == true)
+            .Where(press => press == true && !_isOptionButtonDown)
             .Subscribe(_ => OnMiddleButtonClicked?.Invoke())
             .AddTo(this);
     }

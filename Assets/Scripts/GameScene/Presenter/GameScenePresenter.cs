@@ -20,6 +20,7 @@ public class GameScenePresenter : MonoBehaviour
     [SerializeField] BossUI _bossUI;
     [SerializeField] AttackRateUI _attackRateUI;
     [SerializeField] PlayerEffect _playerEffect;
+    [SerializeField] OptionUI _optionUI;
 
     string _attackEffectName = "Attack";
     string _bossBGMName = "Boss1-1";
@@ -41,6 +42,7 @@ public class GameScenePresenter : MonoBehaviour
         _gameSceneManager.Player.OnPlayerHitEvent += dur => _cameraMover.OnHitCam(dur);
         _gameSceneManager.ReadyStateEvent += async () => await _startUI.ShowStartUI();
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
+        _gameSceneManager.PoseEvent += () => _optionUI.ShowOptionBoard();
         _gameSceneManager.BeforeBossEvent += () => _bossUI.ShowBossUI();
         _gameSceneManager.BossEvent += () => AudioManager.Instance.SetBGM(_bossBGMName);
         _gameSceneManager.ClearResultEvent += (score, exp) => _clearUI.ShowClearUI(score, exp);
@@ -67,10 +69,11 @@ public class GameScenePresenter : MonoBehaviour
     {
         _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
         _bossUI.OnEndBeforeBossEvent += () => _gameSceneManager.SwitchState(GameSceneState.Boss);
+        _InputBase.OnOptionButtonClicked += () => _gameSceneManager.SwitchState(GameSceneState.Pose);
 
         _InputBase.OnLeftButtonClicked += () => _player.LeftRightMove(true);
-        _InputBase.OnRightButtonClicked += () => _player.LeftRightMove(false);
         _InputBase.OnLeftButtonClicked += () => _gameSceneManager.MoveCursor(false);
+        _InputBase.OnRightButtonClicked += () => _player.LeftRightMove(false);
         _InputBase.OnRightButtonClicked += () => _gameSceneManager.MoveCursor(true);
 
         IDisposable disposable = null;

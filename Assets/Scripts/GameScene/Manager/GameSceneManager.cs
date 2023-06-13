@@ -42,6 +42,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
     public event Action ReadyStateEvent;
     public event Action FailedResultEvent;
+    public event Action PoseEvent;
     public event Action BeforeBossEvent;
     public event Action BossEvent;
     public event Action<int, int> ClearResultEvent;
@@ -100,6 +101,12 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// <param name="gameSceneState"></param>
     public void SwitchState(GameSceneState gameSceneState)
     {
+        if (gameSceneState == GameSceneState.Pose)
+        {
+            if (_gameSceneState.Value == GameSceneState.Ready) return;
+            if (_gameSceneState.Value == GameSceneState.Result) return;
+        }
+
         _gameSceneState.Value = gameSceneState;
     }
 
@@ -175,6 +182,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     void PoseState()
     {
         ControlObjsMove(false);
+        PoseEvent?.Invoke();
     }
 
     /// <summary>
