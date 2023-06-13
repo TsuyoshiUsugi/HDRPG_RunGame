@@ -1,6 +1,4 @@
 using Serialize;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class AudioManager : SingletonMonobehavior<AudioManager>
 {
     [Header("設定値")]
-    [SerializeField] AudioDictionary _audioDectionary;
+    [SerializeField] AudioDictionary _bgmDectionary;
     [SerializeField] AudioDictionary _seDictionary;
     [SerializeField] AudioSource _bgmAudioSource;
     [SerializeField] AudioSource _seAudioSource;
@@ -24,7 +22,7 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
         if (_bgmAudioSource == null) return;
         if (_bgmAudioSource.isPlaying) return;
         
-            PlaySceneBGM(SceneManager.GetActiveScene().name);
+            PlayBGM(SceneManager.GetActiveScene().name);
         
     }
 
@@ -35,20 +33,29 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
     /// <param name="mode"></param>
     private void OnChangeScene(Scene nextScene, LoadSceneMode mode)
     {
-        PlaySceneBGM(nextScene.name);
+        PlayBGM(nextScene.name);
+    }
+
+    /// <summary>
+    /// 引数の名前のBGMを鳴らす
+    /// </summary>
+    /// <param name="bgmName"></param>
+    public void SetBGM(string bgmName)
+    {
+        PlayBGM(bgmName);
     }
 
     /// <summary>
     /// ロードされたsceneNameと合うものを_audioDictionaryから探してPlayする
     /// </summary>
     /// <param name="sceneName"></param>
-    void PlaySceneBGM(string sceneName)
+    void PlayBGM(string sceneName)
     {
         if (!_bgmAudioSource) return;
 
-        if (_audioDectionary.GetTable().ContainsKey(sceneName))
+        if (_bgmDectionary.GetTable().ContainsKey(sceneName))
         {
-            var audioData = _audioDectionary.GetList().FirstOrDefault(dict => dict.Key == sceneName);
+            var audioData = _bgmDectionary.GetList().FirstOrDefault(dict => dict.Key == sceneName);
             _bgmAudioSource.clip = audioData.Value;
             _bgmAudioSource.Play();
         }

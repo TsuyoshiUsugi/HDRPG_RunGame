@@ -20,7 +20,9 @@ public class GameScenePresenter : MonoBehaviour
     [SerializeField] BossUI _bossUI;
     [SerializeField] AttackRateUI _attackRateUI;
     [SerializeField] PlayerEffect _playerEffect;
+
     string _attackEffectName = "Attack";
+    string _bossBGMName = "Boss1-1";
     CameraMover _cameraMover;
 
     // Start is called before the first frame update
@@ -40,6 +42,7 @@ public class GameScenePresenter : MonoBehaviour
         _gameSceneManager.ReadyStateEvent += async () => await _startUI.ShowStartUI();
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
         _gameSceneManager.BeforeBossEvent += () => _bossUI.ShowBossUI();
+        _gameSceneManager.BossEvent += () => AudioManager.Instance.SetBGM(_bossBGMName);
         _gameSceneManager.ClearResultEvent += (score, exp) => _clearUI.ShowClearUI(score, exp);
         _gameSceneManager.Player.Hp.Subscribe(currentHp => _playerHealthUI.ShowHp(currentHp)).AddTo(this);
         _gameSceneManager.CurrentNextLoadScene.Subscribe(nextScene =>

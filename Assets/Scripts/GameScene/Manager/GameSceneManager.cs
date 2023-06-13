@@ -43,6 +43,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     public event Action ReadyStateEvent;
     public event Action FailedResultEvent;
     public event Action BeforeBossEvent;
+    public event Action BossEvent;
     public event Action<int, int> ClearResultEvent;
 
     private void Start()
@@ -269,6 +270,8 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
             _gameSceneState.Value = GameSceneState.Result;
             return;
         }
+
+        BossEvent?.Invoke();    
         _boss.gameObject.SetActive(true);
     }
 
