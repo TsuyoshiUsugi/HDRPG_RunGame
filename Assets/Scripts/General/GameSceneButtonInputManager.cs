@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using UnityEngine.EventSystems;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// Button‚É‚æ‚é“ü—Í‚ðŽó‚¯•t‚¯‚éƒNƒ‰ƒX
