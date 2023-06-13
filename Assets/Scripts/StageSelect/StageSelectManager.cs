@@ -15,12 +15,15 @@ public class StageSelectManager : MonoBehaviour
 
     [SerializeField] int _stageNum = 0;
     bool _isShowConfirmBoard = false;
+    bool _isFadeOutEned = false;
 
     public event Action<bool, int> ShowConfirmEvent;
 
-    private void Start()
+    private async void Start()
     {
         _stageNum = WorldDataLoader.Instance.LoadedWorldDatas.Count - 1;
+        await SceneLoadManager.Instance.OnStartScene();
+        _isFadeOutEned = true;
     }
 
     /// <summary>
@@ -30,6 +33,8 @@ public class StageSelectManager : MonoBehaviour
     /// <param name="right"></param>
     public void MoveCursor(bool right) 
     {
+        if (!_isFadeOutEned) return;
+
         if (_isShowConfirmBoard)
         {
             if (right)
@@ -68,7 +73,7 @@ public class StageSelectManager : MonoBehaviour
     void DecideStage()
     {
         WorldDataLoader.Instance.CurrentStageNum = _currentStage.Value;
-        SceneManager.LoadScene(WorldDataLoader.Instance.LoadedWorldDatas[_currentStage.Value].LoadSceneName);
+        SceneLoadManager.Instance.LoadScene(WorldDataLoader.Instance.LoadedWorldDatas[_currentStage.Value].LoadSceneName);
     }
 
     /// <summary>
@@ -76,6 +81,8 @@ public class StageSelectManager : MonoBehaviour
     /// </summary>
     public void OnDecideButtonCliccked()
     {
+        if (!_isFadeOutEned) return;
+
         if (!_isShowConfirmBoard)
         {
             _isShowConfirmBoard = true;

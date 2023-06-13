@@ -5,11 +5,12 @@ OcclusionCullingSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_OcclusionBakeSettings:
-    smallestOccluder: 5
+    smallestOccluder: 10
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 8c2e6a6bb3c532942bf5c8f8dda57a5d
+  m_OcclusionCullingData: {fileID: 36300000, guid: 6cc188b682db24841b55e88b39679a87,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -197,6 +198,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Sunflower 01
       objectReference: {fileID: 0}
+    - target: {fileID: 4390910328609920032, guid: 295bb10ead83a4d44b8a1398a7f16c99,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4390910328609920034, guid: 295bb10ead83a4d44b8a1398a7f16c99,
         type: 3}
       propertyPath: m_RootOrder
@@ -272,6 +278,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Bush 01
       objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879243, guid: 0a84f54077193d3489d0de133048df37,
         type: 3}
       propertyPath: m_RootOrder
@@ -346,6 +357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -442,6 +458,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Tree 01
       objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -537,6 +558,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -617,6 +643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -713,6 +744,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -787,6 +823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -938,6 +979,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Sunflower 02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2581226205637218567, guid: d5f7066e247357149b9a778fcd53e819,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f7066e247357149b9a778fcd53e819, type: 3}
 --- !u!4 &283936370 stripped
@@ -957,6 +1003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Sunflower 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390910328609920032, guid: 295bb10ead83a4d44b8a1398a7f16c99,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4390910328609920034, guid: 295bb10ead83a4d44b8a1398a7f16c99,
         type: 3}
@@ -1078,6 +1129,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
@@ -1209,6 +1265,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Rock 03
       objectReference: {fileID: 0}
+    - target: {fileID: 2183321564951531335, guid: 2f54e7022d76f09478e2e1124e212cc5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f54e7022d76f09478e2e1124e212cc5, type: 3}
 --- !u!4 &355866041 stripped
@@ -1228,6 +1289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -1323,6 +1389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -1425,6 +1496,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1499,6 +1575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Bush 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879243, guid: 0a84f54077193d3489d0de133048df37,
         type: 3}
@@ -1581,6 +1662,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 02
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: b51901e6748833e4695e0c1db509dcd4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: b51901e6748833e4695e0c1db509dcd4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1655,6 +1741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -1988,6 +2079,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -2062,6 +2158,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -2157,6 +2258,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -2553,6 +2659,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -2697,6 +2808,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Sunflower 02
       objectReference: {fileID: 0}
+    - target: {fileID: 2581226205637218567, guid: d5f7066e247357149b9a778fcd53e819,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f7066e247357149b9a778fcd53e819, type: 3}
 --- !u!4 &1082075079 stripped
@@ -2840,6 +2956,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Rock 03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2183321564951531335, guid: 2f54e7022d76f09478e2e1124e212cc5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f54e7022d76f09478e2e1124e212cc5, type: 3}
 --- !u!4 &1147719100 stripped
@@ -2915,6 +3036,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Rock 02
       objectReference: {fileID: 0}
+    - target: {fileID: 4973302571607540863, guid: b076c268235cb7348a5d9a036ec254c4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b076c268235cb7348a5d9a036ec254c4, type: 3}
 --- !u!4 &1154063599 stripped
@@ -2940,6 +3066,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -3036,6 +3167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Wood Log 01
       objectReference: {fileID: 0}
+    - target: {fileID: 982056747370159609, guid: 86d38be4937d1c344b9c7f22912685eb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 982056747370159615, guid: 86d38be4937d1c344b9c7f22912685eb,
         type: 3}
       propertyPath: m_RootOrder
@@ -3110,6 +3246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -3205,6 +3346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Grass 06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
@@ -3494,6 +3640,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Rock 03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2183321564951531335, guid: 2f54e7022d76f09478e2e1124e212cc5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f54e7022d76f09478e2e1124e212cc5, type: 3}
 --- !u!4 &1286579594 stripped
@@ -3513,6 +3664,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
@@ -3722,6 +3878,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -3816,6 +3977,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -3980,6 +4146,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -4129,6 +4300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Sunflower 02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581226205637218567, guid: d5f7066e247357149b9a778fcd53e819,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f7066e247357149b9a778fcd53e819, type: 3}
@@ -4286,6 +4462,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -4416,6 +4597,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Sunflower 02
       objectReference: {fileID: 0}
+    - target: {fileID: 2581226205637218567, guid: d5f7066e247357149b9a778fcd53e819,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f7066e247357149b9a778fcd53e819, type: 3}
 --- !u!4 &1503225721 stripped
@@ -4435,6 +4621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Grass 06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
@@ -4511,6 +4702,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -4574,6 +4770,125 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1534028613}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1539310406
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1802454817795574257, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_Name
+      value: FadeImageCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802454817795574262, guid: 6b305e729bb92854881256aac3699c0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b305e729bb92854881256aac3699c0f, type: 3}
 --- !u!1001 &1547272263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4640,6 +4955,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Rock 03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183321564951531335, guid: 2f54e7022d76f09478e2e1124e212cc5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f54e7022d76f09478e2e1124e212cc5, type: 3}
@@ -4891,6 +5211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 02
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: b51901e6748833e4695e0c1db509dcd4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: b51901e6748833e4695e0c1db509dcd4,
         type: 3}
       propertyPath: m_RootOrder
@@ -5035,6 +5360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -5130,6 +5460,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Tree 01
       objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -5218,6 +5553,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Wood Log 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 982056747370159609, guid: 86d38be4937d1c344b9c7f22912685eb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 982056747370159615, guid: 86d38be4937d1c344b9c7f22912685eb,
         type: 3}
@@ -5530,6 +5870,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -5610,6 +5955,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
@@ -5740,6 +6090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Rock 02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973302571607540863, guid: b076c268235cb7348a5d9a036ec254c4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b076c268235cb7348a5d9a036ec254c4, type: 3}
@@ -5882,6 +6237,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Tree 01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_RootOrder
@@ -5976,6 +6336,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
@@ -6116,6 +6481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Village Props - Grass 06 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564026850829729313, guid: ed925410cd097664ea4b9e3e758f02a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3564026850829729314, guid: ed925410cd097664ea4b9e3e758f02a4,
         type: 3}
