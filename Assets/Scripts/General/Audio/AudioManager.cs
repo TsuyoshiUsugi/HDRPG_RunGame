@@ -20,6 +20,11 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
     {
         TryGetComponent(out _audioSource);
         SceneManager.sceneLoaded += OnChangeScene;
+
+        if (_audioSource && _audioSource.isPlaying != false)
+        {
+            PlaySceneBGM(SceneManager.GetActiveScene().name);
+        }
     }
 
     /// <summary>
