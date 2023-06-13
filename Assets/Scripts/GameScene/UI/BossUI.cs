@@ -14,7 +14,6 @@ public class BossUI : MonoBehaviour
     [SerializeField] Text _bossName;
     [SerializeField] Text _calmBeforeTheStorm;
     [SerializeField] float _tweenDur = 0.5f;
-    [SerializeField] float _betweenTweenDur = 5;
 
     public event Action OnEndBeforeBossEvent;
 

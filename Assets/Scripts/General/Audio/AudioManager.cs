@@ -25,7 +25,6 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
         if (_bgmAudioSource.isPlaying) return;
         
             PlaySceneBGM(SceneManager.GetActiveScene().name);
-            Debug.Log("Select");
         
     }
 

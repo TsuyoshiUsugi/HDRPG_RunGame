@@ -19,6 +19,8 @@ public class GameScenePresenter : MonoBehaviour
     [SerializeField] HealthUI _playerHealthUI;
     [SerializeField] BossUI _bossUI;
     [SerializeField] AttackRateUI _attackRateUI;
+    [SerializeField] PlayerEffect _playerEffect;
+    string _attackEffectName = "Attack";
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +81,7 @@ public class GameScenePresenter : MonoBehaviour
                     }).AddTo(this);
 
                 _player.Attack();
+                _playerEffect.ShowEffect(_attackEffectName);
                 _attackRateUI.ShowAttackRate((int)_gameSceneManager.Player.AtkRate * 1000);
                 _gameSceneManager.LoadNextScene();
             }
