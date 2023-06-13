@@ -1,4 +1,5 @@
 using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,18 +12,52 @@ public class SelectSceneButtonInput : InputBase
     [SerializeField] Button _middleButton;
     [SerializeField] Button _leftButton;
     [SerializeField] Button _optionButton;
+    bool _isAnyButtonDown = false;
+    float _throttleMiliSecTime = 1000f;
 
     public override event Action OnRightButtonClicked;
     public override event Action OnMiddleButtonClicked;
     public override event Action OnLeftButtonClicked;
-    public override event Action OnOptionButtonCliked;
+    public override event Action OnOptionButtonClicked;
 
     // Start is called before the first frame update
     void Start()
     {
-        _rightButton.onClick.AddListener(() => OnRightButtonClicked());
-        _leftButton.onClick.AddListener(() => OnLeftButtonClicked());
-        _middleButton.onClick.AddListener(() => OnMiddleButtonClicked());
-        _optionButton.onClick.AddListener(() => OnOptionButtonCliked());
+        IObservable<Unit> observableRightButton = _rightButton
+            .OnClickAsObservable()
+            .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
+            .TakeUntilDestroy(this)
+            .Do(_ => OnRightButtonClicked?.Invoke());
+        
+        IObservable<Unit> observableLeftButton = _leftButton
+            .OnClickAsObservable()
+            .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
+            .TakeUntilDestroy(this)
+            .Do(_ => OnLeftButtonClicked?.Invoke());
+        
+        IObservable<Unit> observableMiddleButton = _middleButton
+            .OnClickAsObservable()
+            .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
+            .TakeUntilDestroy(this)
+            .Do(_ => OnMiddleButtonClicked?.Invoke());
+        
+        IObservable<Unit> observableOptionButton = _optionButton
+            .OnClickAsObservable()
+            .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
+            .TakeUntilDestroy(this)
+            .Do(_ => OnOptionButtonClicked?.Invoke());
+
+        Observable.Merge(observableLeftButton, observableMiddleButton, observableRightButton, observableOptionButton)
+            .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
+            .TakeUntilDestroy(this)
+            .Subscribe();
+    }
+
+    enum ButtonType
+    {
+        Left,
+        Middle,
+        Option,
+        Right,
     }
 }

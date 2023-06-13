@@ -11,6 +11,7 @@ public class StageSelectScenePresenter : MonoBehaviour
     [SerializeField] InputBase _input;
     [SerializeField] StageSelectView _stageSelectView;
     [SerializeField] StageSelectManager _stageSelectManager;
+    [SerializeField] OptionUI _optionUI;
 
     string _seSelectName = "Select";
 
@@ -44,9 +45,9 @@ public class StageSelectScenePresenter : MonoBehaviour
         _input.OnLeftButtonClicked += () => AudioManager.Instance.PlaySE(_seSelectName);
         _input.OnRightButtonClicked += () => AudioManager.Instance.PlaySE(_seSelectName);
         _input.OnMiddleButtonClicked += () => AudioManager.Instance.PlaySE(_seSelectName);
-        _input.OnOptionButtonCliked += () => _stageSelectView.ShowOptionBoard();
+        _input.OnOptionButtonClicked += () => _optionUI.ShowOptionBoard();
 
-        _stageSelectView.OnBgmSliderValueChanged += vol => AudioManager.Instance.SetBGM(vol);
-        _stageSelectView.OnSESliderValueChanged += vol => AudioManager.Instance.SetSE(vol);
+        _optionUI.OnBgmSliderValueChanged += vol => AudioManager.Instance.SetBGM(vol);
+        _optionUI.OnSESliderValueChanged += vol => AudioManager.Instance.SetSE(vol);
     }
 }
