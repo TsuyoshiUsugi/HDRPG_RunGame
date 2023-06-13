@@ -45,5 +45,8 @@ public class StageSelectScenePresenter : MonoBehaviour
         _input.OnRightButtonClicked += () => AudioManager.Instance.PlaySE(_seSelectName);
         _input.OnMiddleButtonClicked += () => AudioManager.Instance.PlaySE(_seSelectName);
         _input.OnOptionButtonCliked += () => _stageSelectView.ShowOptionBoard();
+
+        _stageSelectView.OnBgmSliderValueChanged += vol => AudioManager.Instance.SetBGM(vol);
+        _stageSelectView.OnSESliderValueChanged += vol => AudioManager.Instance.SetSE(vol);
     }
 }

@@ -1,6 +1,7 @@
 using Serialize;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -13,6 +14,9 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
     [SerializeField] AudioDictionary _seDictionary;
     [SerializeField] AudioSource _bgmAudioSource;
     [SerializeField] AudioSource _seAudioSource;
+    [SerializeField] AudioMixer _mixer;
+    string _bgmName = "BGM";
+    string _seName = "SE";
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +73,16 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
     {
         var audioData = _seDictionary.GetList().FirstOrDefault(dict => dict.Key == seName);
         _seAudioSource.PlayOneShot(audioData.Value);
+    }
+
+    public void SetBGM(float vol)
+    {
+        _mixer.SetFloat(_bgmName, vol);
+    }
+
+    public void SetSE(float vol)
+    {
+        _mixer.SetFloat(_seName, vol);
     }
 }
 

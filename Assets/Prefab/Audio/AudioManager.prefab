@@ -164,6 +164,7 @@ MonoBehaviour:
       Value: {fileID: 8300000, guid: bf5e5e9721fad5c45a308d8773a7d2b7, type: 3}
   _bgmAudioSource: {fileID: 6875792308240400421}
   _seAudioSource: {fileID: 4520247458008982946}
+  _mixer: {fileID: 24100000, guid: a7fdeb2e01d9764429344ae34e60a752, type: 2}
 --- !u!82 &4520247458008982946
 AudioSource:
   m_ObjectHideFlags: 0
