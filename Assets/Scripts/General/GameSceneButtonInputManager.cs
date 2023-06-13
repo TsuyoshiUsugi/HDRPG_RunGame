@@ -12,12 +12,12 @@ public class GameSceneButtonInputManager : InputBase
     [SerializeField] Button _rightButton;
     [SerializeField] Button _middleButton;
     [SerializeField] Button _leftButton;
-    [SerializeField] Button _optionBUtton;
+    [SerializeField] Button _optionButton;
     ButtonPressDetect _rightPressDetect;
     ButtonPressDetect _middlePressDetect;
     ButtonPressDetect _leftPressDetect;
 
-    bool _isOptionButtonDown = false;
+    [SerializeField] bool _isPosing = false;
 
     public override event Action OnRightButtonClicked;
     public override event Action OnMiddleButtonClicked;
@@ -35,26 +35,30 @@ public class GameSceneButtonInputManager : InputBase
         _rightPressDetect = _rightButton.GetComponent<ButtonPressDetect>();
         _middlePressDetect = _middleButton.GetComponent<ButtonPressDetect>();
 
-        _optionBUtton.onClick.AddListener(() =>
+        _optionButton.onClick.AddListener(() =>
         {
             OnOptionButtonClicked?.Invoke();
-            _isOptionButtonDown = !_isOptionButtonDown;
         });
 
         Observable.EveryUpdate().Select(_ => _rightPressDetect.IsButtonPressed)
-            .Where(press => press == true && !_isOptionButtonDown)
+            .Where(press => press == true && !_isPosing)
             .Subscribe(_ => OnRightButtonClicked?.Invoke())
             .AddTo(this);
         
         Observable.EveryUpdate().Select(_ => _leftPressDetect.IsButtonPressed)
-            .Where(press => press == true && !_isOptionButtonDown)
+            .Where(press => press == true && !_isPosing)
             .Subscribe(_ => OnLeftButtonClicked?.Invoke())
             .AddTo(this);
         
         Observable.EveryUpdate().Select(_ => _middlePressDetect.IsButtonPressed)
-            .Where(press => press == true && !_isOptionButtonDown)
+            .Where(press => press == true && !_isPosing)
             .Subscribe(_ => OnMiddleButtonClicked?.Invoke())
             .AddTo(this);
+    }
+
+    public void IsPose()
+    {
+        _isPosing = !_isPosing;
     }
 }
 

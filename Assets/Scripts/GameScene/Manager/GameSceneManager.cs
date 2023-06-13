@@ -28,9 +28,10 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
 
     int _score = 0;
     int _aquireExp = 0;
+    GameSceneState _preState;
     bool _isClear = false;
-    string _stageSelectScene = "StageSelect";
     bool _inputAcceptance = false;
+    string _stageSelectScene = "StageSelect";
     float _inputAcceptanceDelayMiliSec = 1000;
 
     public float Goal => _goal;
@@ -101,10 +102,22 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// <param name="gameSceneState"></param>
     public void SwitchState(GameSceneState gameSceneState)
     {
+        //引数がポーズの時、特定のステートではポーズさせない。
         if (gameSceneState == GameSceneState.Pose)
         {
             if (_gameSceneState.Value == GameSceneState.Ready) return;
             if (_gameSceneState.Value == GameSceneState.Result) return;
+            if (_gameSceneState.Value == GameSceneState.BeforeBoss) return;
+
+            //すでにポーズ中なら以前のステートに戻す
+            if (_gameSceneState.Value == GameSceneState.Pose)
+            {
+                PoseEvent?.Invoke();
+                _gameSceneState.Value = _preState;
+                return;
+            }
+
+            _preState = _gameSceneState.Value;
         }
 
         _gameSceneState.Value = gameSceneState;

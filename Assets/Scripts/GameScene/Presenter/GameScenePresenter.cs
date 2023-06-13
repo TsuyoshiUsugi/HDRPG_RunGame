@@ -13,7 +13,7 @@ public class GameScenePresenter : MonoBehaviour
 
     [Header("ViewŽQÆ")]
     [SerializeField] StartUI _startUI;
-    [SerializeField] InputBase _InputBase;
+    [SerializeField] GameSceneButtonInputManager _Input;
     [SerializeField] FailedUI _failedUI;
     [SerializeField] ClearUI _clearUI;
     [SerializeField] HealthUI _playerHealthUI;
@@ -43,6 +43,7 @@ public class GameScenePresenter : MonoBehaviour
         _gameSceneManager.ReadyStateEvent += async () => await _startUI.ShowStartUI();
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
         _gameSceneManager.PoseEvent += () => _optionUI.ShowOptionBoard();
+        _gameSceneManager.PoseEvent += () => _Input.IsPose();
         _gameSceneManager.BeforeBossEvent += () => _bossUI.ShowBossUI();
         _gameSceneManager.BossEvent += () => AudioManager.Instance.SetBGM(_bossBGMName);
         _gameSceneManager.ClearResultEvent += (score, exp) => _clearUI.ShowClearUI(score, exp);
@@ -67,18 +68,20 @@ public class GameScenePresenter : MonoBehaviour
     /// </summary>
     void RegisterViewEvent()
     {
+        _optionUI.OnBgmSliderValueChanged += vol => AudioManager.Instance.SetBGM(vol);
+        _optionUI.OnSESliderValueChanged += vol => AudioManager.Instance.SetSE(vol);
         _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
         _bossUI.OnEndBeforeBossEvent += () => _gameSceneManager.SwitchState(GameSceneState.Boss);
-        _InputBase.OnOptionButtonClicked += () => _gameSceneManager.SwitchState(GameSceneState.Pose);
+        _Input.OnOptionButtonClicked += () => _gameSceneManager.SwitchState(GameSceneState.Pose);
 
-        _InputBase.OnLeftButtonClicked += () => _player.LeftRightMove(true);
-        _InputBase.OnLeftButtonClicked += () => _gameSceneManager.MoveCursor(false);
-        _InputBase.OnRightButtonClicked += () => _player.LeftRightMove(false);
-        _InputBase.OnRightButtonClicked += () => _gameSceneManager.MoveCursor(true);
+        _Input.OnLeftButtonClicked += () => _player.LeftRightMove(true);
+        _Input.OnLeftButtonClicked += () => _gameSceneManager.MoveCursor(false);
+        _Input.OnRightButtonClicked += () => _player.LeftRightMove(false);
+        _Input.OnRightButtonClicked += () => _gameSceneManager.MoveCursor(true);
 
         IDisposable disposable = null;
 
-        _InputBase.OnMiddleButtonClicked += () =>
+        _Input.OnMiddleButtonClicked += () =>
         {
             if (disposable == null)
             {
