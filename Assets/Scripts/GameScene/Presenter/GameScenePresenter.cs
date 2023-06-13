@@ -21,6 +21,7 @@ public class GameScenePresenter : MonoBehaviour
     [SerializeField] AttackRateUI _attackRateUI;
     [SerializeField] PlayerEffect _playerEffect;
     string _attackEffectName = "Attack";
+    CameraMover _cameraMover;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,8 @@ public class GameScenePresenter : MonoBehaviour
     /// </summary>
     void RegisterModelEvent()
     {
+        Camera.main.gameObject.TryGetComponent(out _cameraMover);
+        _gameSceneManager.Player.OnPlayerHitEvent += dur => _cameraMover.OnHitCam(dur);
         _gameSceneManager.ReadyStateEvent += async () => await _startUI.ShowStartUI();
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
         _gameSceneManager.BeforeBossEvent += () => _bossUI.ShowBossUI();

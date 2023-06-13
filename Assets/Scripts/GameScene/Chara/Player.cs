@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Player : CharaBase
 {
@@ -7,6 +8,8 @@ public class Player : CharaBase
 
     string _attackSeName = "Attack";
     string _hitSeName = "Hit";
+
+    public event Action<float> OnPlayerHitEvent;
 
     private void Start()
     {
@@ -57,6 +60,7 @@ public class Player : CharaBase
 
 
         _isHit = true;
+        OnPlayerHitEvent(_flashDur * _flashTime);
         await ShowHit();
         _isHit = false;
 

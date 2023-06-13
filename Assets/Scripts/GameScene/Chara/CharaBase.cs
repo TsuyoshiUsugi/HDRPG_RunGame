@@ -34,8 +34,8 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     [SerializeField] GameObject _attackHitBox;
 
 
-    int _flashTime = 2;
-    float _flashDur = 0.1f;
+    protected int _flashTime = 2;
+    protected float _flashDur = 0.1f;
     protected bool _isHit = false;
     protected SpriteRenderer _spriteRenderer;
     protected Animator _animator;
