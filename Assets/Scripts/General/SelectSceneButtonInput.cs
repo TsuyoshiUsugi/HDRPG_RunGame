@@ -12,8 +12,8 @@ public class SelectSceneButtonInput : InputBase
     [SerializeField] Button _middleButton;
     [SerializeField] Button _leftButton;
     [SerializeField] Button _optionButton;
-    bool _isAnyButtonDown = false;
-    float _throttleMiliSecTime = 1000f;
+    bool _isOptionButtonDown = false;
+    float _throttleMiliSecTime = 100f;
 
     public override event Action OnRightButtonClicked;
     public override event Action OnMiddleButtonClicked;
@@ -25,18 +25,21 @@ public class SelectSceneButtonInput : InputBase
     {
         IObservable<Unit> observableRightButton = _rightButton
             .OnClickAsObservable()
+            .Where(_ => _isOptionButtonDown == false)
             .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
             .TakeUntilDestroy(this)
             .Do(_ => OnRightButtonClicked?.Invoke());
         
         IObservable<Unit> observableLeftButton = _leftButton
             .OnClickAsObservable()
+            .Where(_ => _isOptionButtonDown == false)
             .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
             .TakeUntilDestroy(this)
             .Do(_ => OnLeftButtonClicked?.Invoke());
         
         IObservable<Unit> observableMiddleButton = _middleButton
             .OnClickAsObservable()
+            .Where(_ => _isOptionButtonDown == false)
             .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
             .TakeUntilDestroy(this)
             .Do(_ => OnMiddleButtonClicked?.Invoke());
@@ -45,7 +48,11 @@ public class SelectSceneButtonInput : InputBase
             .OnClickAsObservable()
             .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
             .TakeUntilDestroy(this)
-            .Do(_ => OnOptionButtonClicked?.Invoke());
+            .Do(_ =>
+            {
+                OnOptionButtonClicked?.Invoke();
+                _isOptionButtonDown = !_isOptionButtonDown;
+            });
 
         Observable.Merge(observableLeftButton, observableMiddleButton, observableRightButton, observableOptionButton)
             .ThrottleFirst(TimeSpan.FromMilliseconds(_throttleMiliSecTime))
