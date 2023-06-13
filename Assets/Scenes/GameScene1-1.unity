@@ -11789,6 +11789,7 @@ GameObject:
   - component: {fileID: 1241358398}
   - component: {fileID: 1241358399}
   - component: {fileID: 1241358400}
+  - component: {fileID: 1241358401}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -11901,6 +11902,19 @@ MonoBehaviour:
   _calmBeforeTheStorm: {fileID: 647349559}
   _tweenDur: 1
   _betweenTweenDur: 4
+--- !u!114 &1241358401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241358394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea721375defcc844d9f6edf34f9d1426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _middleButtonImage: {fileID: 0}
 --- !u!1001 &1252690753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12021,6 +12035,7 @@ MonoBehaviour:
   _clearUI: {fileID: 1241358398}
   _playerHealthUI: {fileID: 1241358399}
   _bossUI: {fileID: 1241358400}
+  _attackRateUI: {fileID: 0}
 --- !u!1 &1315091556
 GameObject:
   m_ObjectHideFlags: 0
