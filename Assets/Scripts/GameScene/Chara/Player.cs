@@ -45,6 +45,7 @@ public class Player : CharaBase
         if (_isHit) return;
 
         _hp.Value -= damage;
+        if (damage <= 0) return;
 
         PlaySE(_hitSeName);
 
@@ -53,6 +54,7 @@ public class Player : CharaBase
             _hp.Value = 0;
             _isDeath.Value = true;
         }
+
 
         _isHit = true;
         await ShowHit();

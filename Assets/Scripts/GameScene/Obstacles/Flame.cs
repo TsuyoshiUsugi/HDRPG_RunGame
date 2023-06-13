@@ -24,8 +24,5 @@ public class Flame : ObstacleBase
         if (GameSceneManager.Instance.Player.transform.position.z > transform.position.z) Destroy(gameObject);
     }
 
-    private new void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-    }
+   
 }

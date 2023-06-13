@@ -16,9 +16,13 @@ public class ObstacleBase : MonoBehaviour, IHit
     {
     }
 
-    protected void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         other.TryGetComponent(out Player player);
-        if(player) player.Hit(_atk);
+        if (player)
+        {
+            player.Hit(_atk);
+            Destroy(this.gameObject);
+        }
     }
 }
