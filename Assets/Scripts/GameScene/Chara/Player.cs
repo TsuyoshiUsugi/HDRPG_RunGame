@@ -1,11 +1,12 @@
-using Cysharp.Threading.Tasks;
-using UniRx;
 using UnityEngine;
 
 public class Player : CharaBase
 {
     float _goalPosZ = 10;
-    Vector3 _moveDir = Vector3.forward;   
+    Vector3 _moveDir = Vector3.forward;
+
+    string _attackSeName = "Attack";
+    string _hitSeName = "Hit";
 
     private void Start()
     {
@@ -45,6 +46,8 @@ public class Player : CharaBase
 
         _hp.Value -= damage;
 
+        PlaySE(_hitSeName);
+
         if (_hp.Value <= 0)
         {
             _hp.Value = 0;
@@ -61,6 +64,8 @@ public class Player : CharaBase
     {
         if (_isPose.Value) return;
         if (_hitBox == null) return;
+        
+        PlaySE(_attackSeName);
 
         foreach (var col in _hitBox.HitObjs)
         {

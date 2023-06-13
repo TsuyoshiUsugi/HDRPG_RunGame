@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -12,19 +11,22 @@ using UnityEngine.SceneManagement;
 public class AudioManager : SingletonMonobehavior<AudioManager>
 {
     [Header("設定値")]
-    [SerializeField] SceneAudioDictionary _audioDectionary;
-    AudioSource _audioSource;
+    [SerializeField] AudioDictionary _audioDectionary;
+    [SerializeField] AudioDictionary _seDictionary;
+    [SerializeField] AudioSource _bgmAudioSource;
+    [SerializeField] AudioSource _seAudioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        TryGetComponent(out _audioSource);
         SceneManager.sceneLoaded += OnChangeScene;
 
-        if (_audioSource && _audioSource.isPlaying != false)
-        {
+        if (_bgmAudioSource == null) return;
+        if (_bgmAudioSource.isPlaying) return;
+        
             PlaySceneBGM(SceneManager.GetActiveScene().name);
-        }
+            Debug.Log("Select");
+        
     }
 
     /// <summary>
@@ -43,12 +45,24 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
     /// <param name="sceneName"></param>
     void PlaySceneBGM(string sceneName)
     {
+        if (!_bgmAudioSource) return;
+
         if (_audioDectionary.GetTable().ContainsKey(sceneName))
         {
-            var a = _audioDectionary.GetList().FirstOrDefault(dict => dict.Key == sceneName);
-            _audioSource.clip = a.Value;
-            _audioSource.Play();
+            var audioData = _audioDectionary.GetList().FirstOrDefault(dict => dict.Key == sceneName);
+            _bgmAudioSource.clip = audioData.Value;
+            _bgmAudioSource.Play();
         }
+    }
+
+    /// <summary>
+    /// 引数の名前のSEを鳴らす
+    /// </summary>
+    /// <param name="seName"></param>
+    public void PlaySE(string seName)
+    {
+        var audioData = _seDictionary.GetList().FirstOrDefault(dict => dict.Key == seName);
+        _seAudioSource.PlayOneShot(audioData.Value);
     }
 }
 
@@ -56,15 +70,15 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
 /// シーン名と流す音をもつAudioDataクラス
 /// </summary>
 [System.Serializable]
-public class SceneAudioDictionary : SerializeDictonary<string, AudioClip, SceneAudio>
+public class AudioDictionary : SerializeDictonary<string, AudioClip, AudioKeyValueData>
 {
 }
 
 
 [System.Serializable]
-public class SceneAudio : KeyAndValue<string, AudioClip>
+public class AudioKeyValueData : KeyAndValue<string, AudioClip>
 {
-    public SceneAudio (string sceneName, AudioClip sceneAudio) : base (sceneName, sceneAudio)
+    public AudioKeyValueData (string sceneName, AudioClip sceneAudio) : base (sceneName, sceneAudio)
     {
 
     }

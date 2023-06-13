@@ -112,4 +112,12 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
             await UniTask.Delay(TimeSpan.FromSeconds(_flashDur), cancellationToken: token);
         }
     }
+
+    /// <summary>
+    /// SE‚ğ–Â‚ç‚·‚Æ‚«‚ÉŒÄ‚ÔŠÖ”
+    /// </summary>
+    protected void PlaySE(string seName)
+    {
+        AudioManager.Instance.PlaySE(seName);
+    }
 }

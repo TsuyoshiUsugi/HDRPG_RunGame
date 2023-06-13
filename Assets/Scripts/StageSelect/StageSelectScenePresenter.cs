@@ -12,6 +12,8 @@ public class StageSelectScenePresenter : MonoBehaviour
     [SerializeField] StageSelectView _stageSelectView;
     [SerializeField] StageSelectManager _stageSelectManager;
 
+    string _seSelectName = "Select";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +32,17 @@ public class StageSelectScenePresenter : MonoBehaviour
         _stageSelectManager.CurrentStageNum.Subscribe(num => _stageSelectView.CharaCursorImageMove(num)).AddTo(this);
         _stageSelectManager.ShowConfirmEvent += (show, stageNum) => _stageSelectView.ShowConfirmBoard(show, stageNum);
         _stageSelectManager.CurrentChoice.Subscribe(yes => _stageSelectView.MoveConfirmBoardCursor(yes)).AddTo(this);
+
+        RegisterSEEvent();
+    }
+
+    /// <summary>
+    /// “ü—Í‚ÆSE‚Ìİ’è‚ğs‚¤
+    /// </summary>
+    private void RegisterSEEvent()
+    {
+        _input.OnLeftButtonClicked += () => AudioManager.Instance.PlaySE(_seSelectName);
+        _input.OnRightButtonClicked += () => AudioManager.Instance.PlaySE(_seSelectName);
+        _input.OnMiddleButtonClicked += () => AudioManager.Instance.PlaySE(_seSelectName);
     }
 }
