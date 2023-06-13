@@ -31,7 +31,7 @@ public class GameScenePresenter : MonoBehaviour
     /// </summary>
     void RegisterModelEvent()
     {
-        _gameSceneManager.ReadyStateEvent += () => StartCoroutine(_startUI.ShowStartUI());
+        _gameSceneManager.ReadyStateEvent += async () => await _startUI.ShowStartUI();
         _gameSceneManager.FailedResultEvent += () => _failedUI.ShowFailedUI();
         _gameSceneManager.BeforeBossEvent += () => _bossUI.ShowBossUI();
         _gameSceneManager.ClearResultEvent += (score, exp) => _clearUI.ShowClearUI(score, exp);

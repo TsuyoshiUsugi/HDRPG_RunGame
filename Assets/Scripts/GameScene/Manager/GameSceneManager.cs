@@ -107,6 +107,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void ReadyState()
     {
+        
         SetPlayer();
         SetFrameRate();
         _boss.gameObject.SetActive(false);

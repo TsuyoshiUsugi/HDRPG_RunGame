@@ -1,6 +1,8 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,44 +12,42 @@ using UnityEngine.UI;
 public class StartUI : MonoBehaviour
 {
     [SerializeField] List<GameObject> _showUIs;
-    [SerializeField] float _performanceInterval = 1.0f;
+    [SerializeField] int _performanceInterval = 1000;
     [SerializeField] Text _stageName;
 
+    CancellationToken _ct;
     public event Action OnEndShowStartUI;
 
     private void Awake()
     {
+        _ct = this.GetCancellationTokenOnDestroy();
+
         if (WorldDataLoader.Instance.LoadedWorldDatas.Count != 0)
         {
             _stageName.text =
                 $"ステージ：{WorldDataLoader.Instance.LoadedWorldDatas[WorldDataLoader.Instance.CurrentStageNum].StageName}";
         }
 
-        if (_showUIs.Count == 0 || _showUIs == null)
-        {
-            StartCoroutine(nameof(ShowStartUI));
-            return;
-        }
-        
         _showUIs.ForEach(obj => obj.SetActive(false));
-
-        StartCoroutine(nameof(ShowStartUI));
     }
 
     /// <summary>
     /// スタート時に表示するUIを指定した間隔で表示
     /// </summary>
     /// <returns></returns>
-    public IEnumerator ShowStartUI()
+    public async UniTask ShowStartUI()
     {
-        if (_showUIs.Count == 0 || _showUIs == null) yield break;
+        await SceneLoadManager.Instance.OnStartScene();
+
+        if (_showUIs.Count == 0 || _showUIs == null) return;
+        
         
         foreach (GameObject go in _showUIs)
         {
-            if (go == null) yield break;
+            if (go == null) return;
 
             go.SetActive(true);
-            yield return new WaitForSeconds(_performanceInterval);
+            await UniTask.Delay(_performanceInterval, cancellationToken:_ct);
             go.SetActive(false);
         }
 
