@@ -22,6 +22,7 @@ public class GameSceneButtonInputManager : InputBase
     public override event Action OnRightButtonClicked;
     public override event Action OnMiddleButtonClicked;
     public override event Action OnLeftButtonClicked;
+    public override event Action OnOptionButtonCliked;
 
     // Start is called before the first frame update
     void Start()

@@ -12,4 +12,6 @@ public abstract class InputBase : MonoBehaviour
     public abstract event Action OnMiddleButtonClicked;
 
     public abstract event Action OnLeftButtonClicked;
+
+    public abstract event Action OnOptionButtonCliked;
 }

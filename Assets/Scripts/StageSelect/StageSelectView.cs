@@ -18,6 +18,7 @@ public class StageSelectView : MonoBehaviour
     [SerializeField] Image _confirmBoardCursor;
     [SerializeField] Text _isClearText;
     [SerializeField] Text _ScoreText;
+    [SerializeField] GameObject _optionBoard;
 
     Vector3 _yesCursorPos = new Vector3(368, -437.09f, 0);
     Vector3 _noCursorPos = new Vector3(-394, -437.09f, 0);
@@ -26,7 +27,7 @@ public class StageSelectView : MonoBehaviour
 
     private void Start()
     {
-        
+        _optionBoard.SetActive(false);
         ShowMap();
         ShowConfirmBoard(false, 0);
         //マネージャーが呼び忘れた時のために0で呼ぶ
@@ -101,8 +102,6 @@ public class StageSelectView : MonoBehaviour
         }
 
         _ScoreText.text = $"ハイスコア：{WorldDataLoader.Instance.LoadedWorldDatas[stageNum].HighScore}";
-
-
     }
 
     /// <summary>
@@ -119,5 +118,15 @@ public class StageSelectView : MonoBehaviour
         {
             _confirmBoardCursor.rectTransform.localPosition = _noCursorPos;
         }
+    }
+
+    /// <summary>
+    /// オプション画面を表示する
+    /// </summary>
+    /// <param name="yes"></param>
+    public void ShowOptionBoard()
+    {
+        if (_optionBoard.activeInHierarchy) _optionBoard.SetActive(false);
+        if (!_optionBoard.activeInHierarchy) _optionBoard.SetActive(true);
     }
 }
