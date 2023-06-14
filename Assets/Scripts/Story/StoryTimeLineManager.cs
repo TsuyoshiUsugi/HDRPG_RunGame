@@ -22,4 +22,16 @@ public class StoryTimeLineManager : MonoBehaviour
         //if (_playableDirector.duration < _playableDirector.time + _skipDur) return;
         _playableDirector.time = _clikedTime * _skipDur;
     }
+
+    public void Pose()
+    {
+        if (_playableDirector.state == PlayState.Paused)
+        {
+            _playableDirector.Play();
+        }
+        else
+        {
+            _playableDirector.Pause();
+        }
+    }
 }
