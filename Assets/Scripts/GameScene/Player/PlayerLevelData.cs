@@ -5,24 +5,29 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerLevelData", menuName = "ScriptableObjects/CreatePlayerLevelData")]
 public class PlayerLevelData : ScriptableObject
 {
-    [SerializeField] List<EachLevelData> _data= new List<EachLevelData>();
-    int _maxlevel = 20;
+    [SerializeField] List<EachLevelData> _levelData= new List<EachLevelData>();
+    int _maxLevel = 20;
+
+    public int Maxlevel => _maxLevel;
+    public List<EachLevelData> Data => _levelData;
 
     private void Awake()
     {
+        //初期値
+        _levelData.Add(new EachLevelData(1, 10, 3, 1, 2, 1, new Vector3(0, -0.128f, 3.14f), new Vector3(0.29f, 0.013f, 4.42f)));
 
-        _data.Add(new EachLevelData(1, 3, 1, 1, 1, new Vector3(1, 1, 1)));
-
-        for (int i = 1; i < _maxlevel; i++)
+        for (int i = 1; i < _maxLevel; i++)
         {
             var level = i + 1;
-            var hp = _data[i - 1].Hp + 10;
-            var atk = _data[i - 1].Atk + 10;
-            var speed = _data[i - 1].Speed + 10;
-            var atkRate = _data[i - 1].AtkRate + 10;
-            var attackHitBoxSize = _data[i - 1].AttackHitBoxSize + new Vector3(0.1f, 0, 0);
+            var requireExp = 1;
+            var hp = _levelData[i - 1].Hp + 10;
+            var atk = _levelData[i - 1].Atk + 10;
+            var speed = _levelData[i - 1].Speed + 10;
+            var atkRate = _levelData[i - 1].AtkRate + 10;
+            var attackHitBoxPos = _levelData[i - 1].AttackHitBoxPos + new Vector3(0.1f, 0, 0);
+            var attackHitBoxSize = _levelData[i - 1].AttackHitBoxSize + new Vector3(0.1f, 0, 0);
 
-            _data.Add(new EachLevelData(level, hp, atk, speed, atkRate, attackHitBoxSize));
+            _levelData.Add(new EachLevelData(level, requireExp, hp, atk, speed, atkRate, attackHitBoxPos, attackHitBoxSize));
         }
     }
 }
@@ -31,19 +36,34 @@ public class PlayerLevelData : ScriptableObject
 public struct EachLevelData
 {
     public int Level;
+    public int RequireExp;
     public int Hp;
     public int Atk;
     public int Speed;
     public int AtkRate;
     public Vector3 AttackHitBoxSize;
+    public Vector3 AttackHitBoxPos;
 
-    public EachLevelData(int level, int hp, int atk, int speed, int atkRate, Vector3 attackHitBoxSize)
+    /// <summary>
+    /// レベルが待つデータ
+    /// </summary>
+    /// <param name="level"></param>
+    /// <param name="requireExp"></param>
+    /// <param name="hp"></param>
+    /// <param name="atk"></param>
+    /// <param name="speed"></param>
+    /// <param name="atkRate"></param>
+    /// <param name="attackHitBoxSize"></param>
+    /// <param name="attackHitBoxPos"></param>
+    public EachLevelData(int level, int requireExp , int hp, int atk, int speed, int atkRate, Vector3 attackHitBoxPos, Vector3 attackHitBoxSize)
     {
         Level = level;
+        RequireExp = requireExp;
         Hp = hp;
         Atk = atk;
         Speed = speed;
         AtkRate = atkRate;
+        AttackHitBoxPos = attackHitBoxPos;
         AttackHitBoxSize =  attackHitBoxSize;
     }
 }
