@@ -8,8 +8,10 @@ public class GameProgressManager : SingletonMonobehavior<GameProgressManager>
     public Dictionary<string, bool> LoadedProgressData => _loadedProgressData;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        base.Awake();
+
         foreach (var data in _progressData.GameProgressDictionary.GetList())
         {
             var isClear = PlayerPrefs.GetInt(data.Key, 0);
