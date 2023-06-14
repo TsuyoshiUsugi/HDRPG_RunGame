@@ -158,6 +158,8 @@ MonoBehaviour:
       Value: {fileID: 8300000, guid: 12fd30d08644d72469ff6d78ae74d1f0, type: 3}
     - Key: GameScene1-2
       Value: {fileID: 8300000, guid: e094d65ddca95db49a0fb7ae2b28697d, type: 3}
+    - Key: GameScene1-3
+      Value: {fileID: 8300000, guid: e094d65ddca95db49a0fb7ae2b28697d, type: 3}
   _seDictionary:
     _list:
     - Key: Attack
