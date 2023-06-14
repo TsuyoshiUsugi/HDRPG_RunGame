@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Serialize;
 
+[CreateAssetMenu(fileName = "ProgressData", menuName = "ScriptableObjects/CreateProgressData")]
 public class GameProgressData : ScriptableObject
 {
     [SerializeField] GameProgressDictionary _gameProgressDictionary;
+    public GameProgressDictionary GameProgressDictionary => _gameProgressDictionary;
 }
 
 /// <summary>
