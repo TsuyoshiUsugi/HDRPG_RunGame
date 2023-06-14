@@ -15,6 +15,7 @@ public class SceneLoadManager : SingletonMonobehavior<SceneLoadManager>
     {
         _fadeImage.gameObject.SetActive(true);
         _fadeImage.color = new Color(0, 0, 0, 1);
+        _fadeImage.DOFade(0, _fadeDuration).SetLink(_fadeImage.gameObject);
     }
 
     public void LoadScene(string sceneName)
