@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UniRx;
-using UniRx.Triggers;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 
 /// <summary>
 /// ゲームシーンを管理する
@@ -15,6 +15,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     [Header("参照")]
     [SerializeField] Player _player;
     [SerializeField] Enemy _boss;
+    [SerializeField] PlayerLevelDataLoader _playerLevelDataLoader;
 
     [Header("設定値")]
     [SerializeField] float _leftSide = -2.5f; 
@@ -33,6 +34,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     bool _inputAcceptance = false;
     string _stageSelectScene = "StageSelect";
     float _inputAcceptanceDelayMiliSec = 1000;
+    CancellationToken ct;
 
     public float Goal => _goal;
     public bool IsClear => _isClear;
@@ -62,6 +64,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         _score = 0;
         _aquireExp = 0;
         _gameSceneState.Value = GameSceneState.Ready;
+        ct = this.GetCancellationTokenOnDestroy();
     }
 
     /// <summary>
@@ -129,7 +132,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     /// </summary>
     void ReadyState()
     {
-        
+        ControlObjsMove(false);
         SetPlayer();
         SetFrameRate();
         _boss.gameObject.SetActive(false);
@@ -164,11 +167,20 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
     }
 
     /// <summary>
-    /// Playerの生成処理
+    /// Playerの初期化
     /// </summary>
     void SetPlayer()
     {
-        ControlObjsMove(false);
+        int level = _playerLevelDataLoader.CurrentLevelData.Level;
+        int hp = _playerLevelDataLoader.CurrentLevelData.Hp;
+        int atk = _playerLevelDataLoader.CurrentLevelData.Atk;
+        float speed = _playerLevelDataLoader.CurrentLevelData.Speed;
+        float atkRate = _playerLevelDataLoader.CurrentLevelData.AtkRate;
+        Vector3 attackHitBoxPos = _playerLevelDataLoader.CurrentLevelData.AttackHitBoxPos;
+        Vector3 attackHitBoxSize = _playerLevelDataLoader.CurrentLevelData.AttackHitBoxSize;
+        Debug.Log(level);
+
+        _player.Initialize(level, hp, atk, speed, atkRate, attackHitBoxPos, attackHitBoxSize);
     }
 
     /// <summary>
@@ -211,6 +223,7 @@ public class GameSceneManager : SingletonMonobehavior<GameSceneManager>
         if (_boss.IsDeath.Value)
         {
             _isClear = true;
+            _playerLevelDataLoader.CheckLevelUp(_aquireExp);
             ClearResultEvent?.Invoke(_score, _aquireExp);
             CallSaveData();
             WaitClearResultEvent().Forget();

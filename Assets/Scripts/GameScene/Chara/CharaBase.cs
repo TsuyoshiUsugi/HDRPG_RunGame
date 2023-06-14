@@ -31,7 +31,7 @@ public class CharaBase : MonoBehaviour, IHit, IPosable
     [SerializeField] protected int _atk = 1;
     [SerializeField] protected float _speed = 1f;
     [SerializeField] protected float _atkRate = 1;
-    [SerializeField] GameObject _attackHitBox;
+    [SerializeField] protected GameObject _attackHitBox;
 
 
     protected int _flashTime = 2;

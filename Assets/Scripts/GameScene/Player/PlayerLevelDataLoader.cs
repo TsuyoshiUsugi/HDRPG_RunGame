@@ -16,7 +16,7 @@ public class PlayerLevelDataLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _currentLevel = PlayerPrefs.GetInt(_getCurrentLevelKey, 1);
+        _currentLevel = PlayerPrefs.GetInt(_getCurrentLevelKey, _currentLevel);
         _currentlevelExp = PlayerPrefs.GetInt(_getCurrentLevelExpKey, 0);
         _currentLevelData = _playerLevelData.Data[_currentLevel - 1];
     }

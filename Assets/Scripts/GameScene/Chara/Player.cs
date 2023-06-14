@@ -3,6 +3,7 @@ using System;
 
 public class Player : CharaBase
 {
+    [SerializeField] int _level = 1;
     float _goalPosZ = 10;
     Vector3 _moveDir = Vector3.forward;
 
@@ -14,6 +15,17 @@ public class Player : CharaBase
     private void Start()
     {
         _goalPosZ = GameSceneManager.Instance.Goal;
+    }
+
+    public void Initialize(int level, int hp, int atk, float speed, float atkRate, Vector3 attackHitBoxPos, Vector3 attackHitBoxSize)
+    {
+        _level = level;
+        _hp.Value = hp;
+        _atk = atk;
+        _speed = speed;
+        _atkRate = atkRate;
+        _attackHitBox.transform.localPosition = attackHitBoxPos;
+        _attackHitBox.transform.localScale = attackHitBoxSize;
     }
 
     /// <summary>
