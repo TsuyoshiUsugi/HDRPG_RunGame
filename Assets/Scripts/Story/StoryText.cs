@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoryText : MonoBehaviour
+[CreateAssetMenu(fileName = "TextData", menuName = "ScriptableObjects/CreateTextData")]
+public class StoryText : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField, Multiline(2)] string _text = ""; 
+    public string Text => _text;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[CreateAssetMenu(fileName = "TextDataGroup", menuName = "ScriptableObjects/CreateTextDataGroup")]
+public class StoryTextGroup : ScriptableObject
+{
+    [SerializeField] List<StoryText> _storyTexts = new List<StoryText>();
+    public List<StoryText> StoryTexts => _storyTexts;
 }
