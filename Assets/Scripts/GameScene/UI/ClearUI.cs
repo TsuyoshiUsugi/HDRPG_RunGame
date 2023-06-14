@@ -19,6 +19,7 @@ public class ClearUI : MonoBehaviour
     {
         if (_showUI == null) return;
         _showUI.SetActive(false);
+        _levelUpText.gameObject.SetActive(false);
     }
 
     public void ShowClearUI(int score, int exp)
@@ -26,6 +27,13 @@ public class ClearUI : MonoBehaviour
         _showUI.SetActive(true);
         _scoreText.text = $"スコア：{score}";
         _expText.text = $"EXP：{exp}";
+    }
+
+    public void ShowlevelUI(int preLevel, int currentLevel, int nextLevelExp)
+    {
+        _levelUpText.gameObject.SetActive(true);
+        _levelUpText.text = $"レベルアップ!:{preLevel} → {currentLevel}";
+        _nextLevelExpText.text = $"次の経験値まで:{nextLevelExp}";
     }
 
     public void MoveCursor(bool right)

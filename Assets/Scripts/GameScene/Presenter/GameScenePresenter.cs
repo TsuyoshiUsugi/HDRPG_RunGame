@@ -11,6 +11,7 @@ public class GameScenePresenter : MonoBehaviour
     [Header("ModelŽQÆ")]
     [SerializeField] GameSceneManager _gameSceneManager;
     [SerializeField] Player _player;
+    [SerializeField] PlayerLevelDataLoader _playerLevelDataLoader;
 
     [Header("ViewŽQÆ")]
     [SerializeField] StartUI _startUI;
@@ -62,6 +63,8 @@ public class GameScenePresenter : MonoBehaviour
                 _clearUI.MoveCursor(false);
             }
         }).AddTo(this);
+
+        _playerLevelDataLoader.OnLevelUpEvene += (preLevel, nextLevel, currentExp) => _clearUI.ShowlevelUI(preLevel, nextLevel, currentExp);
     }
 
     /// <summary>
