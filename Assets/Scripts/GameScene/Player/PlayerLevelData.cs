@@ -9,6 +9,7 @@ public class PlayerLevelData : ScriptableObject
     int _maxLevel = 20;
     int _requireExpRate = 10;
     int _hpIncreaseRate = 5;
+    int _atkIncreaseRate = 5;
     float _speedIncreaseRate = 0.01f;
     float _attackRateIncreaseRate = 0.01f;
 
@@ -25,11 +26,11 @@ public class PlayerLevelData : ScriptableObject
             var level = i + 1;
             var requireExp = _requireExpRate * i;
             var hp = _levelData[i - 1].Hp + i / _hpIncreaseRate;
-            var atk = _levelData[i - 1].Atk + i;
+            var atk = _levelData[i - 1].Atk + i / _atkIncreaseRate;
             var speed = _levelData[i - 1].Speed + _speedIncreaseRate;
             var atkRate = _levelData[i - 1].AtkRate - _attackRateIncreaseRate;
             var attackHitBoxPos = _levelData[i - 1].AttackHitBoxPos + new Vector3(0, 0, 0.1f);
-            var attackHitBoxSize = _levelData[i - 1].AttackHitBoxSize + new Vector3(0, 0, 0.1f);
+            var attackHitBoxSize = _levelData[i - 1].AttackHitBoxSize + new Vector3(0, 0, 0.2f);
 
             _levelData.Add(new EachLevelData(level, requireExp, hp, atk, speed, atkRate, attackHitBoxPos, attackHitBoxSize));
         }
@@ -45,20 +46,9 @@ public struct EachLevelData
     public int Atk;
     public float Speed;
     public float AtkRate;
-    public Vector3 AttackHitBoxSize;
     public Vector3 AttackHitBoxPos;
+    public Vector3 AttackHitBoxSize;
 
-    /// <summary>
-    /// レベルが待つデータ
-    /// </summary>
-    /// <param name="level"></param>
-    /// <param name="requireExp"></param>
-    /// <param name="hp"></param>
-    /// <param name="atk"></param>
-    /// <param name="speed"></param>
-    /// <param name="atkRate"></param>
-    /// <param name="attackHitBoxSize"></param>
-    /// <param name="attackHitBoxPos"></param>
     public EachLevelData(int level, int requireExp , int hp, int atk, float speed, float atkRate, Vector3 attackHitBoxPos, Vector3 attackHitBoxSize)
     {
         Level = level;
