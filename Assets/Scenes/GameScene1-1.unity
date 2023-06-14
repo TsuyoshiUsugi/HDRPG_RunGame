@@ -13516,6 +13516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557787169}
   - component: {fileID: 1557787168}
+  - component: {fileID: 1557787170}
   m_Layer: 0
   m_Name: GameSceneManager
   m_TagString: Untagged
@@ -13538,6 +13539,7 @@ MonoBehaviour:
   _dontDestroy: 0
   _player: {fileID: 1786604877}
   _boss: {fileID: 1584792833}
+  _playerLevelDataLoader: {fileID: 1557787170}
   _leftSide: -2
   _rightSide: 2
   _goal: 37.5
@@ -13560,6 +13562,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1557787170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557787167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99020d1b6ff1ee43a1b7e806533e54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLevelData: {fileID: 11400000, guid: ff0ca1397ad19e84fadd019fe82e1dfa, type: 2}
+  _currentLevel: 1
+  _currentlevelExp: 0
+  _currentLevelData:
+    Level: 0
+    RequireExp: 0
+    Hp: 0
+    Atk: 0
+    Speed: 0
+    AtkRate: 0
+    AttackHitBoxPos: {x: 0, y: 0, z: 0}
+    AttackHitBoxSize: {x: 0, y: 0, z: 0}
+  _debug: 0
 --- !u!1001 &1570766691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16525,6 +16552,7 @@ MonoBehaviour:
   _attackHitBox: {fileID: 1468747119}
   _isDeath:
     value: 0
+  _level: 1
 --- !u!54 &1786604878
 Rigidbody:
   m_ObjectHideFlags: 0
