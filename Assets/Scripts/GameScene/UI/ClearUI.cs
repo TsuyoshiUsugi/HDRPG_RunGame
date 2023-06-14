@@ -31,6 +31,12 @@ public class ClearUI : MonoBehaviour
 
     public void ShowlevelUI(int preLevel, int currentLevel, int nextLevelExp)
     {
+        if (preLevel == 0)
+        {
+            _nextLevelExpText.text = $"次の経験値まで:{nextLevelExp}";
+            return;
+        }
+
         _levelUpText.gameObject.SetActive(true);
         _levelUpText.text = $"レベルアップ!:{preLevel} → {currentLevel}";
         _nextLevelExpText.text = $"次の経験値まで:{nextLevelExp}";

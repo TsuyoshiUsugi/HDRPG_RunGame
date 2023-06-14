@@ -12190,6 +12190,8 @@ MonoBehaviour:
   _showUI: {fileID: 801477543}
   _scoreText: {fileID: 263941479}
   _expText: {fileID: 156994235}
+  _nextLevelExpText: {fileID: 1230655846}
+  _levelUpText: {fileID: 793901263}
   _cursor: {fileID: 356548897}
 --- !u!114 &1241358399
 MonoBehaviour:
@@ -12359,6 +12361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameSceneManager: {fileID: 1557787168}
   _player: {fileID: 1786604877}
+  _playerLevelDataLoader: {fileID: 1557787170}
   _startUI: {fileID: 1241358395}
   _Input: {fileID: 1029914116}
   _failedUI: {fileID: 1241358397}
@@ -13801,7 +13804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerLevelData: {fileID: 11400000, guid: ff0ca1397ad19e84fadd019fe82e1dfa, type: 2}
-  _currentLevel: 1
+  _currentLevel: 4
   _currentlevelExp: 0
   _currentLevelData:
     Level: 0

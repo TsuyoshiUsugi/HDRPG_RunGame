@@ -48,13 +48,17 @@ public class PlayerLevelDataLoader : MonoBehaviour
             PlayerPrefs.SetInt(_getCurrentLevelKey, _currentLevel);
             PlayerPrefs.SetInt(_getCurrentLevelExpKey, restExp);
             CheckLevelUp(restExp);
-            OnLevelUpEvene?.Invoke(_currentLevel - 1, _currentLevel, _currentlevelExp);
-            Debug.Log($"{_currentLevel - 1}, {_currentLevel}, {_currentlevelExp}");
+
+            var nextLevelExp = _playerLevelData.Data[_currentLevel].RequireExp - _currentlevelExp;
+            OnLevelUpEvene?.Invoke(_currentLevel - 1, _currentLevel, nextLevelExp);
+            Debug.Log($"{_currentLevel - 1}, {_currentLevel}, {nextLevelExp}");
         }
         else
         {
             PlayerPrefs.SetInt(_getCurrentLevelExpKey, _currentlevelExp + exp);
             _currentlevelExp = _currentlevelExp + exp;
+            var nextLevelExp = _playerLevelData.Data[_currentLevel].RequireExp - _currentlevelExp;
+            OnLevelUpEvene?.Invoke(0, 0, nextLevelExp);
         }
     }
 }
