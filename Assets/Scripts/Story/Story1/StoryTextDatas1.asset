@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Story1TextData
-  m_EditorClassIdentifier: Assembly-CSharp::StoryTextGroup
+  m_Script: {fileID: 11500000, guid: dce6c8bf529973243af55c1f6342e3f5, type: 3}
+  m_Name: StoryTextDatas1
+  m_EditorClassIdentifier: 
   _storyTexts:
   - {fileID: 11400000, guid: ad190d42a1811794ea146bba834329d5, type: 2}
   - {fileID: 11400000, guid: df28c564caed9cc47bc020fe68e20569, type: 2}
