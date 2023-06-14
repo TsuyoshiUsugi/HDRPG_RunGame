@@ -13,6 +13,6 @@ public class StoryInputManager : MonoBehaviour
     void Start()
     {
         _skipButton.onClick.AddListener(() => OnSkipButtonClicked?.Invoke());
-        _optionButton.onClick.AddListener(() => OnSkipButtonClicked?.Invoke());
+        _optionButton.onClick.AddListener(() => OnOptionButtonClicked?.Invoke());
     }
 }

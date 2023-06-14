@@ -68,8 +68,8 @@ public class GameScenePresenter : MonoBehaviour
     /// </summary>
     void RegisterViewEvent()
     {
-        _optionUI.OnBgmSliderValueChanged += vol => AudioManager.Instance.SetBGM(vol);
-        _optionUI.OnSESliderValueChanged += vol => AudioManager.Instance.SetSE(vol);
+        _optionUI.OnBgmSliderValueChanged += vol => AudioManager.Instance.SetBGMVol(vol);
+        _optionUI.OnSESliderValueChanged += vol => AudioManager.Instance.SetSEVol(vol);
         _startUI.OnEndShowStartUI += () => _gameSceneManager.SwitchState(GameSceneState.Playing);
         _bossUI.OnEndBeforeBossEvent += () => _gameSceneManager.SwitchState(GameSceneState.Boss);
         _Input.OnOptionButtonClicked += () => _gameSceneManager.SwitchState(GameSceneState.Pose);

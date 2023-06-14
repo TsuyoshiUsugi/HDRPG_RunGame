@@ -80,13 +80,13 @@ public class AudioManager : SingletonMonobehavior<AudioManager>
         _seAudioSource.PlayOneShot(audioData.Value);
     }
 
-    public void SetBGM(float vol)
+    public void SetBGMVol(float vol)
     {
         _mixer.SetFloat(_bgmName, vol);
         _bgmVol = vol;
     }
 
-    public void SetSE(float vol)
+    public void SetSEVol(float vol)
     {
         _mixer.SetFloat(_seName, vol);
         _seVol = vol;

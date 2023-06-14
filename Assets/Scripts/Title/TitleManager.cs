@@ -29,8 +29,8 @@ public class TitleManager : MonoBehaviour
             _optionUI.ShowOptionBoard();
             AudioManager.Instance.PlaySE(_selectSe);
         });
-        _optionUI.OnBgmSliderValueChanged += num => AudioManager.Instance.SetBGM(num);
-        _optionUI.OnSESliderValueChanged += num => AudioManager.Instance.SetSE(num);
+        _optionUI.OnBgmSliderValueChanged += num => AudioManager.Instance.SetBGMVol(num);
+        _optionUI.OnSESliderValueChanged += num => AudioManager.Instance.SetSEVol(num);
 
         await SceneLoadManager.Instance.OnStartScene();
     }
