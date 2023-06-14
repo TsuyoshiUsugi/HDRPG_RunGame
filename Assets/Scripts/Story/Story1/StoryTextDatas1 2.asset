@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce6c8bf529973243af55c1f6342e3f5, type: 3}
+  m_Name: StoryTextDatas1 2
+  m_EditorClassIdentifier: 
+  _storyTexts:
+  - {fileID: 11400000, guid: f765c6c8e485dd34a854da34293f3d65, type: 2}
+  - {fileID: 11400000, guid: 36b73d7494d45e843b198fbaff4762a9, type: 2}
+  - {fileID: 11400000, guid: 54a1d98457bad054f955c2c2c0242d6d, type: 2}
+  - {fileID: 11400000, guid: c69b320c94db54640a9ac696bf89a892, type: 2}
+  - {fileID: 11400000, guid: cb19ee5ac4154974cb9fb4ef1f564dc3, type: 2}
+  - {fileID: 11400000, guid: eb06119d516508447a577e90bd51c5cd, type: 2}
+  - {fileID: 11400000, guid: 90abdbc16ebfbaf45963acdb62205ae2, type: 2}
+  - {fileID: 11400000, guid: 405442e93feb82642b46babea5712cf7, type: 2}

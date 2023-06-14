@@ -154,6 +154,12 @@ MonoBehaviour:
       Value: {fileID: 8300000, guid: e094d65ddca95db49a0fb7ae2b28697d, type: 3}
     - Key: Boss1-1
       Value: {fileID: 8300000, guid: 12fd30d08644d72469ff6d78ae74d1f0, type: 3}
+    - Key: Story1
+      Value: {fileID: 8300000, guid: d04c1a469ad1efd49a31bec271c14b1f, type: 3}
+    - Key: Story1 1
+      Value: {fileID: 8300000, guid: d04c1a469ad1efd49a31bec271c14b1f, type: 3}
+    - Key: Story1 2
+      Value: {fileID: 8300000, guid: 27a2fb8c9e25c1044a6d6c7853a50fd2, type: 3}
   _seDictionary:
     _list:
     - Key: Attack

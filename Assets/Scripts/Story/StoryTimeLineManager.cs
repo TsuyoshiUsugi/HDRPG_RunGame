@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -13,13 +13,15 @@ public class StoryTimeLineManager : MonoBehaviour
     void Start()
     {
         TryGetComponent(out _playableDirector);
+        Observable.Interval(TimeSpan.FromSeconds(_skipDur))
+            .Subscribe(_ => _clikedTime++)
+            .AddTo(this);
     }
 
     public void Skip()
     {
         _clikedTime++;
 
-        //if (_playableDirector.duration < _playableDirector.time + _skipDur) return;
         _playableDirector.time = _clikedTime * _skipDur;
     }
 
