@@ -98,7 +98,7 @@ public class GameScenePresenter : MonoBehaviour
 
                 _player.Attack();
                 _playerEffect.ShowEffect(_attackEffectName);
-                _attackRateUI.ShowAttackRate((int)_gameSceneManager.Player.AtkRate * 1000);
+                _attackRateUI.ShowAttackRate(_gameSceneManager.Player.AtkRate);
                 _gameSceneManager.LoadNextScene();
             }
         };

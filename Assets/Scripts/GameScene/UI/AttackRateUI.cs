@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -21,10 +22,10 @@ public class AttackRateUI : MonoBehaviour
         ct = this.GetCancellationTokenOnDestroy();
     }
 
-    public async UniTask ShowAttackRate(int time)
+    public async void ShowAttackRate(float time)
     {
         _middleButtonImage.color = Color.red;
-        await UniTask.Delay(time, cancellationToken: ct);
+        await UniTask.Delay(TimeSpan.FromSeconds(time), cancellationToken: ct);
         _middleButtonImage.color = _originalColor;
     }
 }
