@@ -63,7 +63,6 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
 
         //•Û‘¶
         PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].IsClearKey, 1);
-        if (_loadedWorldDatas[_currentStageNum].HighScore < score)
         PlayerPrefs.SetInt(_currentWorldData.StageDatas[_currentStageNum].ScoreKey, score);
     }
 }
