@@ -11,7 +11,7 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
     [SerializeField] WorldData _currentWorldData;
     Sprite _backGroundImaga;
     int _currentStageNum = 0;
-    List<LoadedWorldData> _loadedWorldDatas = new List<LoadedWorldData>();
+    [SerializeField] List<LoadedWorldData> _loadedWorldDatas = new List<LoadedWorldData>();
 
     public int CurrentStageNum { get => _currentStageNum; set { _currentStageNum = value;} }
     public Sprite BackGroundImage => _backGroundImaga;
@@ -77,6 +77,7 @@ public class WorldDataLoader : SingletonMonobehavior<WorldDataLoader>
 /// ロードするsceneの名前
 /// UIを表示する場所
 /// </summary>
+[System.Serializable]
 public struct LoadedWorldData
 {
     public string StageName;
