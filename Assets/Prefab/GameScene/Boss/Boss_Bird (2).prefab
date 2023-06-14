@@ -119,7 +119,8 @@ MonoBehaviour:
   _currentState: 1
   _ground: 0.5
   _switchStateTime: 5
-  _restStateColSizeZ: 1.9
+  _restStateColSizeZ: 1.08
+  _restStateColCenterZ: -0.4
 --- !u!114 &2769779769999728688
 MonoBehaviour:
   m_ObjectHideFlags: 0
