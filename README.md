@@ -30,6 +30,7 @@ https://app.diagrams.net/?libs=general;uml#G14A-vQKgytsCeHkgOPZGffD1XF1XxOG1C
 ・https://maou.audio/game_medley02/  
 ・https://pipoya.net/sozai/assets/map-chip_tileset16/  
 ・https://maou.audio/game_dangeon23/  
+・https://maou.audio/bgm_fantasy07/  
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
