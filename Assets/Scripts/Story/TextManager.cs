@@ -21,6 +21,7 @@ public class TextManager : MonoBehaviour
 
     public void ShowText()
     {
+        Debug.Log("Call");
         if (_storyTextqueue.Count <= 0) return; 
         _showTextBox.text = _storyTextqueue.Dequeue();
     }
