@@ -14,6 +14,7 @@ public class Enemy : CharaBase
     [SerializeField] int _score = 1;
     [SerializeField] int _exp = 1;
     [SerializeField] EnemyHPUI _healthUI;
+    [SerializeField] bool _activate = false;
     [SerializeField] float _activateDis = 15;
     [SerializeField] bool _isBoss = false;
 
@@ -22,7 +23,7 @@ public class Enemy : CharaBase
     IEnemyAttack _enemyAttack;
     string _attackSeName = "Attack";
     string _hitSeName = "Hit";
-    [SerializeField] FloatReactiveProperty _dis = new FloatReactiveProperty();
+    [SerializeField] float _dis = 0;
 
     public string Name => _name;
 
@@ -39,18 +40,16 @@ public class Enemy : CharaBase
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                _dis.Value = Mathf.Abs(this.transform.position.z - GameSceneManager.Instance.Player.gameObject.transform.position.z);
+                _dis = Mathf.Abs(this.transform.position.z - GameSceneManager.Instance.Player.gameObject.transform.position.z);
                 Activate();
             })
             .AddTo(this.gameObject);
-        this.gameObject.SetActive(false);
     }
 
     void Activate()
     {
         if (_isBoss) return;
-        if (_dis.Value > _activateDis) return;
-        this.gameObject.SetActive(true);
+        if (_dis < _activateDis) _activate = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,12 +62,14 @@ public class Enemy : CharaBase
     protected override void AutoForwardMove()
     {
         if (GameSceneManager.Instance.Player.IsDeath.Value) return;
+        if (!_isBoss && !_activate) return;
         if (_enemyMove != null) _enemyMove.EnemyMove(_speed);
         ResetPos();
     }
 
     public override void Attack()
     {
+        if (!_isBoss && !_activate) return;
         _enemyAttack?.EnemyAttack();
     }
 
