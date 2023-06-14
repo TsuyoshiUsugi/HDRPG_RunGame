@@ -83,7 +83,7 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
         if (_currentStateTime <= _switchStateTime)
         {
             _currentStateTime += Time.deltaTime;
-            transform.position -= Vector3.down * _speed * Time.deltaTime;
+            transform.position -= Vector3.down * Mathf.Abs(_speed) * Time.deltaTime;
             _hitCollider.size = new Vector3(_hitCollider.size.x, _hitCollider.size.y, _restStateColSizeZ);
 
             if (transform.position.y <= _ground) transform.position =
@@ -91,7 +91,7 @@ public class BossMove1_1 : MonoBehaviour, IEnemyMove
         }
         else
         {
-            transform.position += Vector3.down * _speed * Time.deltaTime;
+            transform.position += Vector3.down * Mathf.Abs(_speed) * Time.deltaTime;
 
             if (transform.position.y >= _originPos)
             {
