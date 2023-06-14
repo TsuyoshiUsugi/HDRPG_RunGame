@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameProgressManager : SingletonMonobehavior<GameProgressManager>
 {
     [SerializeField] GameProgressData _progressData;
-    Dictionary<bool, string> _loadedProgressData = new Dictionary<bool, string>();
+    Dictionary<string, bool> _loadedProgressData = new Dictionary<string, bool>();
 
     // Start is called before the first frame update
     void Start()
@@ -15,17 +15,18 @@ public class GameProgressManager : SingletonMonobehavior<GameProgressManager>
 
             if (isClear != 0)
             {
-                _loadedProgressData.Add(true, data.Value);
+                _loadedProgressData.Add(data.Key, true);
             }
             else
             {
-                _loadedProgressData.Add(false, data.Value);
+                _loadedProgressData.Add(data.Key, false);
             }
         }
     }
 
-    public void Clear(int num)
+    public void Clear(string progressName)
     {
-
+        _loadedProgressData[progressName] = true;
+        PlayerPrefs.SetInt(progressName, 1);
     }
 }
