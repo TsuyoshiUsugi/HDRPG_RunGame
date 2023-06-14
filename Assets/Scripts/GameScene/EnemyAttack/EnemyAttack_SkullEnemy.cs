@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack_SkullEnemy : MonoBehaviour
+public class EnemyAttack_SkullEnemy : IEnemyAttack
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject _flame;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
