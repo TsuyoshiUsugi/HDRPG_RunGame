@@ -19,157 +19,157 @@ MonoBehaviour:
     Atk: 1
     Speed: 2
     AtkRate: 1
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 4.42}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.14}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 4.42}
   - Level: 2
     RequireExp: 10
     Hp: 3
     Atk: 1
     Speed: 2.01
     AtkRate: 0.99
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 4.62}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.24}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 4.62}
   - Level: 3
     RequireExp: 20
     Hp: 3
     Atk: 1
     Speed: 2.02
     AtkRate: 0.98
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 4.8199997}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.34}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 4.8199997}
   - Level: 4
     RequireExp: 30
     Hp: 3
     Atk: 1
     Speed: 2.03
     AtkRate: 0.97
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.0199995}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.4399998}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.0199995}
   - Level: 5
     RequireExp: 40
     Hp: 3
     Atk: 1
     Speed: 2.04
     AtkRate: 0.96000004
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.2199993}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.5399997}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.2199993}
   - Level: 6
     RequireExp: 50
     Hp: 4
     Atk: 2
     Speed: 2.05
     AtkRate: 0.95000005
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.419999}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.6399996}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.419999}
   - Level: 7
     RequireExp: 60
     Hp: 5
     Atk: 3
     Speed: 2.06
     AtkRate: 0.94000006
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.619999}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.7399995}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.619999}
   - Level: 8
     RequireExp: 70
     Hp: 6
     Atk: 4
     Speed: 2.07
     AtkRate: 0.93000007
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.8199987}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.8399994}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 5.8199987}
   - Level: 9
     RequireExp: 80
     Hp: 7
     Atk: 5
     Speed: 2.08
     AtkRate: 0.9200001
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.0199986}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 3.9399993}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.0199986}
   - Level: 10
     RequireExp: 90
     Hp: 8
     Atk: 6
     Speed: 2.09
     AtkRate: 0.9100001
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.2199984}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.0399995}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.2199984}
   - Level: 11
     RequireExp: 100
     Hp: 10
     Atk: 8
     Speed: 2.1
     AtkRate: 0.9000001
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.419998}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.1399994}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.419998}
   - Level: 12
     RequireExp: 110
     Hp: 12
     Atk: 10
     Speed: 2.11
     AtkRate: 0.8900001
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.619998}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.2399993}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.619998}
   - Level: 13
     RequireExp: 120
     Hp: 14
     Atk: 12
     Speed: 2.12
     AtkRate: 0.8800001
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.819998}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.339999}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 6.819998}
   - Level: 14
     RequireExp: 130
     Hp: 16
     Atk: 14
     Speed: 2.1299999
     AtkRate: 0.8700001
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.0199976}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.439999}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.0199976}
   - Level: 15
     RequireExp: 140
     Hp: 18
     Atk: 16
     Speed: 2.1399999
     AtkRate: 0.86000013
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.2199974}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.539999}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.2199974}
   - Level: 16
     RequireExp: 150
     Hp: 21
     Atk: 19
     Speed: 2.1499999
     AtkRate: 0.85000014
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.419997}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.639999}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.419997}
   - Level: 17
     RequireExp: 160
     Hp: 24
     Atk: 22
     Speed: 2.1599998
     AtkRate: 0.84000015
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.619997}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.739999}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.619997}
   - Level: 18
     RequireExp: 170
     Hp: 27
     Atk: 25
     Speed: 2.1699998
     AtkRate: 0.83000016
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.819997}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.8399987}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 7.819997}
   - Level: 19
     RequireExp: 180
     Hp: 30
     Atk: 28
     Speed: 2.1799998
     AtkRate: 0.8200002
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 8.019997}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 4.9399986}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 8.019997}
   - Level: 20
     RequireExp: 190
     Hp: 33
     Atk: 31
     Speed: 2.1899998
     AtkRate: 0.8100002
-    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 8.219996}
     AttackHitBoxPos: {x: 0, y: -0.128, z: 5.0399985}
+    AttackHitBoxSize: {x: 0.29, y: 0.013, z: 8.219996}
