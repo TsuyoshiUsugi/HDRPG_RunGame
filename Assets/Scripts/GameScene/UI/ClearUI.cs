@@ -7,6 +7,8 @@ public class ClearUI : MonoBehaviour
     [SerializeField] GameObject _showUI;
     [SerializeField] Text _scoreText;
     [SerializeField] Text _expText;
+    [SerializeField] Text _nextLevelExpText;
+    [SerializeField] Text _levelUpText;
     [SerializeField] Image _cursor;
 
     Vector3 _cursorRightPos = new Vector3(144, -226.5f, 0);
