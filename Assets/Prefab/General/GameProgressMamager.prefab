@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f381fecced9dc3e4d9760c8be9b1867b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dontDestroy: 1
+  _dontDestroy: 0
   _progressData: {fileID: 11400000, guid: 478a006796b8ffa4489f5958b97cdaa4, type: 2}
 --- !u!114 &886997352529143196
 MonoBehaviour:

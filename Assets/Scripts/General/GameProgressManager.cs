@@ -5,6 +5,7 @@ public class GameProgressManager : SingletonMonobehavior<GameProgressManager>
 {
     [SerializeField] GameProgressData _progressData;
     Dictionary<string, bool> _loadedProgressData = new Dictionary<string, bool>();
+    public Dictionary<string, bool> LoadedProgressData => _loadedProgressData;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,10 @@ public class GameProgressManager : SingletonMonobehavior<GameProgressManager>
 
     public void Clear(string progressName)
     {
+        if (progressName == null || !_loadedProgressData.ContainsKey(progressName)) return;
+
         _loadedProgressData[progressName] = true;
         PlayerPrefs.SetInt(progressName, 1);
+        Debug.Log("Stoty1ÉNÉäÉA");
     }
 }
