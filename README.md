@@ -29,6 +29,7 @@ https://app.diagrams.net/?libs=general;uml#G14A-vQKgytsCeHkgOPZGffD1XF1XxOG1C
 ・https://pipoya.net/sozai/assets/effects/effect-battle-basic-set/  
 ・https://maou.audio/game_medley02/  
 ・https://pipoya.net/sozai/assets/map-chip_tileset16/  
+・https://maou.audio/game_dangeon23/  
 ### フォント
 ・PixelMplus  
 https://itouhiro.hatenablog.com/entry/20130602/font
